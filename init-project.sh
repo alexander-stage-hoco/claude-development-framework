@@ -40,6 +40,7 @@ cp .gitignore "$PROJECT_NAME/" 2>/dev/null || true
 
 # Copy docs folder
 mkdir -p "$PROJECT_NAME/docs/advanced"
+mkdir -p "$PROJECT_NAME/docs/examples"
 cp docs/claude-development-framework.md "$PROJECT_NAME/docs/"
 cp docs/troubleshooting.md "$PROJECT_NAME/docs/"
 cp docs/walkthrough-todo-api.md "$PROJECT_NAME/docs/"
@@ -47,6 +48,7 @@ cp docs/example-first-session.md "$PROJECT_NAME/docs/"
 cp docs/session-types.md "$PROJECT_NAME/docs/"
 cp docs/advanced/tool-integration.md "$PROJECT_NAME/docs/advanced/"
 cp docs/advanced/large-codebase-context.md "$PROJECT_NAME/docs/advanced/"
+cp -r docs/examples/* "$PROJECT_NAME/docs/examples/"
 
 # Copy guides
 cp -r .claude/guides/* "$PROJECT_NAME/.claude/guides/"

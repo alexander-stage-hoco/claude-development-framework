@@ -87,6 +87,17 @@ REQUIRED_FILES=(
     "docs/session-types.md"
     "docs/advanced/tool-integration.md"
     "docs/advanced/large-codebase-context.md"
+    "docs/examples/README.md"
+    "docs/examples/subagent-service-extraction.md"
+    "docs/examples/subagent-library-evaluation.md"
+    "docs/examples/subagent-performance-optimization.md"
+    "docs/examples/subagent-dependency-analysis.md"
+    "docs/examples/subagent-traceability-validation.md"
+    "docs/examples/subagent-multi-agent-orchestration.md"
+    "docs/examples/scenario-circular-dependency-fix.md"
+    "docs/examples/scenario-specification-evolution.md"
+    "docs/examples/scenario-production-performance-crisis.md"
+    "docs/examples/scenario-context-window-management.md"
 )
 
 for file in "${REQUIRED_FILES[@]}"; do
@@ -265,6 +276,10 @@ check_file_size "docs/troubleshooting.md" 400
 check_file_size "docs/walkthrough-todo-api.md" 600
 check_file_size "docs/example-first-session.md" 200
 check_file_size "docs/session-types.md" 400
+check_file_size "docs/examples/README.md" 300
+check_file_size "docs/examples/subagent-service-extraction.md" 400
+check_file_size "docs/examples/subagent-library-evaluation.md" 400
+check_file_size "docs/examples/subagent-performance-optimization.md" 400
 
 echo ""
 echo "=========================================="

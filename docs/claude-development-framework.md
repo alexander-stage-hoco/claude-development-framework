@@ -303,6 +303,37 @@ Six service-oriented architecture subagents automate complex service development
 
 **Usage**: These agents are invoked automatically by Claude when appropriate, or manually via specialized prompts.
 
+**See Examples**: `docs/examples/` - 10 real-world examples showing subagents in action
+
+---
+
+## Example Sessions
+
+**NEW in v2.0**: 10 comprehensive example sessions demonstrating framework and subagents
+
+**Location**: `docs/examples/` directory
+
+### Subagent Examples (6)
+
+1. **Service Extraction** (`subagent-service-extraction.md`) - Extract 6 services from 5 UCs in 8 minutes
+2. **Library Evaluation** (`subagent-library-evaluation.md`) - Evaluate auth libraries, save $2,100
+3. **Performance Optimization** (`subagent-performance-optimization.md`) - 99.2x speedup with benchmarking
+4. **Dependency Analysis** (`subagent-dependency-analysis.md`) - Validate architecture in 10 minutes
+5. **Traceability Validation** (`subagent-traceability-validation.md`) - Ensure 100% UC-Service traceability
+6. **Multi-Agent Orchestration** (`subagent-multi-agent-orchestration.md`) - Complete service layer in 55 min
+
+### Real-World Scenarios (4)
+
+7. **Circular Dependency Fix** (`scenario-circular-dependency-fix.md`) - Fix cycles with event-based decoupling
+8. **Specification Evolution** (`scenario-specification-evolution.md`) - Handle changing requirements cleanly
+9. **Production Performance Crisis** (`scenario-production-performance-crisis.md`) - Emergency fix in 25 min
+10. **Context Window Management** (`scenario-context-window-management.md`) - Compress 72% → 23% context
+
+**Index**: See `docs/examples/README.md` for complete catalog with quick navigation
+
+**Total Content**: ~6,000 lines across 10 examples
+**Time Savings Shown**: 40+ hours saved across examples
+
 ---
 
 ## Where to Get Help
