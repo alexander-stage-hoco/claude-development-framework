@@ -22,7 +22,7 @@
 
 | Rule | Description | Manual Effort | Agent Coverage | Gap |
 |------|-------------|---------------|----------------|-----|
-| **#1** | Specifications Are Law | HIGH | ✅ uc-writer | Partial - UC generation automated |
+| **#1** | Specifications Are Law | HIGH | ✅ uc-writer, spec-validator | Partial - UC generation + validation automated |
 | **#2** | Tests Define Correctness | HIGH | ✅ test-writer | Partial - Test generation automated |
 | **#3** | Incremental Above All | MEDIUM | ✅ iteration-planner | Partial - Iteration planning automated |
 | **#4** | Research Informs Implementation | MEDIUM | ❌ None | **MEDIUM** - No research organization automation |
@@ -347,7 +347,7 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 
 ---
 
-#### 8. **spec-validator** 🟠 HIGH
+#### 8. **spec-validator** ✅ IMPLEMENTED
 **Purpose**: Validate specification completeness and consistency
 **Triggers**: "validate spec", "check specification", spec file modified
 **Input**: Specification file (UC or service spec)
@@ -363,6 +363,7 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 **Model**: sonnet (rule-based validation)
 **Impact**: HIGH - Prevents downstream issues from bad specs
 **Frequency**: MEDIUM - After spec creation/modification
+**Status**: ✅ Implemented in `.claude/subagents/spec-validator.md` (v1.0)
 
 ---
 
@@ -499,11 +500,11 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 ### Phase 2: Enhancement (Tier 2 - 4 agents)
 **Goal**: Cover planning and workflow automation (15%)
 **Time**: 1-2 weeks
-**Progress**: 1/4 complete (25%)
+**Progress**: 2/4 complete (50%)
 **Agents**:
 7. ✅ iteration-planner (COMPLETE - v1.0)
-8. ⏳ spec-validator (NEXT)
-9. ⏳ git-workflow-helper (PENDING)
+8. ✅ spec-validator (COMPLETE - v1.0)
+9. ⏳ git-workflow-helper (NEXT)
 10. ⏳ session-summarizer (PENDING)
 
 **Validation**: Gather user feedback, refine
@@ -556,7 +557,7 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 
 ---
 
-**Document Version**: 1.7
+**Document Version**: 1.8
 **Date**: 2025-10-01
-**Last Updated**: 2025-10-01 (6 Tier 1 agents + 1 Tier 2 agent: test-writer, bdd-scenario-writer, code-quality-checker, refactoring-analyzer, uc-writer, adr-manager, iteration-planner)
-**Next Steps**: Continue Tier 2 - spec-validator (Tier 2 #2)
+**Last Updated**: 2025-10-01 (6 Tier 1 agents + 2 Tier 2 agents: test-writer, bdd-scenario-writer, code-quality-checker, refactoring-analyzer, uc-writer, adr-manager, iteration-planner, spec-validator)
+**Next Steps**: Continue Tier 2 - git-workflow-helper (Tier 2 #3)
