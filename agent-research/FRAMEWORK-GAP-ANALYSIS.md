@@ -8,11 +8,11 @@
 
 ## Executive Summary
 
-**Current State**: 6 service-oriented agents covering service lifecycle + 1 Tier 1 agent implemented
+**Current State**: 6 service-oriented agents covering service lifecycle + 2 Tier 1 agents implemented
 **Finding**: **Major gaps** in 8 out of 12 framework rules and 7 out of 9 session phases
 **Recommendation**: 12-15 new agents needed for comprehensive coverage
 **Priority**: 6 high-priority agents address 80% of manual effort
-**Progress**: ✅ 1/6 Tier 1 agents complete (test-writer)
+**Progress**: ✅ 2/6 Tier 1 agents complete (test-writer, bdd-scenario-writer)
 
 ---
 
@@ -29,7 +29,7 @@
 | **#5** | Two-Level Planning | HIGH | ❌ None | **HIGH** - No planning assistance |
 | **#6** | No Shortcuts | LOW | ❌ None | **MEDIUM** - No TODO/tech-debt detection |
 | **#7** | Technical Decisions Are Binding | MEDIUM | ❌ None | **HIGH** - No ADR creation/compliance checking |
-| **#8** | BDD for User-Facing Features | HIGH | ❌ None | **CRITICAL** - No Gherkin writing/validation |
+| **#8** | BDD for User-Facing Features | HIGH | ✅ bdd-scenario-writer | Partial - Gherkin generation automated |
 | **#9** | Code Quality Standards | HIGH | ❌ None | **CRITICAL** - No quality checking automation |
 | **#10** | Session Discipline | LOW | ❌ None | **LOW** - Mostly protocol, hard to automate |
 | **#11** | Git Workflow Discipline | MEDIUM | ❌ None | **MEDIUM** - No git automation |
@@ -240,7 +240,7 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 
 ---
 
-#### 3. **bdd-scenario-writer** 🔴 CRITICAL
+#### 3. **bdd-scenario-writer** ✅ IMPLEMENTED
 **Purpose**: Generate Gherkin scenarios from UC acceptance criteria
 **Triggers**: "write BDD scenarios", "create Gherkin", UC has acceptance criteria
 **Input**: Use case specification with acceptance criteria
@@ -251,10 +251,11 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 4. Generate .feature file with all scenarios
 5. Validate scenario completeness vs. acceptance criteria
 **Output**: Complete .feature file with Gherkin scenarios
-**Tools**: [Read, Write]
+**Tools**: [Read, Write, Glob, Grep]
 **Model**: sonnet (structured transformation)
 **Impact**: HIGH - Rule #8 requirement, every UC needs BDD
 **Frequency**: HIGH - Every user-facing feature
+**Status**: ✅ Implemented in `.claude/subagents/bdd-scenario-writer.md` (v1.0)
 
 ---
 
@@ -477,11 +478,11 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 ### Phase 1: Foundation (Tier 1 - 6 agents)
 **Goal**: Cover critical manual effort (80%)
 **Time**: 2-3 weeks
-**Progress**: 1/6 complete (16.7%)
+**Progress**: 2/6 complete (33.3%)
 **Agents**:
 1. ✅ test-writer (COMPLETE - v1.0)
-2. ⏳ bdd-scenario-writer (PENDING)
-3. ⏳ code-quality-checker (PENDING)
+2. ✅ bdd-scenario-writer (COMPLETE - v1.0)
+3. ⏳ code-quality-checker (NEXT)
 4. ⏳ refactoring-analyzer (PENDING)
 5. ⏳ uc-writer (PENDING)
 6. ⏳ adr-manager (PENDING)
@@ -537,19 +538,19 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 
 **Priority**: Start with **Tier 1 (6 agents)** to address **80% of manual effort**:
 1. ✅ test-writer (COMPLETE - v1.0)
-2. ⏳ bdd-scenario-writer (NEXT)
-3. ⏳ code-quality-checker
+2. ✅ bdd-scenario-writer (COMPLETE - v1.0)
+3. ⏳ code-quality-checker (NEXT)
 4. ⏳ refactoring-analyzer
 5. ⏳ uc-writer
 6. ⏳ adr-manager
 
 **Impact**: Transform framework from service-focused tooling to comprehensive development automation
 
-**Progress**: 1/6 Tier 1 agents implemented (16.7% complete)
+**Progress**: 2/6 Tier 1 agents implemented (33.3% complete)
 
 ---
 
-**Document Version**: 1.1
+**Document Version**: 1.2
 **Date**: 2025-10-01
-**Last Updated**: 2025-10-01 (test-writer implemented)
-**Next Steps**: Implement bdd-scenario-writer (Tier 1 #2)
+**Last Updated**: 2025-10-01 (test-writer + bdd-scenario-writer implemented)
+**Next Steps**: Implement code-quality-checker (Tier 1 #3)
