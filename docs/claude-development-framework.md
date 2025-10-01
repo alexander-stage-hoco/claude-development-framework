@@ -78,7 +78,7 @@ project-root/
 │   ├── session-checklist.md          # Per-interaction checklist
 │   ├── technical-decisions.md        # ADRs (Architecture Decision Records)
 │   ├── context-priority.md           # Context management rules
-│   ├── subagents/                    # Subagent configurations (for future use)
+│   ├── subagents/                    # Subagent configurations (6 service-oriented agents)
 │   ├── templates/                    # Template files for Claude reference
 │   ├── quick-ref/                    # Quick reference cards
 │   └── guides/                       # Claude operational guides
@@ -163,7 +163,7 @@ Contains enforcement mechanisms that ensure Claude follows the disciplined appro
 | **session-checklist.md** | 8-phase checklist: Orient → Research → Plan → Test → Implement → Validate → Document → Close |
 | **technical-decisions.md** | Architecture Decision Records (ADRs) - binding on all work |
 | **context-priority.md** | 5-tier hierarchy + context maintenance thresholds |
-| **subagents/** | Subagent configurations (reserved for future use) |
+| **subagents/** | 6 specialized agents for service-oriented architecture |
 | **templates/** | Copy-paste ready templates for all file types (including service templates) |
 | **quick-ref/** | Single-page reference cards (session-start, tdd-cycle, git, services) |
 | **guides/** | Operational guides (research-organization) |
@@ -289,6 +289,19 @@ If Claude deviates, say:
 - **Session Types**: `docs/session-types.md` - Includes Session 9 (Service Extraction) and Session 10 (Service Optimization)
 
 **Note**: `services/` directory does NOT exist in template root. It is created in new projects by `init-project.sh`.
+
+### Specialized Subagents
+
+Six service-oriented architecture subagents automate complex service development tasks:
+
+- **service-extractor** (`.claude/subagents/service-extractor.md`) - Extract services from use cases
+- **service-designer** (`.claude/subagents/service-designer.md`) - Design detailed Protocol-based interfaces
+- **service-dependency-analyzer** (`.claude/subagents/service-dependency-analyzer.md`) - Analyze dependencies, detect cycles
+- **service-optimizer** (`.claude/subagents/service-optimizer.md`) - Benchmark implementations, recommend optimal strategy
+- **service-library-finder** (`.claude/subagents/service-library-finder.md`) - Search and evaluate external libraries
+- **uc-service-tracer** (`.claude/subagents/uc-service-tracer.md`) - Validate UC-Service traceability
+
+**Usage**: These agents are invoked automatically by Claude when appropriate, or manually via specialized prompts.
 
 ---
 

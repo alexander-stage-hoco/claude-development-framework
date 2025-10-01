@@ -73,6 +73,12 @@ REQUIRED_FILES=(
     ".claude/quick-ref/tdd-cycle.md"
     ".claude/quick-ref/git.md"
     ".claude/quick-ref/services.md"
+    ".claude/subagents/service-extractor.md"
+    ".claude/subagents/service-designer.md"
+    ".claude/subagents/service-dependency-analyzer.md"
+    ".claude/subagents/service-optimizer.md"
+    ".claude/subagents/service-library-finder.md"
+    ".claude/subagents/uc-service-tracer.md"
     "docs/claude-development-framework.md"
     "docs/service-architecture.md"
     "docs/troubleshooting.md"
@@ -245,6 +251,12 @@ check_file_size ".claude/templates/service-registry.md" 200
 check_file_size ".claude/templates/services-README-template.md" 80
 check_file_size ".claude/quick-ref/git.md" 250
 check_file_size ".claude/quick-ref/services.md" 150
+check_file_size ".claude/subagents/service-extractor.md" 300
+check_file_size ".claude/subagents/service-designer.md" 300
+check_file_size ".claude/subagents/service-dependency-analyzer.md" 300
+check_file_size ".claude/subagents/service-optimizer.md" 300
+check_file_size ".claude/subagents/service-library-finder.md" 300
+check_file_size ".claude/subagents/uc-service-tracer.md" 300
 check_file_size ".claude/guides/research-organization.md" 300
 check_file_size "quick-start-guide.md" 80
 check_file_size "docs/claude-development-framework.md" 400

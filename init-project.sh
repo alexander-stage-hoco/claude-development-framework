@@ -58,6 +58,10 @@ cp -r .claude/templates/* "$PROJECT_NAME/.claude/templates/"
 mkdir -p "$PROJECT_NAME/.claude/quick-ref"
 cp .claude/quick-ref/* "$PROJECT_NAME/.claude/quick-ref/"
 
+# Copy subagents
+mkdir -p "$PROJECT_NAME/.claude/subagents"
+cp .claude/subagents/* "$PROJECT_NAME/.claude/subagents/"
+
 echo "✅ Framework files copied"
 
 # Create initial project files
@@ -209,7 +213,7 @@ $PROJECT_NAME/
 │   ├── CLAUDE.md              # Main instructions for Claude
 │   ├── development-rules.md   # The 12 non-negotiable rules
 │   ├── service-registry.md    # Service catalog and traceability
-│   ├── subagents/             # Subagent configurations (for future use)
+│   ├── subagents/             # Subagent configurations (6 service-oriented agents)
 │   └── guides/                # Reference guides
 ├── specs/                     # Specifications
 │   ├── use-cases/             # Business requirements (must reference services!)
