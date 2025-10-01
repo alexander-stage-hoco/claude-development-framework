@@ -162,6 +162,42 @@ Before writing ANY production code, verify:
 
 ---
 
+## Agent Ecosystem & Coverage
+
+### Current Agent Status
+
+**Service-Oriented Agents (6)**: Cover service architecture lifecycle
+- service-extractor, service-designer, service-dependency-analyzer
+- service-optimizer, service-library-finder, uc-service-tracer
+
+**Coverage**: ~8% of framework features (service architecture only)
+
+### Framework Gap Analysis
+
+**IMPORTANT**: When considering new agents or wondering what automation exists:
+- **Read**: `agent-research/FRAMEWORK-GAP-ANALYSIS.md`
+- **Contains**: Comprehensive analysis of framework vs. agent coverage
+- **Shows**: 12 recommended new agents prioritized by impact
+- **Keep Updated**: When adding/removing agents, update this analysis
+
+**Quick Summary of Gaps**:
+- ❌ No test writing automation (Rule #2)
+- ❌ No spec/UC writing assistance (Rule #1)
+- ❌ No code quality checking (Rule #9)
+- ❌ No refactoring analysis (Rule #12)
+- ❌ No BDD scenario generation (Rule #8)
+- ❌ No ADR creation/compliance (Rule #7)
+
+**Recommended Priority**: Start with test-writer, code-quality-checker, refactoring-analyzer
+
+### When to Consult Gap Analysis
+- Planning new agent development
+- User asks "is there an agent for X?"
+- Wondering if manual process could be automated
+- Prioritizing framework improvements
+
+---
+
 ## Success Indicators
 
 You're doing this right if:
