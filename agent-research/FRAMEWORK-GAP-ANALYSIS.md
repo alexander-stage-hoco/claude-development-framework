@@ -24,9 +24,9 @@
 |------|-------------|---------------|----------------|-----|
 | **#1** | Specifications Are Law | HIGH | ✅ uc-writer | Partial - UC generation automated |
 | **#2** | Tests Define Correctness | HIGH | ✅ test-writer | Partial - Test generation automated |
-| **#3** | Incremental Above All | MEDIUM | ❌ None | **HIGH** - No iteration planning automation |
+| **#3** | Incremental Above All | MEDIUM | ✅ iteration-planner | Partial - Iteration planning automated |
 | **#4** | Research Informs Implementation | MEDIUM | ❌ None | **MEDIUM** - No research organization automation |
-| **#5** | Two-Level Planning | HIGH | ❌ None | **HIGH** - No planning assistance |
+| **#5** | Two-Level Planning | HIGH | ✅ iteration-planner | Partial - Strategic + tactical planning automated |
 | **#6** | No Shortcuts | LOW | ❌ None | **MEDIUM** - No TODO/tech-debt detection |
 | **#7** | Technical Decisions Are Binding | MEDIUM | ✅ adr-manager | Partial - ADR creation/compliance automated |
 | **#8** | BDD for User-Facing Features | HIGH | ✅ bdd-scenario-writer | Partial - Gherkin generation automated |
@@ -327,7 +327,7 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 
 ### Tier 2: HIGH Priority (4 agents) - Address next 15% of effort
 
-#### 7. **iteration-planner** 🟠 HIGH
+#### 7. **iteration-planner** ✅ IMPLEMENTED
 **Purpose**: Help plan iterations with scope validation
 **Triggers**: "plan iteration", "create iteration", start of new work
 **Input**: Use case or feature description
@@ -339,10 +339,11 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 5. Check scope (warn if >3 hours)
 6. Generate iteration plan file
 **Output**: Iteration plan with tasks, tests, time estimate
-**Tools**: [Read, Write]
+**Tools**: [Read, Write, Glob, Grep]
 **Model**: opus (complex planning and estimation)
 **Impact**: HIGH - Rule #3 & #5 enforcement
 **Frequency**: MEDIUM - Every new iteration/UC
+**Status**: ✅ Implemented in `.claude/subagents/iteration-planner.md` (v1.0)
 
 ---
 
@@ -498,11 +499,12 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 ### Phase 2: Enhancement (Tier 2 - 4 agents)
 **Goal**: Cover planning and workflow automation (15%)
 **Time**: 1-2 weeks
+**Progress**: 1/4 complete (25%)
 **Agents**:
-7. iteration-planner
-8. spec-validator
-9. git-workflow-helper
-10. session-summarizer
+7. ✅ iteration-planner (COMPLETE - v1.0)
+8. ⏳ spec-validator (NEXT)
+9. ⏳ git-workflow-helper (PENDING)
+10. ⏳ session-summarizer (PENDING)
 
 **Validation**: Gather user feedback, refine
 
@@ -554,7 +556,7 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 
 ---
 
-**Document Version**: 1.6
+**Document Version**: 1.7
 **Date**: 2025-10-01
-**Last Updated**: 2025-10-01 (6 Tier 1 agents: test-writer, bdd-scenario-writer, code-quality-checker, refactoring-analyzer, uc-writer, adr-manager)
-**Next Steps**: **TIER 1 COMPLETE!** Begin Tier 2 (iteration-planner, spec-validator, git-workflow-helper, session-summarizer)
+**Last Updated**: 2025-10-01 (6 Tier 1 agents + 1 Tier 2 agent: test-writer, bdd-scenario-writer, code-quality-checker, refactoring-analyzer, uc-writer, adr-manager, iteration-planner)
+**Next Steps**: Continue Tier 2 - spec-validator (Tier 2 #2)
