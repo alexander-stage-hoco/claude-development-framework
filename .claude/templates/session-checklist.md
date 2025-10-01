@@ -144,12 +144,18 @@ See `.claude/templates/refactoring-checklist.md` for comprehensive refactoring g
 
 - [ ] Update `planning/current-iteration.md` with progress
 - [ ] Record any new technical decisions as ADRs
-- [ ] Update `planning/session-state.md` for next session
+- [ ] **Generate session state** (automated):
+  - [ ] Run: `./scripts/generate-session-state.sh`
+  - [ ] Review generated `planning/session-state.md`
+  - [ ] Fill in placeholders (work completed, next steps, blockers)
+  - [ ] Edit context notes as needed
 - [ ] Note any learnings or insights
 - [ ] Document any blockers or issues
 - [ ] Update use case status if iteration completed
 
 **Output**: Current state documented for continuity.
+
+**Tip**: The `generate-session-state.sh` script creates a template automatically. Just fill in the details!
 
 ---
 

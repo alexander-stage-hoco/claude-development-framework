@@ -380,16 +380,35 @@ Changes were made to code without updating specs, or vice versa
 
 ### Immediate Recovery
 
-**Run alignment check**:
-```python
-# scripts/verify-spec-alignment.py
-"""
-Verify:
-1. Every use case has implementation
-2. Every BDD feature matches UC acceptance criteria
-3. Every service interface matches spec
-4. No orphaned tests
-"""
+**Run automated alignment check**:
+```bash
+./scripts/check-alignment.py --verbose
+```
+
+This script automatically verifies:
+1. Every use case has a corresponding BDD feature file
+2. BDD scenario counts match acceptance criteria counts
+3. No orphaned features (tests without specs)
+4. No broken references between UCs and BDD files
+
+**Example output**:
+```
+🔍 Parsing use case specifications...
+   Found 5 use cases
+
+🔍 Parsing BDD feature files...
+   Found 4 features
+
+⚠️  ALIGNMENT ISSUES FOUND: 2
+
+🚨 ERRORS (must fix):
+  ❌ UC-005 has no corresponding BDD feature file
+     UC: UC-005
+
+⚠️  WARNINGS (review recommended):
+  ⚠️  UC-003: 4 acceptance criteria but 3 BDD scenarios in 'List TODOs'
+     UC: UC-003
+     Feature: List TODOs
 ```
 
 **Manual audit**:
@@ -399,14 +418,76 @@ Verify:
 4. Verify tests match acceptance criteria
 5. Find mismatches
 
+### Fixing Alignment Issues
+
+**Issue: missing_bdd (ERROR)**
+- Problem: Use case has acceptance criteria but no BDD feature file
+- Fix: Create BDD feature file in `tests/bdd/` with scenarios matching criteria
+```bash
+# Create feature file
+touch tests/bdd/features/uc-005-example.feature
+
+# Add UC reference to spec
+echo "**BDD File**: \`features/uc-005-example.feature\`" >> specs/use-cases/UC-005-example.md
+```
+
+**Issue: count_mismatch (WARNING)**
+- Problem: Number of BDD scenarios doesn't match acceptance criteria count
+- Fix: Add missing scenarios or update criteria to match
+```bash
+# Check current counts
+./scripts/check-alignment.py --verbose
+
+# Option 1: Add missing scenario to BDD file
+# Option 2: Update acceptance criteria in spec
+# Option 3: Merge/split scenarios to align
+```
+
+**Issue: orphaned_feature (WARNING)**
+- Problem: BDD feature file exists but doesn't reference any use case
+- Fix: Add UC reference to feature file comments
+```gherkin
+# Feature: Example Feature
+# Use Case: UC-003
+# Spec: specs/use-cases/UC-003-example.md
+```
+
+**Issue: broken_bdd_ref (ERROR)**
+- Problem: Use case references a BDD file that doesn't exist
+- Fix: Create the referenced file or update the reference
+```bash
+# Find broken reference
+grep "BDD File:" specs/use-cases/UC-*.md
+
+# Create missing file or fix reference
+```
+
+**Get detailed explanations**:
+```bash
+./scripts/check-alignment.py --explain
+```
+
 ### Prevention
 
 **After every iteration**:
 - [ ] Update `planning/current-iteration.md` with actual results
 - [ ] If spec changed, update spec file AND commit message
 - [ ] If implementation deviated, update spec OR fix implementation
+- [ ] Run alignment check: `./scripts/check-alignment.py`
 
-**Weekly audit** (15 minutes):
+**Weekly automated audit** (2 minutes):
+```bash
+# Run comprehensive alignment check
+./scripts/check-alignment.py --verbose
+
+# Check traceability
+./scripts/validate-traceability.py
+
+# Both should exit with 0 (no issues)
+echo $?
+```
+
+**Weekly manual audit** (15 minutes):
 ```markdown
 ## Spec-Code Alignment Audit
 

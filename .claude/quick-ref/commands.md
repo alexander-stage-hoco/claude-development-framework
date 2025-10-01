@@ -25,9 +25,13 @@ estimated_read_time: 3 minutes
 ./validate-template.sh
 ```
 
-### Validate Traceability (if available)
+### Validate Traceability
 ```bash
+# Check UC-Service traceability
 python3 scripts/validate-traceability.py
+
+# Check spec-code alignment (BDD scenarios vs acceptance criteria)
+./scripts/check-alignment.py --verbose
 ```
 
 ---
@@ -232,6 +236,7 @@ Show me the spec-code alignment for UC-003
 |---------|----------------|
 | Framework not validating | `./validate-template.sh` |
 | Traceability broken | `python3 scripts/validate-traceability.py` |
+| Spec-code drift | `./scripts/check-alignment.py --verbose` |
 | Git branch confusion | `git branch --show-current` |
 | Context overload | `"Context check"` |
 | Lost current work | `cat planning/current-iteration.md` |

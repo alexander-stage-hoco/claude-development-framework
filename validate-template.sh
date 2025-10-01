@@ -70,6 +70,7 @@ REQUIRED_FILES=(
     ".claude/templates/research/article-links.md"
     ".claude/templates/research/implementation-readme.md"
     ".claude/guides/research-organization.md"
+    ".claude/guides/subagent-orchestration.md"
     ".claude/quick-ref/session-start.md"
     ".claude/quick-ref/tdd-cycle.md"
     ".claude/quick-ref/git.md"
@@ -103,8 +104,12 @@ REQUIRED_FILES=(
     "docs/examples/scenario-context-window-management.md"
     "scripts/validate-traceability.py"
     "scripts/lib/traceability.py"
+    "scripts/check-alignment.py"
+    "scripts/lib/alignment.py"
     "scripts/add-template-versions.sh"
     "scripts/add-tier-labels.sh"
+    "scripts/generate-session-state.sh"
+    "scripts/update-service-registry.sh"
 )
 
 for file in "${REQUIRED_FILES[@]}"; do
