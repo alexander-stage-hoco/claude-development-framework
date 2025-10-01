@@ -46,6 +46,7 @@ REQUIRED_FILES=(
     "quick-start-guide.md"
     "init-project.sh"
     ".gitignore"
+    ".claude/READING-ORDER.md"
     ".claude/templates/start-here.md"
     ".claude/templates/CLAUDE.md"
     ".claude/templates/development-rules.md"
@@ -73,12 +74,14 @@ REQUIRED_FILES=(
     ".claude/quick-ref/tdd-cycle.md"
     ".claude/quick-ref/git.md"
     ".claude/quick-ref/services.md"
+    ".claude/quick-ref/commands.md"
     ".claude/subagents/service-extractor.md"
     ".claude/subagents/service-designer.md"
     ".claude/subagents/service-dependency-analyzer.md"
     ".claude/subagents/service-optimizer.md"
     ".claude/subagents/service-library-finder.md"
     ".claude/subagents/uc-service-tracer.md"
+    "docs/10-minute-start.md"
     "docs/claude-development-framework.md"
     "docs/service-architecture.md"
     "docs/troubleshooting.md"
@@ -98,6 +101,10 @@ REQUIRED_FILES=(
     "docs/examples/scenario-specification-evolution.md"
     "docs/examples/scenario-production-performance-crisis.md"
     "docs/examples/scenario-context-window-management.md"
+    "scripts/validate-traceability.py"
+    "scripts/lib/traceability.py"
+    "scripts/add-template-versions.sh"
+    "scripts/add-tier-labels.sh"
 )
 
 for file in "${REQUIRED_FILES[@]}"; do
@@ -280,6 +287,15 @@ check_file_size "docs/examples/README.md" 300
 check_file_size "docs/examples/subagent-service-extraction.md" 400
 check_file_size "docs/examples/subagent-library-evaluation.md" 400
 check_file_size "docs/examples/subagent-performance-optimization.md" 400
+
+echo ""
+echo "🔗 Checking UC-Service traceability validator..."
+echo ""
+if [ -x "scripts/validate-traceability.py" ]; then
+    success "Traceability validator script exists and is executable"
+else
+    warning "Traceability validator script not found or not executable"
+fi
 
 echo ""
 echo "=========================================="

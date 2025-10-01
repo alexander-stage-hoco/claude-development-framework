@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Performance benchmark template
+reload_trigger: When benchmarking
+estimated_read_time: 5 minutes
+---
+
 # Benchmark Report: [SERVICE_NAME]
 
 **Service**: [SERVICE_NAME] (SVC-XXX)
@@ -421,3 +428,10 @@ pytest benchmarks/ --benchmark-compare --benchmark-save=[name]
 **Report Version**: 1.0
 **Framework**: Claude Development Framework v2.0
 **Next Benchmark**: [Recommended date or trigger condition]
+
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

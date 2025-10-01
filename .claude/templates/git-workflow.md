@@ -1,3 +1,10 @@
+---
+tier: 3
+purpose: Git branching and commit strategy
+reload_trigger: When committing or branching
+estimated_read_time: 10 minutes
+---
+
 # Git Workflow Guide
 
 **Version**: 2.1
@@ -280,3 +287,9 @@ git checkout main && git merge [branch]
 ---
 
 **Remember**: Every iteration on dedicated branch. Commit only when complete with passing tests. Clean git history enables easy rollback and review.
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

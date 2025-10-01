@@ -1,3 +1,10 @@
+---
+tier: 2
+purpose: Session start/end procedures
+reload_trigger: At session start
+estimated_read_time: 5 minutes
+---
+
 # Session Checklist - 9 Phases
 
 **Version**: 2.0
@@ -263,3 +270,9 @@ See `.claude/templates/refactoring-checklist.md` for comprehensive refactoring g
 ---
 
 **Remember**: These phases are NOT optional. Follow them in order every session for consistent, high-quality results.
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

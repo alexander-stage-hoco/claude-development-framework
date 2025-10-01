@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Article links collection template
+reload_trigger: When collecting research links
+estimated_read_time: 2 minutes
+---
+
 # Articles: [Topic]
 
 **Research Date**: [Date range you collected these articles]
@@ -85,3 +92,9 @@
 [Which Architecture Decision Records were influenced by these articles?]
 
 - ADR-XXX: [Decision name]
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Implementation notes template
+reload_trigger: When documenting implementation research
+estimated_read_time: 3 minutes
+---
+
 # Reference Implementation: [Name]
 
 **Source**: [GitHub URL or other source]
@@ -124,3 +131,9 @@ Highlight the most important files to study:
 - [ ] Add license notice to adapted files
 - [ ] Add attribution comment to our code
 - [ ] Document in NOTICES or CREDITS file
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

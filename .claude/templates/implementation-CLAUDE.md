@@ -1,3 +1,10 @@
+---
+tier: 3
+purpose: Implementation phase instructions
+reload_trigger: During implementation
+estimated_read_time: 5 minutes
+---
+
 # Implementation Analysis Session
 
 **Purpose**: Analyze this reference implementation for potential code reuse in our project
@@ -235,3 +242,9 @@ Before finishing this session:
 ---
 
 **Remember**: This is analysis, not implementation. Your output helps the main project team reuse code effectively.
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

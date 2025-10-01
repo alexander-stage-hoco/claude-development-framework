@@ -1,3 +1,10 @@
+---
+tier: 2
+purpose: Context management and compression
+reload_trigger: At 70% context usage
+estimated_read_time: 10 minutes
+---
+
 # Context Priority Hierarchy & Management
 
 **Version**: 2.0
@@ -404,3 +411,9 @@ Users can trigger context management with:
 - When in doubt, reload
 
 **Goal**: Maintain clear understanding of framework, rules, and project state regardless of session length.
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

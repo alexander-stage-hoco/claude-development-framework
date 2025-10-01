@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Service patterns quick reference
+reload_trigger: When designing services (quick ref)
+estimated_read_time: 5 minutes
+---
+
 # Services Quick Reference
 
 **Framework**: Claude Development Framework v2.0

@@ -1,3 +1,10 @@
+---
+tier: 2
+purpose: Architecture decision records template
+reload_trigger: When making/reviewing ADRs
+estimated_read_time: 5 minutes
+---
+
 # Technical Decisions (ADRs)
 
 **Project**: [PROJECT_NAME]
@@ -302,3 +309,9 @@ Before marking ADR as "Accepted":
 
 **Version**: 2.0
 **Template by**: Claude Development Framework
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

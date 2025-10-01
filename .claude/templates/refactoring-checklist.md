@@ -1,3 +1,10 @@
+---
+tier: 3
+purpose: RED-GREEN-REFACTOR process
+reload_trigger: After GREEN phase
+estimated_read_time: 15 minutes
+---
+
 # Refactoring Checklist
 
 **Version**: 2.1
@@ -371,3 +378,9 @@ Commit with "refactor:" type ✅
 ---
 
 **Remember**: Refactoring is NOT optional. It's the third mandatory step in TDD: RED → GREEN → **REFACTOR**.
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

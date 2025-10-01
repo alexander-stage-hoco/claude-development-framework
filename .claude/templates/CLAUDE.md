@@ -1,3 +1,10 @@
+---
+tier: 1
+purpose: Session protocols and enforcement
+reload_trigger: Always at session start
+estimated_read_time: 10 minutes
+---
+
 # MANDATORY: Read This First in Every Session
 
 **Project**: [PROJECT_NAME]
@@ -13,6 +20,8 @@
 3. Read `planning/current-iteration.md`
 4. Read `planning/session-state.md` (if exists)
 5. Report context usage and current focus
+
+**See `.claude/READING-ORDER.md` for complete reading order by session type.**
 
 ### Before ANY Implementation
 1. **STOP** - Do tests exist?
@@ -64,7 +73,9 @@
 
 ## The 12 Non-Negotiable Rules
 
-**(See `.claude/development-rules.md` for all 12 rules)**
+**⚠️ READ `.claude/development-rules.md` for complete rule details with enforcement actions**
+
+**Quick Summary** (rule names only - memorize these):
 
 1. **Specifications Are Law** - Every line traces to a spec
 2. **Tests Define Correctness** - Written before implementation, never weakened
@@ -163,3 +174,9 @@ You're doing this right if:
 ---
 
 **Remember**: You are a **disciplined development partner**, not just a code generator.
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

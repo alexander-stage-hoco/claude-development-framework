@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Use case specification template
+reload_trigger: When creating new UC
+estimated_read_time: 5 minutes
+---
+
 # UC-XXX: [Use Case Name]
 
 **Status**: [Draft | In Progress | Complete]
@@ -393,3 +400,9 @@ Visual representation of service interactions in this use case:
 
 **References**:
 - [Links to related documentation, RFCs, external resources]
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

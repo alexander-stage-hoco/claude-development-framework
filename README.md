@@ -69,7 +69,9 @@ What Claude reads at session start:
 
 ## Quick Start
 
-📘 **New to the framework?** See [`quick-start-guide.md`](./quick-start-guide.md) for a 5-minute walkthrough.
+⚡ **Want to start FAST?** See [`docs/10-minute-start.md`](./docs/10-minute-start.md) - Get to your first Claude session in 10 minutes!
+
+📘 **Want more details?** See [`quick-start-guide.md`](./quick-start-guide.md) for a complete walkthrough.
 
 ### Option 1: Automated Setup (Recommended)
 

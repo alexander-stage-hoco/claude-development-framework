@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Service specification template
+reload_trigger: When creating new service
+estimated_read_time: 10 minutes
+---
+
 # Service Specification: [SERVICE_NAME]
 
 **Service ID**: SVC-XXX

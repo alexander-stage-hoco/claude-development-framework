@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Research paper summary template
+reload_trigger: When summarizing papers
+estimated_read_time: 3 minutes
+---
+
 # Paper Summary: [Title]
 
 **Source**: [URL or citation]
@@ -66,3 +73,9 @@
 ## Notes
 
 [Additional notes, thoughts, or questions while reading]
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

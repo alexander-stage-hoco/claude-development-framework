@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Research organization guide
+reload_trigger: When organizing research
+estimated_read_time: 10 minutes
+---
+
 # Research Folder Structure
 
 **Version**: 2.0

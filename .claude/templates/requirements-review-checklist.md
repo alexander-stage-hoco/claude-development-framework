@@ -1,3 +1,10 @@
+---
+tier: 3
+purpose: Specification review process
+reload_trigger: When reviewing specs
+estimated_read_time: 10 minutes
+---
+
 # Requirements Review Checklist
 
 **Version**: 2.0
@@ -269,3 +276,9 @@ You've done this right if:
 ---
 
 **Remember**: Your job is to **protect the user from their own ambiguity**. Better to ask clarifying questions now than build the wrong thing.
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

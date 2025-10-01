@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Services directory README template
+reload_trigger: When creating services/ directory
+estimated_read_time: 3 minutes
+---
+
 # Services Directory
 
 **Project**: [PROJECT_NAME]

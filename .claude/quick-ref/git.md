@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Git commands quick reference
+reload_trigger: When using git (quick ref)
+estimated_read_time: 3 minutes
+---
+
 # Quick Ref: Git Workflow
 
 **Purpose**: Complete git reference for the framework

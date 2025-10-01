@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Library evaluation template
+reload_trigger: When evaluating libraries
+estimated_read_time: 5 minutes
+---
+
 # Library Evaluation: [SERVICE_NAME]
 
 **Service**: [SERVICE_NAME] (SVC-XXX)
@@ -398,3 +405,10 @@ Used this checklist during evaluation:
 **Evaluation Version**: 1.0
 **Framework**: Claude Development Framework v2.0
 **Decision Status**: [Draft | Approved | Implemented]
+
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

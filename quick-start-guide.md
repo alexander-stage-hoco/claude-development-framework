@@ -2,6 +2,8 @@
 
 **Claude Development Framework v2.0**
 
+⚡ **Want even faster?** See [`docs/10-minute-start.md`](./docs/10-minute-start.md) for ultra-concise instructions (10 minutes to first session).
+
 ---
 
 ## What This Is

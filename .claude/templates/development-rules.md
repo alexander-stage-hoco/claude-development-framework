@@ -1,8 +1,33 @@
+---
+tier: 1
+purpose: The 12 non-negotiable rules
+reload_trigger: Always at session start, at 70% context
+estimated_read_time: 15 minutes
+---
+
 # The 12 Non-Negotiable Development Rules
 
 **Project**: [PROJECT_NAME]
-**Status**: BINDING - Cannot be violated
+**Status**: ⚠️ **AUTHORITATIVE SOURCE** - Do not duplicate these rules elsewhere
 **Last Updated**: [DATE]
+**Referenced By**: CLAUDE.md, start-here.md, READING-ORDER.md
+**Sync Policy**: Other files must reference this file, not copy rules
+
+---
+
+## Important
+
+This file is the **single source of truth** for the 12 development rules.
+
+**DO NOT**:
+- Copy these rules to other files (creates drift)
+- Summarize rules differently elsewhere (creates confusion)
+- Skip reading this file (rules are mandatory)
+
+**DO**:
+- Reference this file from other framework files
+- Re-read when rules seem fuzzy
+- Quote specific rules by number when enforcing
 
 ---
 
@@ -141,3 +166,9 @@ After implementation passes:
 ---
 
 **These rules ensure**: Quality · Traceability · Maintainability · Discipline · Version Control · Clean Code · Service-Driven Architecture
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

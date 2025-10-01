@@ -1,3 +1,10 @@
+---
+tier: 3
+purpose: Implementation session summary template
+reload_trigger: After implementation complete
+estimated_read_time: 3 minutes
+---
+
 # Implementation Summary: [Project Name]
 
 **Source**: [GitHub URL or source location]
@@ -252,3 +259,9 @@
 **Ready for Code Reuse**: [Yes/No/Partial]
 
 **Recommended Next Reviewer**: [Team member who should review this]
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

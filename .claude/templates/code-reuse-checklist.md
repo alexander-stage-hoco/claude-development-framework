@@ -1,3 +1,10 @@
+---
+tier: 3
+purpose: Before writing new code
+reload_trigger: Before implementing new capability
+estimated_read_time: 5 minutes
+---
+
 # Code Reuse Checklist
 
 **Version**: 2.0
@@ -363,3 +370,9 @@ Extract → Adapt → Test → Attribute → Integrate → Verify → Commit ✅
 ---
 
 **Remember**: Good code reuse accelerates development. Bad code reuse creates technical debt. Take time to do it right.
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

@@ -1,3 +1,10 @@
+---
+tier: 2
+purpose: Service catalog template
+reload_trigger: When working with services
+estimated_read_time: 5 minutes
+---
+
 # Service Registry
 
 **Project**: [PROJECT_NAME]

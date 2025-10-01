@@ -41,11 +41,13 @@ cp .gitignore "$PROJECT_NAME/" 2>/dev/null || true
 # Copy docs folder
 mkdir -p "$PROJECT_NAME/docs/advanced"
 mkdir -p "$PROJECT_NAME/docs/examples"
+cp docs/10-minute-start.md "$PROJECT_NAME/docs/"
 cp docs/claude-development-framework.md "$PROJECT_NAME/docs/"
 cp docs/troubleshooting.md "$PROJECT_NAME/docs/"
 cp docs/walkthrough-todo-api.md "$PROJECT_NAME/docs/"
 cp docs/example-first-session.md "$PROJECT_NAME/docs/"
 cp docs/session-types.md "$PROJECT_NAME/docs/"
+cp docs/service-architecture.md "$PROJECT_NAME/docs/"
 cp docs/advanced/tool-integration.md "$PROJECT_NAME/docs/advanced/"
 cp docs/advanced/large-codebase-context.md "$PROJECT_NAME/docs/advanced/"
 cp -r docs/examples/* "$PROJECT_NAME/docs/examples/"
@@ -59,6 +61,9 @@ cp -r .claude/templates/* "$PROJECT_NAME/.claude/templates/"
 # Copy quick-ref
 mkdir -p "$PROJECT_NAME/.claude/quick-ref"
 cp .claude/quick-ref/* "$PROJECT_NAME/.claude/quick-ref/"
+
+# Copy READING-ORDER.md
+cp .claude/READING-ORDER.md "$PROJECT_NAME/.claude/"
 
 # Copy subagents
 mkdir -p "$PROJECT_NAME/.claude/subagents"
@@ -341,7 +346,8 @@ echo "      - Ask about your project"
 echo "      - Create specifications"
 echo ""
 echo "📖 Resources:"
-echo "   - Quick Start: quick-start-guide.md"
+echo "   - 10-Minute Start: docs/10-minute-start.md (fastest!)"
+echo "   - Quick Start: quick-start-guide.md (complete)"
 echo "   - Full Framework: docs/claude-development-framework.md"
 echo "   - Example Session: docs/example-first-session.md"
 echo "   - Troubleshooting: docs/troubleshooting.md"

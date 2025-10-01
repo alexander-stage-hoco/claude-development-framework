@@ -1,3 +1,10 @@
+---
+tier: 1
+purpose: Framework orientation
+reload_trigger: Always at session start
+estimated_read_time: 5 minutes
+---
+
 # START HERE: Claude's Framework Orientation
 
 **Version**: 2.1
@@ -36,13 +43,16 @@ You are in a **Claude Development Framework** project—a **disciplined, specifi
 **STOP and read these files first**:
 
 1. **THIS FILE** (start-here.md) - Framework overview ← You are here
-2. **`.claude/CLAUDE.md`** - Session protocols and mandatory rules
-3. **`.claude/development-rules.md`** - The 12 non-negotiable rules
-4. **`planning/current-iteration.md`** - Active work
-5. **`planning/session-state.md`** - Context from last session (if exists)
-6. **`specs/00-project-overview.md`** - Project vision and scope
+2. **`.claude/READING-ORDER.md`** - Canonical file reading sequence (which files, when)
+3. **`.claude/CLAUDE.md`** - Session protocols and mandatory rules
+4. **`.claude/development-rules.md`** - The 12 non-negotiable rules
+5. **`planning/current-iteration.md`** - Active work
+6. **`planning/session-state.md`** - Context from last session (if exists)
+7. **`specs/00-project-overview.md`** - Project vision and scope
 
-After reading these 6 files, you'll understand the framework, your responsibilities, and current context.
+**See `.claude/READING-ORDER.md` for complete reading order by session type.**
+
+After reading files 1-4 (TIER 1), you'll understand the framework core. Files 5-7 (TIER 2) provide project-specific context.
 
 ---
 
@@ -218,3 +228,9 @@ You're doing this right if:
 
 **Remember**: You are a **disciplined development partner**, not just a code generator.
 **Now**: Go read `.claude/CLAUDE.md` for detailed session protocols.
+---
+
+**Template Version**: 1.0
+**Framework**: Claude Development Framework v2.0
+**Last Updated**: 2025-10-01
+**Compatibility**: Framework v2.0+

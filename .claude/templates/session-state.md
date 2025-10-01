@@ -1,3 +1,10 @@
+---
+tier: 3
+purpose: Session continuity template
+reload_trigger: At session end
+estimated_read_time: 5 minutes
+---
+
 # Session State
 
 **Session #**: [NUMBER]

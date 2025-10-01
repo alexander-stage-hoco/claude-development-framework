@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: Session start quick checklist
+reload_trigger: At session start (quick ref)
+estimated_read_time: 2 minutes
+---
+
 # Quick Ref: Session Start Checklist
 
 **Purpose**: Essential steps to start every Claude development session

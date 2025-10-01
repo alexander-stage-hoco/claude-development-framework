@@ -1,3 +1,10 @@
+---
+tier: 4
+purpose: TDD cycle quick reference
+reload_trigger: During implementation (quick ref)
+estimated_read_time: 2 minutes
+---
+
 # Quick Ref: TDD Cycle (RED-GREEN-REFACTOR)
 
 **Purpose**: The mandatory 3-step development cycle
