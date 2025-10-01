@@ -10,7 +10,7 @@
 
 | # | Rule | Core Requirement | Claude's Enforcement |
 |---|------|------------------|---------------------|
-| **1** | **Specifications Are Law** | No code without spec. Spec updated first. Docstrings reference specs: `Specification: specs/file.md#section` | Refuses to code without spec |
+| **1** | **Specifications Are Law** | No code without spec. **Use cases must reference services.** Spec updated first. Docstrings reference specs: `Specification: specs/file.md#section` | Refuses to code without spec or service reference |
 | **2** | **Tests Define Correctness** | Write test first (RED), implement (GREEN), refactor (REFACTOR). Never weaken tests—fix system. | Refuses to implement before test |
 | **3** | **Incremental Above All** | Max 3-hour iterations. Break large features. Complete current before next. | Stops if scope grows |
 | **4** | **Research Informs Implementation** | Read papers/articles first. Document in `research/learnings/`. Create ADRs. | Requires research before novel features |
@@ -118,4 +118,26 @@ After implementation passes:
 
 ---
 
-**These rules ensure**: Quality · Traceability · Maintainability · Discipline · Version Control · Clean Code
+## Service-Oriented Architecture Requirements
+
+**Rule #1 Extension**: Use cases must reference services
+
+**Service Requirements**:
+- Services are extracted from use cases (not invented ad-hoc)
+- Services have clear interfaces (Protocols with type hints)
+- Services are testable in isolation (dependency injection, mocks)
+- Services minimize dependencies on other services
+- Use cases document which services they use (`## Services Used` section)
+- Serviceless use cases must be challenged ("Is this really a UC or just UI?")
+
+**Service Design**:
+- Single Responsibility Principle (one service, one purpose)
+- Stateless preferred, stateful justified
+- Implementation strategies benchmarked when performance critical
+- Existing libraries used when suitable (evaluate before building)
+
+**See**: `.claude/service-registry.md` for service catalog and `services/` for specifications
+
+---
+
+**These rules ensure**: Quality · Traceability · Maintainability · Discipline · Version Control · Clean Code · Service-Driven Architecture

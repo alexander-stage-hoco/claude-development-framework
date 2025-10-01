@@ -257,6 +257,59 @@ Error Response (400 Bad Request):
 
 ---
 
+## Services Used
+
+**Requirement**: This use case MUST reference the services it uses. Service-free use cases should be challenged.
+
+| Service | Methods Used | Purpose |
+|---------|-------------|---------|
+| [ServiceName] | `method_name()`, `other_method()` | [Why this service is needed] |
+| [AnotherService] | `method_x()` | [Purpose in this UC] |
+
+**Service Traceability**:
+- All services referenced above must be defined in `services/[service-name]/service-spec.md`
+- If no services are needed, explain why (e.g., "Pure UI change, no business logic")
+
+**Example**:
+```
+| Service | Methods Used | Purpose |
+|---------|-------------|---------|
+| AuthService | authenticate(), create_session() | User authentication |
+| UserService | get_user(), update_last_login() | Retrieve and update user data |
+| EmailService | send_email() | Send login notification |
+```
+
+---
+
+## Service Flow
+
+Visual representation of service interactions in this use case:
+
+```
+1. User submits credentials
+   ↓
+2. AuthService.authenticate(email, password)
+   ├─ Success → Continue to step 3
+   └─ Failure → Return error (step 6)
+   ↓
+3. UserService.get_user(user_id)
+   ├─ User found → Continue
+   └─ User not found → Return error (step 6)
+   ↓
+4. AuthService.create_session(user_id)
+   ↓
+5. EmailService.send_email(user, "login_notification")
+   ↓
+6. Return result (success with session_token OR error)
+```
+
+**Notes**:
+- Show the happy path flow
+- Indicate error paths where services may fail
+- Number steps for traceability
+
+---
+
 ## Implementation Plan
 
 ### Iteration Breakdown

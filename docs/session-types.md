@@ -24,6 +24,8 @@ The Claude Development Framework supports multiple session types, each with spec
 | **6. Architecture Decision** | Make tech decisions | 30-60 min | technical-decisions.md | ADR documents |
 | **7. Refactoring-Only** | Improve code quality | 30-90 min | refactoring-checklist.md | Cleaner code |
 | **8. Continuation** | Resume work | Variable | session-state.md | Continued progress |
+| **9. Service Extraction** | Extract services from UCs | 1-2 hours | service-spec.md | Service specifications |
+| **10. Service Optimization** | Benchmark implementations | 1-3 hours | benchmark-report.md | Performance report, optimal strategy |
 
 ---
 
@@ -328,6 +330,89 @@ Continue from session N. Read planning/session-state.md first.
 
 ---
 
+## 9. Service Extraction Session ⭐ NEW
+
+### When to Use
+- After use cases are specified
+- Before implementation begins
+- When refactoring to service-oriented architecture
+
+### Protocol
+
+**Steps**:
+1. **Analysis** - Analyze UCs for required capabilities
+2. **Extraction** - Identify service boundaries
+3. **Design** - Create detailed service specs
+4. **Dependency Analysis** - Validate dependencies, detect cycles
+5. **Library Search** - Evaluate external libraries
+6. **Traceability** - Validate UC-Service links
+
+### User Prompt
+```
+Extract services from use cases. Follow service extraction protocol.
+```
+
+OR
+
+```
+Analyze use cases and identify required services.
+```
+
+### Expected Outcome
+- ✅ Service specifications created in `services/`
+- ✅ Service registry updated
+- ✅ UC-Service traceability validated
+- ✅ Library recommendations made
+- ✅ Dependency graph clean (no cycles)
+- ❌ NO implementation code (correct!)
+
+### Next Step
+→ Implementation Session (implementing services with TDD)
+
+---
+
+## 10. Service Optimization Session ⚡ NEW
+
+### When to Use
+- After service is implemented (multiple strategies exist)
+- When performance issues identified
+- Before production deployment (critical services)
+- When evaluating implementation tradeoffs
+
+### Protocol
+
+**Steps**:
+1. **Identify Strategies** - Read service-spec.md implementation strategies
+2. **Implement Alternatives** - Code each strategy
+3. **Create Benchmarks** - Write benchmark suite
+4. **Run Benchmarks** - Execute performance tests
+5. **Analyze Results** - Compare metrics (latency, throughput, cost)
+6. **Make Decision** - Choose optimal strategy
+7. **Document** - Create benchmark report, update spec
+
+### User Prompt
+```
+Benchmark [ServiceName] implementations. Compare [Strategy A] vs [Strategy B] vs [Strategy C].
+```
+
+OR
+
+```
+Optimize [ServiceName] for performance. Current implementation doesn't meet UC requirements.
+```
+
+### Expected Outcome
+- ✅ Benchmark report created (`benchmarks/report-YYYY-MM-DD.md`)
+- ✅ Optimal strategy recommended with rationale
+- ✅ Parameters tuned
+- ✅ Service spec updated
+- ✅ ADR created (if architectural decision)
+
+### Next Step
+→ Implementation Session (apply optimal strategy)
+
+---
+
 ## Choosing the Right Session Type
 
 ### Decision Tree
@@ -353,6 +438,14 @@ Need to make technical decision?
 ├─ YES → Session Type 6: Architecture Decision
 └─ NO → Continue...
 
+Use cases ready, need services?
+├─ YES → Session Type 9: Service Extraction
+└─ NO → Continue...
+
+Service implemented, need optimization?
+├─ YES → Session Type 10: Service Optimization
+└─ NO → Continue...
+
 Ready to write code?
 ├─ YES → Session Type 3: Implementation (TDD)
 └─ NO → Continue...
@@ -371,26 +464,37 @@ Resuming previous work?
 
 ### Common Sequences
 
-**New Project Startup**:
+**New Project Startup** (with Service Architecture):
 1. First Session → Initial specs
 2. Research Session → Understand tech
 3. Architecture Decision → Choose approach
-4. Implementation Session → Build features
+4. Service Extraction → Derive services from UCs
+5. Implementation Session → Build services
+6. Service Optimization → Benchmark if needed
 
 **With Requirements Doc**:
 1. Requirements Review → Convert to specs
-2. Implementation Session → Build features
+2. Service Extraction → Identify services
+3. Implementation Session → Build services
 
 **With Reference Code**:
 1. Implementation Analysis → Analyze reference
 2. Research Session → Study patterns (if needed)
-3. Implementation Session → Apply learnings
+3. Service Extraction → Design services
+4. Implementation Session → Apply learnings
 
 **Normal Development**:
 1. Continuation → Resume
 2. Implementation Session → Build feature
 3. Refactoring Session → Clean up
 4. Repeat
+
+**Service-Focused Flow**:
+1. Service Extraction → Design services
+2. Library Evaluation → Find/evaluate libraries
+3. Implementation Session → Implement with TDD
+4. Service Optimization → Benchmark and tune
+5. Repeat for next service
 
 ---
 
@@ -459,6 +563,12 @@ Resuming previous work?
 
 # Continuation
 "Continue from session N. Read planning/session-state.md"
+
+# Service Extraction
+"Extract services from use cases. Follow service extraction protocol"
+
+# Service Optimization
+"Benchmark [ServiceName] implementations. Compare [Strategy A] vs [Strategy B]"
 ```
 
 ---

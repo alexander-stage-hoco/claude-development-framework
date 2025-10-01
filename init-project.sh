@@ -26,7 +26,7 @@ fi
 # Create directory structure
 echo "📁 Creating directory structure..."
 
-mkdir -p "$PROJECT_NAME"/{.claude/{guides,templates},specs/{use-cases,services,apis,data-models,architecture},research/{papers,articles,implementations,learnings,decisions},planning/{milestones,iterations},implementation/{src,tests/{unit,integration,bdd,system}}}
+mkdir -p "$PROJECT_NAME"/{.claude/{guides,templates,subagents},specs/{use-cases,apis,data-models,architecture},services,research/{papers,articles,implementations,learnings,decisions},planning/{milestones,iterations},implementation/{src,tests/{unit,integration,bdd,system}}}
 
 echo "✅ Directory structure created"
 
@@ -101,11 +101,11 @@ cat > "$PROJECT_NAME/.claude/CLAUDE.md" << 'EOF'
 
 ---
 
-## The 10 Non-Negotiable Rules
+## The 12 Non-Negotiable Rules
 
 (See `.claude/development-rules.md` for full details)
 
-1. **Specifications Are Law** - Every line traces to a spec
+1. **Specifications Are Law** - Every line traces to a spec, use cases must reference services
 2. **Tests Define Correctness** - Written before implementation, never weakened
 3. **Incremental Above All** - Max 3 hours per iteration
 4. **Research Informs Implementation** - Read before building
@@ -115,6 +115,8 @@ cat > "$PROJECT_NAME/.claude/CLAUDE.md" << 'EOF'
 8. **BDD for User-Facing Features** - Gherkin files match UC acceptance criteria
 9. **Code Quality Standards** - Type hints, docstrings, SRP
 10. **Session Discipline** - Start with rules, end with status update
+11. **Git Workflow Discipline** - Branch per iteration/UC, commit when tests pass
+12. **Mandatory Refactoring** - RED-GREEN-REFACTOR (never skip!)
 
 ---
 
@@ -140,9 +142,13 @@ cp .claude/templates/start-here.md "$PROJECT_NAME/.claude/"
 cp .claude/templates/session-checklist.md "$PROJECT_NAME/.claude/"
 cp .claude/templates/context-priority.md "$PROJECT_NAME/.claude/"
 cp .claude/templates/technical-decisions.md "$PROJECT_NAME/.claude/"
+cp .claude/templates/service-registry.md "$PROJECT_NAME/.claude/"
 
 # Copy research organization guide to research folder
 cp .claude/guides/research-organization.md "$PROJECT_NAME/research/README.md"
+
+# Copy services README
+cp services/README.md "$PROJECT_NAME/services/"
 
 # Create README
 cat > "$PROJECT_NAME/README.md" << EOF
@@ -201,12 +207,19 @@ See \`claude-development-framework.md\` for complete framework documentation.
 $PROJECT_NAME/
 ├── .claude/                    # Claude configuration and guides
 │   ├── CLAUDE.md              # Main instructions for Claude
-│   ├── development-rules.md   # The 10 non-negotiable rules
+│   ├── development-rules.md   # The 12 non-negotiable rules
+│   ├── service-registry.md    # Service catalog and traceability
+│   ├── subagents/             # Subagent configurations (for future use)
 │   └── guides/                # Reference guides
 ├── specs/                     # Specifications
-│   ├── use-cases/             # Business requirements
-│   ├── services/              # Service specifications
+│   ├── use-cases/             # Business requirements (must reference services!)
 │   └── architecture/          # System design
+├── services/                  # Service layer (NEW in v2.0)
+│   ├── README.md              # Service architecture guide
+│   └── [service-name]/        # Individual services
+│       ├── service-spec.md
+│       ├── tests/
+│       └── benchmarks/
 ├── research/                  # Research and learnings
 ├── planning/                  # Planning artifacts
 │   ├── current-iteration.md   # Active work
@@ -226,7 +239,9 @@ $PROJECT_NAME/
 ## Framework Resources
 
 - **Main Guide**: \`docs/claude-development-framework.md\`
+- **Service Architecture**: \`docs/service-architecture.md\` (NEW in v2.0)
 - **Example Project**: \`docs/walkthrough-todo-api.md\`
+- **Session Types**: \`docs/session-types.md\` (10 session types)
 - **Troubleshooting**: \`docs/troubleshooting.md\`
 - **Tool Integration**: \`docs/advanced/tool-integration.md\`
 - **Large Codebase**: \`docs/advanced/large-codebase-context.md\`

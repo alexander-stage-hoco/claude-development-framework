@@ -73,10 +73,12 @@ Claude: "I'll start with research and specifications—no code yet."
 project-root/
 ├── .claude/                          # Claude-specific enforcement files
 │   ├── CLAUDE.md                     # Main Claude instructions
-│   ├── development-rules.md          # The 10 non-negotiable rules
+│   ├── development-rules.md          # The 12 non-negotiable rules
+│   ├── service-registry.md           # Service catalog and traceability
 │   ├── session-checklist.md          # Per-interaction checklist
 │   ├── technical-decisions.md        # ADRs (Architecture Decision Records)
 │   ├── context-priority.md           # Context management rules
+│   ├── subagents/                    # Subagent configurations (for future use)
 │   ├── templates/                    # Template files for Claude reference
 │   ├── quick-ref/                    # Quick reference cards
 │   └── guides/                       # Claude operational guides
@@ -97,12 +99,20 @@ project-root/
 │   ├── use-cases/                    # Business-driven requirements
 │   │   ├── UC-001-[name].md
 │   │   └── ...
-│   ├── services/                     # Service specifications
-│   │   ├── SVC-001-[name].md
-│   │   └── ...
 │   ├── apis/                         # API contracts (OpenAPI/AsyncAPI)
 │   ├── data-models/                  # Canonical data structures
 │   └── architecture/                 # System design documents
+│
+├── services/                         # Service layer (NEW in v2.0)
+│   ├── README.md                     # Service architecture guide
+│   ├── [service-name]/
+│   │   ├── service-spec.md           # Service specification
+│   │   ├── interface.py              # Protocol (abstract interface)
+│   │   ├── implementation.py         # Concrete implementation
+│   │   ├── tests/                    # Unit, integration, contract tests
+│   │   ├── benchmarks/               # Performance benchmarks
+│   │   └── library-evaluation.md     # Library selection (if applicable)
+│   └── ...
 │
 ├── research/                         # Learning materials (READ FIRST)
 │   ├── papers/                       # Academic papers
@@ -146,11 +156,13 @@ Contains enforcement mechanisms that ensure Claude follows the disciplined appro
 | File | Purpose |
 |------|---------|
 | **CLAUDE.md** | Primary instructions: session protocol, implementation gate, anti-patterns |
-| **development-rules.md** | The 12 non-negotiable rules + enforcement statements |
+| **development-rules.md** | The 12 non-negotiable rules + service requirements + enforcement statements |
+| **service-registry.md** | Service catalog, dependencies, UC-Service traceability |
 | **session-checklist.md** | 8-phase checklist: Orient → Research → Plan → Test → Implement → Validate → Document → Close |
 | **technical-decisions.md** | Architecture Decision Records (ADRs) - binding on all work |
 | **context-priority.md** | 5-tier hierarchy + context maintenance thresholds |
-| **templates/** | Copy-paste ready templates for all file types |
+| **subagents/** | Subagent configurations (reserved for future use) |
+| **templates/** | Copy-paste ready templates for all file types (including service templates) |
 | **quick-ref/** | Single-page reference cards (session-start, tdd-cycle, git) |
 | **guides/** | Operational guides (research-organization) |
 
@@ -162,8 +174,10 @@ Contains enforcement mechanisms that ensure Claude follows the disciplined appro
 
 | Template | Contents |
 |----------|----------|
-| **Use Case** | Business requirements + Gherkin acceptance criteria |
-| **Service Specification** | Interface, data models, business rules |
+| **Use Case** | Business requirements + Gherkin acceptance criteria + Services Used |
+| **Service Specification** | Interface (Protocol), data models, dependencies, implementation strategies |
+| **Benchmark Report** | Performance comparison, optimal strategy recommendation |
+| **Library Evaluation** | Library comparison, feature coverage, recommendation |
 | **Iteration Plan** | Test-first approach, implementation steps, DoD |
 | **ADR** | Context, decision, consequences, alternatives |
 | **Session State** | Current work, files in context, next session instructions |
@@ -229,7 +243,8 @@ Contains enforcement mechanisms that ensure Claude follows the disciplined appro
 | **1: Init** | Specifications | Create specs (NO CODE) · Identify use cases · Create ADRs · Set up structure |
 | **2: Research** | Learning | Research best practices · Document learnings · Identify dependencies |
 | **3: Planning** | Breakdown | Break UC into milestones · Create iteration plans · Identify tests |
-| **4+: Loop** | Implementation | Write tests (RED) → Implement (GREEN) → Refactor → Repeat |
+| **4: Service Extraction** | Services | Extract services from UCs · Design interfaces · Validate dependencies |
+| **5+: Loop** | Implementation | Write tests (RED) → Implement (GREEN) → Refactor → Optimize → Repeat |
 
 **Example**: See `docs/walkthrough-todo-api.md` for complete 5-session TODO API project.
 
@@ -258,6 +273,17 @@ If Claude deviates, say:
 - **Git Hooks**: Pre-commit test verification, commit-msg spec references
 - **CI/CD**: GitHub Actions enforce standards
 - **IDE Integration**: Auto-run tests, linting, type checking
+
+---
+
+## Additional Documentation (v2.0)
+
+### Service-Oriented Architecture
+
+- **Service Architecture Guide**: `docs/service-architecture.md` - Complete guide to SOA in the framework
+- **Service Registry**: `.claude/templates/service-registry.md` - Central service catalog template
+- **Services Directory**: `services/README.md` - Service development guide with patterns
+- **Session Types**: `docs/session-types.md` - Includes Session 9 (Service Extraction) and Session 10 (Service Optimization)
 
 ---
 

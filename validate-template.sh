@@ -60,6 +60,10 @@ REQUIRED_FILES=(
     ".claude/templates/implementation-CLAUDE.md"
     ".claude/templates/implementation-summary.md"
     ".claude/templates/code-reuse-checklist.md"
+    ".claude/templates/service-spec.md"
+    ".claude/templates/benchmark-report.md"
+    ".claude/templates/library-evaluation.md"
+    ".claude/templates/service-registry.md"
     ".claude/templates/research/paper-summary.md"
     ".claude/templates/research/article-links.md"
     ".claude/templates/research/implementation-readme.md"
@@ -67,7 +71,9 @@ REQUIRED_FILES=(
     ".claude/quick-ref/session-start.md"
     ".claude/quick-ref/tdd-cycle.md"
     ".claude/quick-ref/git.md"
+    "services/README.md"
     "docs/claude-development-framework.md"
+    "docs/service-architecture.md"
     "docs/troubleshooting.md"
     "docs/walkthrough-todo-api.md"
     "docs/example-first-session.md"
@@ -231,14 +237,20 @@ check_file_size ".claude/templates/start-here.md" 100
 check_file_size ".claude/templates/development-rules.md" 100
 check_file_size ".claude/templates/refactoring-checklist.md" 300
 check_file_size ".claude/templates/git-workflow.md" 200
+check_file_size ".claude/templates/service-spec.md" 200
+check_file_size ".claude/templates/benchmark-report.md" 200
+check_file_size ".claude/templates/library-evaluation.md" 200
+check_file_size ".claude/templates/service-registry.md" 200
 check_file_size ".claude/quick-ref/git.md" 250
 check_file_size ".claude/guides/research-organization.md" 300
+check_file_size "services/README.md" 300
 check_file_size "quick-start-guide.md" 80
 check_file_size "docs/claude-development-framework.md" 400
+check_file_size "docs/service-architecture.md" 400
 check_file_size "docs/troubleshooting.md" 400
 check_file_size "docs/walkthrough-todo-api.md" 600
 check_file_size "docs/example-first-session.md" 200
-check_file_size "docs/session-types.md" 300
+check_file_size "docs/session-types.md" 400
 
 echo ""
 echo "=========================================="
