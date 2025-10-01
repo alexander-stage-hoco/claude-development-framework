@@ -103,8 +103,8 @@ project-root/
 │   ├── data-models/                  # Canonical data structures
 │   └── architecture/                 # System design documents
 │
-├── services/                         # Service layer (NEW in v2.0)
-│   ├── README.md                     # Service architecture guide
+├── services/                         # Service layer (created in new projects)
+│   ├── README.md                     # Project-specific service guide (from template)
 │   ├── [service-name]/
 │   │   ├── service-spec.md           # Service specification
 │   │   ├── interface.py              # Protocol (abstract interface)
@@ -113,6 +113,8 @@ project-root/
 │   │   ├── benchmarks/               # Performance benchmarks
 │   │   └── library-evaluation.md     # Library selection (if applicable)
 │   └── ...
+│
+│   NOTE: services/ directory is NOT in template root, only in created projects
 │
 ├── research/                         # Learning materials (READ FIRST)
 │   ├── papers/                       # Academic papers
@@ -163,7 +165,7 @@ Contains enforcement mechanisms that ensure Claude follows the disciplined appro
 | **context-priority.md** | 5-tier hierarchy + context maintenance thresholds |
 | **subagents/** | Subagent configurations (reserved for future use) |
 | **templates/** | Copy-paste ready templates for all file types (including service templates) |
-| **quick-ref/** | Single-page reference cards (session-start, tdd-cycle, git) |
+| **quick-ref/** | Single-page reference cards (session-start, tdd-cycle, git, services) |
 | **guides/** | Operational guides (research-organization) |
 
 ---
@@ -280,10 +282,13 @@ If Claude deviates, say:
 
 ### Service-Oriented Architecture
 
-- **Service Architecture Guide**: `docs/service-architecture.md` - Complete guide to SOA in the framework
+- **Service Architecture Guide**: `docs/service-architecture.md` - Complete 900+ line guide to SOA
+- **Service Quick Reference**: `.claude/quick-ref/services.md` - Patterns, checklists, FAQs
 - **Service Registry**: `.claude/templates/service-registry.md` - Central service catalog template
-- **Services Directory**: `services/README.md` - Service development guide with patterns
+- **Services README Template**: `.claude/templates/services-README-template.md` - Template for created projects
 - **Session Types**: `docs/session-types.md` - Includes Session 9 (Service Extraction) and Session 10 (Service Optimization)
+
+**Note**: `services/` directory does NOT exist in template root. It is created in new projects by `init-project.sh`.
 
 ---
 

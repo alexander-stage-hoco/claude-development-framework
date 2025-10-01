@@ -908,13 +908,28 @@ AuthService
 
 ---
 
+## Quick Reference
+
+**For operational quick reference**, see `.claude/quick-ref/services.md`:
+- Common service patterns (Repository, Adapter, Validator, Factory)
+- Service naming guidelines
+- Error handling patterns
+- FAQs (when to create vs extend, transactions, etc.)
+- Quick commands
+- Service documentation checklist
+
+---
+
 ## References
 
+- **Quick Reference**: `.claude/quick-ref/services.md` - Patterns, checklists, FAQs
 - **Templates**: `.claude/templates/service-spec.md`, `benchmark-report.md`, `library-evaluation.md`
-- **Service Registry**: `.claude/templates/service-registry.md`
-- **Services Directory**: `services/README.md`
+- **Service Registry**: `.claude/templates/service-registry.md` - Central catalog template
+- **Services README Template**: `.claude/templates/services-README-template.md` - For created projects
 - **Development Rules**: `.claude/templates/development-rules.md` (Service Architecture Requirements)
 - **Session Types**: `docs/session-types.md` (Service Extraction, Service Optimization sessions)
+
+**Note**: `services/` directory does NOT exist in template root. It is created in new projects by `init-project.sh`.
 
 ---
 

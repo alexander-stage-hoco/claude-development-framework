@@ -147,8 +147,8 @@ cp .claude/templates/service-registry.md "$PROJECT_NAME/.claude/"
 # Copy research organization guide to research folder
 cp .claude/guides/research-organization.md "$PROJECT_NAME/research/README.md"
 
-# Copy services README
-cp services/README.md "$PROJECT_NAME/services/"
+# Copy services README template
+cp .claude/templates/services-README-template.md "$PROJECT_NAME/services/README.md"
 
 # Create README
 cat > "$PROJECT_NAME/README.md" << EOF

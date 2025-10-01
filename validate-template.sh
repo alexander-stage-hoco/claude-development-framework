@@ -64,6 +64,7 @@ REQUIRED_FILES=(
     ".claude/templates/benchmark-report.md"
     ".claude/templates/library-evaluation.md"
     ".claude/templates/service-registry.md"
+    ".claude/templates/services-README-template.md"
     ".claude/templates/research/paper-summary.md"
     ".claude/templates/research/article-links.md"
     ".claude/templates/research/implementation-readme.md"
@@ -71,7 +72,7 @@ REQUIRED_FILES=(
     ".claude/quick-ref/session-start.md"
     ".claude/quick-ref/tdd-cycle.md"
     ".claude/quick-ref/git.md"
-    "services/README.md"
+    ".claude/quick-ref/services.md"
     "docs/claude-development-framework.md"
     "docs/service-architecture.md"
     "docs/troubleshooting.md"
@@ -241,9 +242,10 @@ check_file_size ".claude/templates/service-spec.md" 200
 check_file_size ".claude/templates/benchmark-report.md" 200
 check_file_size ".claude/templates/library-evaluation.md" 200
 check_file_size ".claude/templates/service-registry.md" 200
+check_file_size ".claude/templates/services-README-template.md" 80
 check_file_size ".claude/quick-ref/git.md" 250
+check_file_size ".claude/quick-ref/services.md" 150
 check_file_size ".claude/guides/research-organization.md" 300
-check_file_size "services/README.md" 300
 check_file_size "quick-start-guide.md" 80
 check_file_size "docs/claude-development-framework.md" 400
 check_file_size "docs/service-architecture.md" 400
