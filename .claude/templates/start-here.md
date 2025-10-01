@@ -56,6 +56,31 @@ After reading files 1-4 (TIER 1), you'll understand the framework core. Files 5-
 
 ---
 
+## ⚡ Context Window Efficiency
+
+**IMPORTANT**: This framework is designed for incremental context loading.
+
+**Recommended Start (3.3% overhead)**:
+- Load TIER 1 only: 4 files, ~6.7K tokens
+- Gives you 193K tokens (96.7%) for your project
+- Load additional tiers on-demand as needed
+
+**❌ DON'T load all 59 framework files (69.4% overhead)**
+- Full framework: 139K tokens
+- Leaves only 61K for your project
+- docs/ directory is for reference browsing, not loading
+
+**Context Budget**:
+- TIER 1: 6.7K tokens (3.3%) ← Recommended
+- TIER 1+2: 16.5K tokens (8.2%) ← Active development
+- TIER 1+2+3: 30.3K tokens (15.1%) ← Quality gates active
+- TIER 1-4: 59K tokens (29.5%) ← Template work
+- All 59 files: 139K tokens (69.4%) ← ⚠️ Learning only
+
+**Check usage**: Run `./scripts/estimate-context.sh` anytime
+
+---
+
 ## First Session Protocol
 
 ### New Project (no code exists):

@@ -13,6 +13,32 @@ estimated_read_time: 10 minutes
 
 ---
 
+## ⚡ CRITICAL: Context Loading Strategy
+
+**✅ RECOMMENDED: Load TIER 1 only (3.3% overhead)**
+- 4 files, 6.7K tokens
+- 96.7% of context available for your project (193K tokens)
+- Load additional files on-demand as needed
+
+**❌ DON'T load all 59 files (69.4% overhead)**
+- 139K tokens consumed by framework
+- Only 61K tokens left for your project
+- Designed for reference browsing, NOT context loading
+
+**Measured Context Usage**:
+
+| Loading Strategy | Files | Tokens | % Used | Project Space |
+|-----------------|-------|--------|--------|---------------|
+| TIER 1 only | 4 | 6.7K | 3.3% | 193K (96.7%) ← Recommended |
+| TIER 1+2 | 8 | 16.5K | 8.2% | 184K (91.8%) |
+| TIER 1+2+3 | 15 | 30.3K | 15.1% | 170K (84.9%) |
+| TIER 1-4 | 30 | 59K | 29.5% | 141K (70.5%) |
+| All 59 files | 59 | 139K | 69.4% | 61K (30.6%) ⚠️ |
+
+**Check anytime**: `./scripts/estimate-context.sh`
+
+---
+
 ## Session Start (Read These FIRST)
 
 ### TIER 1 (Critical - ALWAYS load)

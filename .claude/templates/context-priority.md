@@ -21,85 +21,122 @@ This document defines a **5-tier priority system** and proactive management prot
 
 ---
 
-## The 5-Tier Priority Hierarchy
+## The 5-Tier Priority Hierarchy (With Measured Overhead)
 
-### TIER 1: CRITICAL 🔴
+### TIER 1: CRITICAL 🔴 (4 files, 6,748 tokens, 3.3%)
 **Must ALWAYS be in context - Never remove**
 
-These files define how Claude operates in this framework:
+1. `READING-ORDER.md` (1,956 tokens)
+2. `start-here.md` (1,788 tokens)
+3. `development-rules.md` (1,616 tokens)
+4. `CLAUDE.md` (1,388 tokens)
 
-- `.claude/CLAUDE.md` - Session protocols and rules
-- `.claude/development-rules.md` - The 10 non-negotiable rules
-- `.claude/START-HERE.md` - Framework understanding
-- `planning/current-iteration.md` - Active work definition
-
-**Size**: ~4,000-6,000 tokens total
+**Cumulative**: 6.7K tokens (3.3% of 200K window)
+**Remaining**: 193.3K tokens available for project
 **Action**: If these become fuzzy in memory → RELOAD IMMEDIATELY
 
 ---
 
-### TIER 2: IMPORTANT 🟠
-**Keep in context whenever capacity allows**
+### TIER 2: IMPORTANT 🟠 (4 files, 9,718 tokens, 4.8%)
+**Load early, keep when capacity allows**
 
-These files are needed for current work:
+Framework files:
+1. `service-registry.md` (2,654 tokens)
+2. `context-priority.md` (2,581 tokens) ← This file
+3. `session-checklist.md` (2,164 tokens)
+4. `technical-decisions.md` (2,319 tokens)
 
-- `planning/session-state.md` - Session continuity
-- `.claude/technical-decisions.md` - ADRs that govern architecture
+Project files (load when they exist):
+- `planning/current-iteration.md`
+- `planning/session-state.md`
 - Current use case specification (e.g., `specs/use-cases/UC-001-*.md`)
 - Current service specification (e.g., `specs/services/SVC-001-*.md`)
-- `.claude/session-checklist.md` - 8-phase checklist
 
-**Size**: ~5,000-10,000 tokens
+**Cumulative (TIER 1+2)**: 16.5K tokens (8.2%)
+**Remaining**: 183.5K tokens available for project
 **Action**: Keep unless capacity requires removal
 
 ---
 
-### TIER 3: WORKING FILES 🟡
-**Active files being modified this session**
+### TIER 3: WORKING SESSION TOOLS 🟡 (7 files, 13,786 tokens, 6.8%)
+**On-demand during active development**
 
-Current development files:
+Framework checklists and workflows:
+1. `code-reuse-checklist.md` (2,567 tokens)
+2. `refactoring-checklist.md` (2,517 tokens)
+3. `requirements-review-checklist.md` (2,450 tokens)
+4. `implementation-CLAUDE.md` (1,813 tokens)
+5. `git-workflow.md` (1,716 tokens)
+6. `implementation-summary.md` (1,633 tokens)
+7. `session-state.md` template (1,090 tokens)
 
+Plus active project files:
 - Implementation file being written/modified
 - Test file(s) for current feature
 - Related module imports
 - Configuration files being edited
-- Documentation being updated
 
-**Size**: Variable, ~10,000-30,000 tokens
+**Cumulative (TIER 1+2+3)**: 30.3K tokens (15.1%)
+**Remaining**: 169.7K tokens available for project
 **Action**: Keep during active work, can summarize when complete
 
 ---
 
-### TIER 4: REFERENCE 🟢
-**Occasionally referenced, not actively modified**
+### TIER 4: TEMPLATES & GUIDES 🟢 (15 files, 28,764 tokens, 14.3%)
+**Load only when creating specific artifacts**
 
-Supporting materials:
+Templates (9 files):
+- `service-spec.md` (2,987 tokens)
+- `use-case-template.md` (2,713 tokens)
+- `library-evaluation.md` (2,614 tokens)
+- `benchmark-report.md` (2,592 tokens)
+- `services-README-template.md` (1,552 tokens)
+- `research/` templates (3 files, 1,566 tokens)
 
-- Other use case specifications
-- Other service specifications
-- Research documents
-- Framework guides (troubleshooting, examples)
-- Related code modules (not being modified)
-- Dependency documentation
+Quick References (5 files):
+- `commands.md` (2,235 tokens)
+- `services.md` (2,017 tokens)
+- `git.md` (1,616 tokens)
+- `tdd-cycle.md` (1,394 tokens)
+- `session-start.md` (628 tokens)
 
-**Size**: Variable, can be large
+Guides (2 files):
+- `subagent-orchestration.md` (4,309 tokens)
+- `research-organization.md` (2,541 tokens)
+
+**Cumulative (TIER 1-4)**: 59K tokens (29.5%)
+**Remaining**: 141K tokens available for project
 **Action**: Load on-demand, summarize, then remove
 
 ---
 
-### TIER 5: DISPOSABLE ⚪
-**Can be removed anytime without loss**
+### TIER 5: RESERVED ⚪ (0 files)
+**Reserved for future ultra-low-priority content**
 
-Ephemeral content:
-
+Currently unused - available for disposable ephemeral content:
 - Historical conversation (old back-and-forth)
 - Completed work summaries
 - Old iteration plans (completed)
 - Exploratory research (already synthesized)
 - Debugging output (issue resolved)
 
-**Size**: Can grow very large
 **Action**: Remove proactively, summarize if needed
+
+---
+
+### NON-TIERED: Documentation (29 files, ~80K tokens, ~40%)
+**Reference only - Browse, don't load into context**
+
+Located in `docs/` directory:
+- Examples: debugging-session.md, subagent-* examples (10+ files)
+- Guides: service-architecture.md (5.8K), service-testing-guide.md (4.8K), troubleshooting.md (3.9K)
+- Walkthroughs: walkthrough-todo-api.md (4.8K)
+- Advanced: tool-integration.md, large-codebase-context.md
+
+**⚠️ WARNING**: Loading all 59 files = 139K tokens (69.4% overhead)
+- Leaves only 61K tokens (30.6%) for your project
+- docs/ is for reference browsing, NOT context loading
+- **Strategy**: Read specific docs when needed, extract info, summarize, then remove from context
 
 ---
 

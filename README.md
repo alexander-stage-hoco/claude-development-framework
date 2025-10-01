@@ -67,6 +67,24 @@ What Claude reads at session start:
 
 ---
 
+## Context Window Efficiency
+
+The framework uses **incremental context loading** for maximum efficiency:
+
+| Strategy | Overhead | Available Context | Use Case |
+|----------|----------|------------------|----------|
+| **TIER 1 only** | 3.3% (6.7K) | 96.7% (193K) | ✅ Recommended for most sessions |
+| **TIER 1+2** | 8.2% (16.5K) | 91.8% (184K) | Active development |
+| **TIER 1+2+3** | 15.1% (30.3K) | 84.9% (170K) | Quality gates active |
+| **All tiered (1-4)** | 29.5% (59K) | 70.5% (141K) | Template creation |
+| **All 59 files** | 69.4% (139K) | 30.6% (61K) | ⚠️ Learning only |
+
+**Key Insight**: Load TIER 1 (4 files, 3.3%) at session start, then load additional files on-demand. The `docs/` directory (29 files, ~40% overhead) is for reference browsing, not context loading.
+
+**Estimate usage anytime**: `./scripts/estimate-context.sh`
+
+---
+
 ## Quick Start
 
 ⚡ **Want to start FAST?** See [`docs/10-minute-start.md`](./docs/10-minute-start.md) - Get to your first Claude session in 10 minutes!
