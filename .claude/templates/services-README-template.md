@@ -234,5 +234,5 @@ pytest services/*/tests/test_contract.py
 
 ---
 
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 **Template Version**: 1.0

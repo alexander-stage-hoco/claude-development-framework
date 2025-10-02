@@ -1,6 +1,6 @@
 # Service-Oriented Architecture Guide
 
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 **Version**: 1.0
 **Last Updated**: 2025-10-01
 **Purpose**: Complete guide to service-oriented architecture in the framework

@@ -84,5 +84,5 @@ After design:
 
 ---
 
-**Framework Version**: Claude Development Framework v2.0
+**Framework Version**: Claude Development Framework v2.1
 **Subagent Version**: 2.1 (Enhanced with api-designer learnings)

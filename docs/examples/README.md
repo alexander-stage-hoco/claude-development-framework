@@ -1,8 +1,8 @@
-# Example Sessions: Claude Development Framework v2.0
+# Example Sessions: Claude Development Framework v2.1
 
 **Purpose**: Real-world examples demonstrating the Claude Development Framework in action
 
-**Last Updated**: 2024-09-30
+**Last Updated**: 2025-10-02
 
 ---
 

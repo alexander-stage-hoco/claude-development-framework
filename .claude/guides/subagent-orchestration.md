@@ -694,5 +694,5 @@ Result: Would create 12 services, 45 files, estimated 55 minutes
 ---
 
 **Guide Version**: 1.0
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 **Last Updated**: 2025-10-01

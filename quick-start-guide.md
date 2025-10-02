@@ -1,6 +1,6 @@
 # Quick Start Guide - Your First 5 Minutes
 
-**Claude Development Framework v2.0**
+**Claude Development Framework v2.1**
 
 ⚡ **Want even faster?** See [`docs/10-minute-start.md`](./docs/10-minute-start.md) for ultra-concise instructions (10 minutes to first session).
 

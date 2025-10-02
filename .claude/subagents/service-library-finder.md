@@ -72,5 +72,5 @@ After evaluation:
 
 ---
 
-**Framework Version**: Claude Development Framework v2.0
+**Framework Version**: Claude Development Framework v2.1
 **Subagent Version**: 2.0 (Optimized with community best practices)

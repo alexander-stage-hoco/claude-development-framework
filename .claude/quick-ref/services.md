@@ -7,7 +7,7 @@ estimated_read_time: 5 minutes
 
 # Services Quick Reference
 
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 **Purpose**: Quick operational reference for service development
 **Complete Guide**: `docs/service-architecture.md`
 

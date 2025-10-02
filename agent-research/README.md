@@ -516,7 +516,7 @@ Based on wshobson/VoltAgent coverage, consider adding:
 
 ## 🤝 Contributing
 
-This research is part of the Claude Development Framework v2.0.
+This research is part of the Claude Development Framework v2.1.
 
 **To contribute**:
 1. Review the research findings

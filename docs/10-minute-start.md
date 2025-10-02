@@ -238,6 +238,6 @@ Claude has read all framework documentation. Just ask:
 ---
 
 **Guide Version**: 1.0
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 **Reading Time**: 5 minutes
 **Execution Time**: 10 minutes

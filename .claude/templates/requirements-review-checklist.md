@@ -279,6 +279,6 @@ You've done this right if:
 ---
 
 **Template Version**: 1.0
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 **Last Updated**: 2025-10-01
-**Compatibility**: Framework v2.0+
+**Compatibility**: Framework v2.1+

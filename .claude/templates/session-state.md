@@ -10,7 +10,7 @@ estimated_read_time: 5 minutes
 **Session #**: [NUMBER]
 **Date**: [YYYY-MM-DD]
 **Duration**: [HOURS]
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 
 ---
 

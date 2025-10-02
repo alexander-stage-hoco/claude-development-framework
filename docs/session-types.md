@@ -2,7 +2,7 @@
 
 **Version**: 2.0
 **Purpose**: Reference guide for different types of development sessions
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 
 ---
 

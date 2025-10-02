@@ -887,7 +887,7 @@ Co-Authored-By: Claude <noreply@anthropic.com>
 # .claude/CUSTOMIZATIONS.md
 # Framework Customizations
 
-**Base Framework**: Claude Development Framework v2.0
+**Base Framework**: Claude Development Framework v2.1
 **Project**: MyProject
 **Customizations Version**: 1.0
 **Last Updated**: 2025-10-01
@@ -957,6 +957,6 @@ python3 scripts/validate-traceability.py
 ---
 
 **Template Version**: 1.0
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 **Last Updated**: 2025-10-01
-**Compatibility**: Framework v2.0+
+**Compatibility**: Framework v2.1+

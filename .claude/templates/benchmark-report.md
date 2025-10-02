@@ -426,12 +426,12 @@ pytest benchmarks/ --benchmark-compare --benchmark-save=[name]
 ---
 
 **Report Version**: 1.0
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 **Next Benchmark**: [Recommended date or trigger condition]
 
 ---
 
 **Template Version**: 1.0
-**Framework**: Claude Development Framework v2.0
+**Framework**: Claude Development Framework v2.1
 **Last Updated**: 2025-10-01
-**Compatibility**: Framework v2.0+
+**Compatibility**: Framework v2.1+
