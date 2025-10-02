@@ -414,7 +414,7 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 
 ### Tier 3: MEDIUM Priority (2 agents) - Nice-to-have
 
-#### 11. **tech-debt-detector** 🟡 MEDIUM
+#### 11. **tech-debt-detector** ✅ IMPLEMENTED
 **Purpose**: Detect technical debt (TODOs, skipped error handling)
 **Triggers**: "check tech debt", before commit
 **Input**: Codebase files
@@ -430,10 +430,11 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 **Model**: sonnet (pattern matching)
 **Impact**: MEDIUM - Rule #6 enforcement
 **Frequency**: MEDIUM - Before commits, periodic audits
+**Status**: ✅ Implemented in `.claude/subagents/tech-debt-detector.md` (v1.0)
 
 ---
 
-#### 12. **doc-generator** 🟡 LOW-MEDIUM
+#### 12. **doc-generator** ✅ IMPLEMENTED
 **Purpose**: Generate API documentation, README files automatically
 **Triggers**: "generate docs", service/module completed
 **Input**: Implementation files with docstrings
@@ -448,6 +449,7 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 **Model**: sonnet (structured doc generation)
 **Impact**: LOW-MEDIUM - Helps with documentation
 **Frequency**: LOW - Post-implementation
+**Status**: ✅ Implemented in `.claude/subagents/doc-generator.md` (v1.0)
 
 ---
 
@@ -522,11 +524,16 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 ### Phase 3: Polish (Tier 3 - 2 agents)
 **Goal**: Nice-to-have automation (5%)
 **Time**: 1 week
+**Progress**: 2/2 complete (100%) 🎉 **TIER 3 COMPLETE!**
 **Agents**:
-11. tech-debt-detector
-12. doc-generator
+11. ✅ tech-debt-detector (COMPLETE - v1.0)
+12. ✅ doc-generator (COMPLETE - v1.0)
 
 **Validation**: Final integration testing
+
+**Coverage Achieved**:
+- Tech Debt Detection: tech-debt-detector (Rule #6 enforcement)
+- Documentation Generation: doc-generator (API docs, READMEs, service docs)
 
 ---
 
@@ -565,7 +572,7 @@ Research → Plan → Specify → Design → Test → Implement → Refactor →
 
 ---
 
-**Document Version**: 2.0 🎉
+**Document Version**: 2.1 🎉🎉🎉
 **Date**: 2025-10-02
-**Last Updated**: 2025-10-02 - **TIER 2 COMPLETE!** (6 Tier 1 + 4 Tier 2 agents: test-writer, bdd-scenario-writer, code-quality-checker, refactoring-analyzer, uc-writer, adr-manager, iteration-planner, spec-validator, git-workflow-helper, session-summarizer)
-**Next Steps**: **Major Milestone Achieved!** Tier 1 (80% effort) + Tier 2 (15% effort) = 10/12 agents complete. Next phase: Tier 3 (optional polish - 2 agents) OR begin real-world validation
+**Last Updated**: 2025-10-02 - **ALL AGENTS COMPLETE!** (12/12 agents: 6 Tier 1 + 4 Tier 2 + 2 Tier 3: test-writer, bdd-scenario-writer, code-quality-checker, refactoring-analyzer, uc-writer, adr-manager, iteration-planner, spec-validator, git-workflow-helper, session-summarizer, tech-debt-detector, doc-generator)
+**Next Steps**: **COMPLETE!** All 12 planned agents implemented (100% coverage). Next phase: Documentation & Ecosystem (Option C), then real-world validation
