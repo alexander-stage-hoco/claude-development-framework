@@ -1,7 +1,7 @@
 # Claude Development Framework - Template
 
-**Version**: 2.0 (Constitution + Guides Model)
-**Last Updated**: 2025-09-30
+**Version**: 2.1 (Constitution + Guides + Agent Ecosystem)
+**Last Updated**: 2025-10-02
 **Based On**: Learnings from Knowledge Graph Builder project
 
 ---
@@ -213,6 +213,66 @@ Ready-to-use templates for:
 
 ---
 
+## Agent Ecosystem 🤖
+
+The framework includes **18 specialized agents** that automate critical development tasks:
+
+### Core Development Agents (12)
+
+**Tier 1: CRITICAL** (6 agents - 80% effort coverage)
+- **test-writer** - Automated test generation from specs (Rule #2)
+- **bdd-scenario-writer** - Gherkin scenario generation (Rule #8)
+- **code-quality-checker** - Quality validation before commit (Rule #9)
+- **refactoring-analyzer** - Refactoring recommendations (Rule #12)
+- **uc-writer** - Use case specification generation (Rule #1)
+- **adr-manager** - ADR creation and compliance checking (Rule #7)
+
+**Tier 2: HIGH** (4 agents - 15% effort coverage)
+- **iteration-planner** - Strategic & tactical planning (Rule #3, #5)
+- **spec-validator** - UC/service spec quality enforcement (Rule #1)
+- **git-workflow-helper** - Branch creation, commit generation (Rule #11)
+- **session-summarizer** - Session continuity and documentation (Rule #10)
+
+**Tier 3: MEDIUM** (2 agents - 5% effort coverage)
+- **tech-debt-detector** - Tech debt detection and prevention (Rule #6)
+- **doc-generator** - API documentation generation
+
+### Service-Oriented Agents (6)
+
+Specialized agents for service architecture lifecycle:
+- **service-extractor** - Extract services from use cases
+- **service-designer** - Design service interfaces
+- **service-dependency-analyzer** - Validate dependencies, detect cycles
+- **service-optimizer** - Performance optimization strategies
+- **service-library-finder** - Library evaluation and recommendations
+- **uc-service-tracer** - UC-Service traceability validation
+
+### Using Agents
+
+**Quick Start:**
+Agents work through trigger keywords or proactive invocation:
+- "generate tests for UC-001" → test-writer
+- "create branch for iteration 2" → git-workflow-helper
+- "check tech debt" → tech-debt-detector
+
+**Complete Reference:** See [.claude/AGENTS.md](./.claude/AGENTS.md) for full agent library
+
+**Usage Guide:** See [docs/agent-guide.md](./docs/agent-guide.md) for practical examples
+
+**Integration Patterns:** See [docs/agent-integration-patterns.md](./docs/agent-integration-patterns.md) for workflows
+
+### Agent Statistics
+
+- **Total Agents**: 18 (12 core + 6 service-oriented)
+- **Total Code**: ~10,000 lines
+- **Rule Coverage**: 10/12 rules (83%)
+- **Phase Coverage**: 4/9 phases (partial automation)
+- **Time Savings**: 40-60% reduction in manual effort (estimated)
+
+**Version**: All agents v1.0, Framework v2.1
+
+---
+
 ## Success Metrics
 
 **After 3 Months**:
@@ -343,9 +403,10 @@ This framework is based on learnings from practical software development experie
 
 ---
 
-**Last Updated**: 2025-09-30
-**Version**: 2.1 (Consolidated Structure)
-**Claude Context**: ~6,200 lines (optimized for context window)
-**User Documentation**: ~2,400 lines in separate /docs folder
+**Last Updated**: 2025-10-02
+**Version**: 2.1 (Constitution + Guides + Agent Ecosystem)
+**Claude Context**: ~16,200 lines (framework + agents)
+**User Documentation**: ~5,000 lines in separate /docs folder
+**Agent Library**: 18 agents (~10,000 lines)
 
 Ready to build with discipline! 🚀
