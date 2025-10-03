@@ -39,6 +39,8 @@ Service extraction report with:
 - Next steps (library evaluation, detailed design)
 
 ## Quality Checks
+- [ ] Test coverage plan defined for each service
+- [ ] Output includes service registry and dependency validation
 - [ ] Single, clear responsibility per service
 - [ ] All services have ≤3 dependencies
 - [ ] No circular dependencies detected
@@ -47,9 +49,9 @@ Service extraction report with:
 - [ ] UCs updated with service references
 
 ## Anti-Patterns
-❌ God Service (one service doing everything) → Split into focused services
-❌ Circular Dependencies (A → B → A) → Use events/callbacks for decoupling
-❌ Too Many Dependencies (>3 deps) → Refactor or use event bus
+❌ Avoid God Service (one service doing everything) → Split into focused services with single responsibility
+❌ No Circular Dependencies (A → B → A) → Use events/callbacks for decoupling
+❌ Don't exceed 3 Dependencies per service → Refactor or use event bus for loose coupling
 
 ## Example: Service Extraction
 

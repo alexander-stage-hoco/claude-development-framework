@@ -100,7 +100,7 @@ Complete test file with:
 - [ ] Coverage ≥90% of spec requirements
 
 ## Anti-Patterns
-❌ Writing tests that pass initially → Tests MUST fail (RED state)
+❌ Never write tests that pass initially → Tests MUST fail (RED state)
 ❌ Incomplete edge case coverage → Test boundaries, empty, null, extremes
 ❌ Missing spec references → Every test must trace to spec requirement
 ❌ Testing implementation details → Test behavior/interface, not internals

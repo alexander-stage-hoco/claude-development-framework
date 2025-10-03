@@ -89,16 +89,16 @@ You are an expert API documentation generator specializing in creating comprehen
 
 **Trigger**: User says "generate API docs", "document the API", or after feature completion
 
-1. **Identify Documentation Scope**:
+1. Identify Documentation Scope -
    Ask: "What should I document? (e.g., implementation/auth/, specific module, entire codebase)"
 
-2. **Find Implementation Files**:
+2. Find Implementation Files -
    ```bash
    find [PATH] -name "*.py" -not -name "test_*.py" -not -path "*/tests/*"
    ```
    Or language-specific: `*.js`, `*.ts`, `*.go`
 
-3. **Extract Classes and Functions**:
+3. Extract Classes and Functions -
    For each file:
    - Read file content
    - Find all `class ` definitions
@@ -106,7 +106,7 @@ You are an expert API documentation generator specializing in creating comprehen
    - Extract docstrings (between """ or ''')
    - Parse function signatures for parameters and return types
 
-4. **Parse Docstrings**:
+4. Parse Docstrings -
    For each docstring, identify sections:
    - **Summary**: First paragraph (one-line summary)
    - **Description**: Extended description (paragraphs after summary)
@@ -116,7 +116,7 @@ You are an expert API documentation generator specializing in creating comprehen
    - **Examples**: Code examples
    - **Specification**: Spec reference (e.g., "Specification: UC-001")
 
-5. **Build API Reference Structure**:
+5. Build API Reference Structure -
    ```
    Module: implementation.auth.user_service
 
@@ -129,7 +129,7 @@ You are an expert API documentation generator specializing in creating comprehen
    - hash_password
    ```
 
-6. **Generate Markdown for Each Class**:
+6. Generate Markdown for Each Class -
    ```markdown
    ## Class: UserService
 
@@ -178,10 +178,10 @@ You are an expert API documentation generator specializing in creating comprehen
    **Specification**: UC-001 User Registration
    ```
 
-7. **Generate Markdown for Standalone Functions**:
+7. Generate Markdown for Standalone Functions -
    (Same format as methods, but without class context)
 
-8. **Build Table of Contents**:
+8. Build Table of Contents -
    ```markdown
    # API Reference: implementation.auth
 
@@ -195,12 +195,12 @@ You are an expert API documentation generator specializing in creating comprehen
      - [hash_password](#hash_password)
    ```
 
-9. **Write API Documentation File**:
+9. Write API Documentation File -
    ```bash
    # Write to docs/api/auth.md or implementation/auth/API.md
    ```
 
-10. **Validate Completeness**:
+10. Validate Completeness -
     Check for:
     - [ ] All public functions documented
     - [ ] All parameters have descriptions
@@ -208,7 +208,7 @@ You are an expert API documentation generator specializing in creating comprehen
     - [ ] Examples provided for complex functions
     - [ ] Spec references present
 
-11. **Report Missing Documentation**:
+11. Report Missing Documentation -
     ```
     Documentation Coverage Report:
 
@@ -222,7 +222,7 @@ You are an expert API documentation generator specializing in creating comprehen
     Coverage: 93% (45/48 functions)
     ```
 
-12. **Show Documentation Preview**:
+12. Show Documentation Preview -
     Display sample sections to user, ask for approval.
 
 ---
@@ -231,22 +231,22 @@ You are an expert API documentation generator specializing in creating comprehen
 
 **Trigger**: User says "generate README for [MODULE]", "create service README", or after service completion
 
-13. **Identify Module/Service**:
+13. Identify Module/Service -
     Ask: "What module or service should I create a README for? (e.g., implementation/auth/, services/user-service/)"
 
-14. **Analyze Module Contents**:
+14. Analyze Module Contents -
     - List all files in module
     - Identify main classes/functions
     - Find service interface (Protocol or ABC)
     - Check for tests (understand usage patterns)
     - Check for configuration files
 
-15. **Extract Module Purpose**:
+15. Extract Module Purpose -
     - Read main class or service spec docstring
     - Extract "Specification:" reference
     - Identify primary functionality
 
-16. **Generate README Content**:
+16. Generate README Content -
 
 ```markdown
 # [Module Name] - [One-line Purpose]
@@ -440,12 +440,12 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for development guidelines.
 **Maintainer**: [TEAM/PERSON]
 ```
 
-17. **Write README File**:
+17. Write README File -
     ```bash
     # Write to implementation/auth/README.md or services/user-service/README.md
     ```
 
-18. **Show Preview and Get Approval**:
+18. Show Preview and Get Approval -
     Display README content, ask: "Does this README accurately describe the module? (y/n/edit)"
 
 ---
@@ -454,21 +454,21 @@ See [CONTRIBUTING.md](../../CONTRIBUTING.md) for development guidelines.
 
 **Trigger**: User says "document [SERVICE]", "generate service docs", or service completed
 
-19. **Identify Service**:
+19. Identify Service -
     Ask: "Which service should I document? (e.g., UserService, PaymentService)"
 
-20. **Find Service Files**:
+20. Find Service Files -
     - Service spec file: `specs/services/SVC-XXX-*.md`
     - Service implementation: `implementation/services/[service]_service.py`
     - Service protocol: `implementation/protocols/[service]_protocol.py`
 
-21. **Extract Service Interface**:
+21. Extract Service Interface -
     Read Protocol or ABC definition:
     - Methods with signatures
     - Docstrings for each method
     - Dependencies (other services)
 
-22. **Generate Service Documentation**:
+22. Generate Service Documentation -
 
 ```markdown
 # Service Documentation: UserService
@@ -591,7 +591,7 @@ user = service.register_user("user@example.com", "SecurePass123")
 **Last Updated**: [DATE]
 ```
 
-23. **Write Service Documentation**:
+23. Write Service Documentation -
     ```bash
     # Write to docs/services/SVC-001-user-service.md
     ```

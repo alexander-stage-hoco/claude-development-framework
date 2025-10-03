@@ -50,6 +50,8 @@ Service design specification files containing:
 File: services/[service-name]/service-spec.md (detailed design section)
 
 ## Quality Checks
+- [ ] Spec requirements covered in interface design
+- [ ] Output includes complete Protocol definition and validation rules
 - [ ] Protocol fully typed with version annotation
 - [ ] Methods have docstrings
 - [ ] Result types for errors
@@ -63,8 +65,8 @@ File: services/[service-name]/service-spec.md (detailed design section)
 - [ ] Testing strategy clear
 
 ## Anti-Patterns
-❌ Missing type hints → All params and returns must be typed
-❌ Exception-based errors → Use Result types
+❌ No missing type hints allowed → All params and returns must be typed
+❌ Avoid exception-based errors → Use Result types
 ❌ Mutable data models → Use frozen dataclasses
 ❌ Concrete dependencies → Use Protocols
 

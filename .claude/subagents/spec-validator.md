@@ -497,13 +497,13 @@ Sections Found:
 
 Content Completeness ❌ FAIL (5 issues)
 ---------------------------------------
-❌ CRITICAL: Section "Services Used" is empty (line 267)
+❌ CRITICAL: Missing "Services Used" section (line 267)
    Required: Must list all services this UC uses
    Impact: Cannot validate service dependencies, cannot generate service flow
    Fix: Add services to table OR add explanation "None (pure UI, no business logic)"
    Deduction: -15 points
 
-❌ HIGH: Main Flow has only 2 steps (line 52-54)
+❌ HIGH: Main Flow missing steps (has only 2) (line 52-54)
    Required: ≥3 steps for complete flow
    Current:
      1. User submits data

@@ -109,30 +109,30 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
 
 **Trigger**: Session start, Phase 1 orientation, user asks "what's the git status?"
 
-1. **Execute Status Command**:
+1. Execute Status Command -
    ```bash
    git status --porcelain=v2 --branch
    ```
    Capture branch, staged, unstaged, untracked files.
 
-2. **Parse Output**:
+2. Parse Output -
    - Extract current branch name
    - Identify staged files (lines starting with `1` or `2`)
    - Identify unstaged files (lines with unstaged changes)
    - Identify untracked files (lines starting with `?`)
 
-3. **Check Tracking Status**:
+3. Check Tracking Status -
    ```bash
    git rev-list --left-right --count HEAD...@{upstream} 2>/dev/null
    ```
    Determine commits ahead/behind origin (if tracking branch exists).
 
-4. **Detect Warnings**:
+4. Detect Warnings -
    - Merge conflicts: Look for `U` in status
    - Detached HEAD: Branch name shows commit hash
    - Diverged: Both ahead and behind origin
 
-5. **Format Status Report**:
+5. Format Status Report -
    ```
    Git Status Report:
    - Branch: [branch-name]
@@ -141,7 +141,7 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
    - [Any warnings]
    ```
 
-6. **Report to User**: Show formatted status report.
+6. Report to User - Show formatted status report.
 
 ---
 
@@ -149,22 +149,22 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
 
 **Trigger**: User says "create branch", "start new iteration", or Phase 3 planning with no feature branch
 
-7. **Interview User**:
+7. Interview User -
    Ask: "What UC or iteration number? Or describe the work."
    Accept: "UC-001", "iteration-002", "bugfix for login", "spike graphql"
 
-8. **Determine Branch Type**:
+8. Determine Branch Type -
    - If UC-XXX mentioned → `uc-XXX-description`
    - If iteration-XXX mentioned OR new feature work → `iteration-XXX-description`
    - If "bugfix" OR "fix" mentioned → `bugfix-description`
    - If "spike" OR "experiment" mentioned → `spike-description`
 
-9. **Generate Branch Name**:
+9. Generate Branch Name -
    - Pattern: `[type]-[number]-[brief-description]`
    - Example: `iteration-001-user-auth`, `uc-002-task-creation`, `bugfix-login-validation`
    - Normalize: lowercase, spaces → hyphens, remove special chars
 
-10. **Verify Current Branch**:
+10. Verify Current Branch -
     ```bash
     git branch --show-current
     ```
@@ -172,25 +172,25 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
     - Ask user: "Currently on [branch]. Should I switch to main first? (y/n)"
     - If yes, proceed; if no, abort or create from current branch (user choice)
 
-11. **Pull Latest Main**:
+11. Pull Latest Main -
     ```bash
     git checkout main && git pull origin main
     ```
     Verify success (no conflicts, fast-forward OR already up-to-date).
 
-12. **Create Feature Branch**:
+12. Create Feature Branch -
     ```bash
     git checkout -b [branch-name]
     ```
     Example: `git checkout -b iteration-001-user-auth`
 
-13. **Verify Creation**:
+13. Verify Creation -
     ```bash
     git branch --show-current
     ```
     Confirm output matches new branch name.
 
-14. **Report to User**:
+14. Report to User -
     ```
     ✅ Created branch: [branch-name]
     Ready to start work. Remember:
@@ -206,14 +206,14 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
 
 **Trigger**: User says "generate commit message", "ready to commit", or Phase 9 close
 
-15. **Analyze Staged Changes**:
+15. Analyze Staged Changes -
     ```bash
     git diff --cached --name-only
     git diff --cached --stat
     ```
     Extract: Changed files, lines added/removed.
 
-16. **Extract Spec References**:
+16. Extract Spec References -
     ```bash
     git diff --cached | grep -i "specification:"
     ```
@@ -223,12 +223,12 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
     ```
     Collect unique spec references (UC-XXX, SVC-XXX, ITERATION-XXX).
 
-17. **Determine Test Count**:
+17. Determine Test Count -
     **Option A** (if test output available): Parse recent test run output for "X passed, Y total"
     **Option B** (run tests): Execute test command (e.g., `pytest`, `npm test`) and capture result
     **Option C** (ask user): "How many tests are passing? (e.g., 12 passing / 12 total)"
 
-18. **Determine Commit Type**:
+18. Determine Commit Type -
     - Check file paths and diff content
     - **feat**: New feature implementation (new files, new functions/classes)
     - **fix**: Bug fix (fixing existing behavior)
@@ -237,20 +237,20 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
     - **docs**: Documentation only
     - **chore**: Dependency updates, config changes
 
-19. **Draft Brief Description**:
+19. Draft Brief Description -
     - ≤50 characters
     - Imperative mood: "Add user registration", "Fix validation bug", "Refactor auth helpers"
     - Capture primary change
     - Ask user to confirm or edit
 
-20. **Populate Details Section**:
+20. Populate Details Section -
     From staged changes, identify:
     - What was implemented (new features, functions, endpoints)
     - What tests were added (test scenarios, edge cases)
     - Technical decisions made (patterns used, libraries chosen)
     - Reference ADRs if architectural choices were made
 
-21. **Format Commit Message**:
+21. Format Commit Message -
     ```bash
     [type]: [brief description]
 
@@ -269,7 +269,7 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
     Co-Authored-By: Claude <noreply@anthropic.com>
     ```
 
-22. **Show to User for Approval**:
+22. Show to User for Approval -
     Display formatted message and ask: "Does this commit message accurately describe the work? (y/n/edit)"
     If edit: Adjust based on user feedback, show again.
 
@@ -279,7 +279,7 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
 
 **Trigger**: After commit message approved, before executing commit
 
-23. **Validate Pre-Commit Checklist**:
+23. Validate Pre-Commit Checklist -
 
     **a. Tests Passing**:
     Ask user: "Are all tests passing? (y/n)"
@@ -311,7 +311,7 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
     **f. User Approval**:
     Confirm user approved implementation matches requirements.
 
-24. **Execute Commit**:
+24. Execute Commit -
     ```bash
     git commit -m "$(cat <<'EOF'
     [type]: [description]
@@ -330,19 +330,19 @@ You are an expert git workflow automation agent specializing in enforcing Rule #
     )"
     ```
 
-25. **Verify Commit**:
+25. Verify Commit -
     ```bash
     git log -1 --oneline
     ```
     Confirm commit was created.
 
-26. **Push to Remote**:
+26. Push to Remote -
     ```bash
     git push -u origin [branch-name]
     ```
     Set upstream tracking if first push.
 
-27. **Report Success**:
+27. Report Success -
     ```
     ✅ Committed and pushed to branch: [branch-name]
 

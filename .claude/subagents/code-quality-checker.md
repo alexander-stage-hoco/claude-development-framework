@@ -133,8 +133,8 @@ Comprehensive quality report with:
 - [ ] Pass/fail determination made
 
 ## Anti-Patterns
-❌ Passing with critical violations → Enforce strict quality bar (score ≥ 80)
-❌ Missing file:line references → Every violation must be traceable
+❌ Never pass with critical violations → Enforce strict quality bar (score ≥ 80)
+❌ No missing file:line references → Every violation must be traceable
 ❌ Ignoring tool failures → If tool fails, report error and recommend installation
 ❌ Generic error messages → Provide specific, actionable feedback
 ❌ No suggested fixes → Tell user HOW to fix, not just WHAT is wrong

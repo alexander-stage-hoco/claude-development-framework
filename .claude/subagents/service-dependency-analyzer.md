@@ -40,6 +40,9 @@ Dependency analysis report with:
 - Health metrics
 
 ## Quality Checks
+- [ ] Spec compliance validated (all UC-Service dependencies verified)
+- [ ] Output report generated with dependency graph and violations
+- [ ] Test coverage ≥90% for dependency analysis logic
 - [ ] All services analyzed
 - [ ] Dependency graph complete
 - [ ] Cycles detected
@@ -48,10 +51,10 @@ Dependency analysis report with:
 - [ ] Recommendations for violations
 
 ## Anti-Patterns
-❌ Circular Dependencies → Event-based decoupling
-❌ God Service (>5 deps) → Split service
-❌ Dependency Soup → Layer architecture
-❌ Upward Dependencies → Violates layering
+❌ Avoid Circular Dependencies → Use event-based decoupling for loose coupling
+❌ No God Services (>5 deps) → Split into focused services with ≤3 dependencies
+❌ Don't create Dependency Soup → Use layered architecture (Layer 1: Infrastructure, Layer 2: Services, Layer 3: Application)
+❌ Never allow Upward Dependencies → Lower layers must not depend on higher layers (violates layering principle)
 
 ## Files
 - Read: services/*/service-spec.md

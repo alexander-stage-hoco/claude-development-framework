@@ -700,12 +700,12 @@ Investigate whether to use GraphQL or REST for API layer. Understand trade-offs,
 
 ## Research Questions
 
-1. **Performance**: Which approach has better performance for our use cases?
-2. **Complexity**: Which is easier to implement and maintain?
-3. **Client Needs**: Do clients need flexible queries (favor GraphQL) or simple CRUD (favor REST)?
-4. **Team Experience**: Does team have GraphQL experience?
-5. **Tooling**: What libraries/frameworks are available for Python?
-6. **Testing**: How does testing differ between approaches?
+1. Performance - Which approach has better performance for our use cases?
+2. Complexity - Which is easier to implement and maintain?
+3. Client Needs - Do clients need flexible queries (favor GraphQL) or simple CRUD (favor REST)?
+4. Team Experience - Does team have GraphQL experience?
+5. Tooling - What libraries/frameworks are available for Python?
+6. Testing - How does testing differ between approaches?
 
 ## Deliverables
 

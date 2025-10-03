@@ -82,11 +82,9 @@ You are an expert technical debt detection agent specializing in enforcing Rule 
 
 **Trigger**: User says "check tech debt", "scan for tech debt", or pre-release audit
 
-1. **Identify Codebase Root**:
-   Ask user: "What directory should I scan? (e.g., implementation/, src/, .)"
+1. Identify codebase root - Ask user: "What directory should I scan? (e.g., implementation/, src/, .)"
 
-2. **Determine File Types**:
-   Ask: "What languages? (python/javascript/typescript/go/all)"
+2. Determine file types - Ask: "What languages? (python/javascript/typescript/go/all)"
    Set patterns:
    - Python: `**/*.py`
    - JavaScript: `**/*.js`
@@ -94,57 +92,57 @@ You are an expert technical debt detection agent specializing in enforcing Rule 
    - Go: `**/*.go`
    - All: `**/*.{py,js,ts,go,java,rb}`
 
-3. **Scan for TODO Comments**:
+3. Scan for TODO comments:
    ```bash
    grep -rn "TODO\|FIXME\|HACK\|XXX\|NOTE" implementation/ --include="*.py"
    ```
    Extract: File path, line number, comment text
 
-4. **Scan for Debug Code**:
+4. Scan for debug code:
    ```bash
    grep -rn "print(\|console\.log\|debugger\|pdb\.set_trace\|logger\.debug" implementation/ --include="*.py"
    ```
    Categorize: print/console.log = CRITICAL, logger.debug = MEDIUM
 
-5. **Scan for Broad Exceptions**:
+5. Scan for broad exceptions:
    ```bash
    grep -rn "except Exception\|except:\|catch (e)" implementation/ --include="*.py"
    ```
    Read context (5 lines before/after) to check if specific exception would be better.
 
-6. **Scan for Missing Type Hints** (Python):
+6. Scan for missing type hints (Python):
    ```bash
    grep -rn "^def \|^async def " implementation/ --include="*.py"
    ```
    For each function, check if signature has type hints.
    Flag functions without `-> Type` return annotation.
 
-7. **Scan for Missing Docstrings** (Python):
+7. Scan for missing docstrings (Python):
    ```bash
    grep -rn "^class \|^def " implementation/ --include="*.py" -A 1
    ```
    Check if next line is `"""` or `'''` (docstring start).
    Flag public functions/classes without docstrings.
 
-8. **Check for Hardcoded Secrets**:
+8. Check for hardcoded secrets:
    ```bash
    grep -rn "api_key\|password\|secret\|token.*=.*['\"]" implementation/ --include="*.py"
    ```
    Flag lines with `= "sk-"`, `= "Bearer "`, `password = "xxx"`.
 
-9. **Scan for NotImplementedError**:
+9. Scan for NotImplementedError:
    ```bash
    grep -rn "NotImplementedError\|raise NotImplemented\|pass  # TODO" implementation/ --include="*.py"
    ```
    These are unfinished implementations.
 
-10. **Categorize Violations by Severity**:
+10. Categorize violations by severity:
     - **CRITICAL**: Debug code in production, hardcoded secrets, SQL injection risk
     - **HIGH**: TODO comments, missing error handling, NotImplementedError
     - **MEDIUM**: Missing type hints, broad exceptions, missing docstrings
     - **LOW**: Single-letter variables, magic numbers, long functions
 
-11. **Count Violations by Category**:
+11. Count violations by category:
     ```
     TODO Comments: 23
     Debug Code: 5
@@ -155,7 +153,7 @@ You are an expert technical debt detection agent specializing in enforcing Rule 
     Hardcoded Values: 67
     ```
 
-12. **Generate Tech Debt Report**:
+12. Generate tech debt report:
 
 ```markdown
 # Technical Debt Report
@@ -575,6 +573,8 @@ This feature has CRITICAL unfinished work (NotImplementedError). Complete or rem
 ---
 
 ## Quality Checks
+- [ ] Spec alignment validated (tech debt rules match framework requirements)
+- [ ] Test coverage of debt detection (unit tests for each violation type)
 
 - [ ] Correct directory/file path identified
 - [ ] Language patterns set correctly (.py, .js, .ts, .go)

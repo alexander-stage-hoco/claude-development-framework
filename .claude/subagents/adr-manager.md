@@ -186,13 +186,13 @@ You are an expert technical decision manager specializing in Architecture Decisi
     - Exclude: `tests/`, `venv/`, `__pycache__/`, `migrations/`
     - Config: Check `requirements.txt`, `pyproject.toml`, `setup.py`
 
-15. **Detect Technology Violations**:
+15. Detect Technology Violations -
     - Parse imports (`import X`, `from X import Y`)
     - Check against ADR technology requirements
     - Flag: Libraries/frameworks not in ADR
     - Example: ADR-001 says "Python 3.11+", but code uses Python 3.9 features
 
-16. **Detect Pattern Violations**:
+16. Detect Pattern Violations -
     - Search for architectural patterns in code
     - Check against ADR pattern requirements
     - Flag: Patterns contradicting ADR
@@ -569,6 +569,8 @@ Next Steps:
 ---
 
 ## Quality Checks
+- [ ] Spec alignment validated (ADR references match UC/service specs)
+- [ ] Output file created with complete ADR template
 
 - [ ] ADR qualification determined (decision tree applied)
 - [ ] Next ADR number identified (sequential from existing)

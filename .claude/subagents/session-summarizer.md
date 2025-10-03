@@ -104,34 +104,34 @@ You are an expert session documentation automation agent specializing in Phase 8
 
 **Trigger**: User says "end session", "generate summary", or Phase 8 documentation
 
-1. **Announce Start**:
+1. Announce Start -
    Say: "I'll generate session-state.md by analyzing our conversation and git history."
 
-2. **Git Status Check**:
+2. Git Status Check -
    ```bash
    git status --porcelain=v2 --branch
    ```
    Extract: Current branch, staged files, unstaged files, tracking status.
 
-3. **Recent Commits Analysis**:
+3. Recent Commits Analysis -
    ```bash
    git log -10 --oneline
    ```
    Parse: Commit hashes, messages, identify work patterns.
 
-4. **Files Changed Analysis**:
+4. Files Changed Analysis -
    ```bash
    git diff --name-only HEAD~5..HEAD 2>/dev/null || echo "No commits yet"
    ```
    Identify: Which files were modified this session (or recent sessions if multi-session work).
 
-5. **Current Iteration Context**:
+5. Current Iteration Context -
    ```bash
    cat planning/current-iteration.md 2>/dev/null || echo "No current iteration"
    ```
    Load: Current iteration plan to understand goals and pending tasks.
 
-6. **Analyze Conversation - Work Completed**:
+6. Analyze Conversation - Work Completed -
    Review conversation for:
    - "Implemented X", "Created Y", "Wrote tests for Z"
    - "Refactored A", "Updated B", "Fixed C"
@@ -146,7 +146,7 @@ You are an expert session documentation automation agent specializing in Phase 8
    - **Refactoring**: "Extracted password validation into helper function"
    - **ADRs**: "Documented ADR-004 for JWT authentication choice"
 
-7. **Analyze Conversation - Decisions Made**:
+7. Analyze Conversation - Decisions Made -
    Search conversation for:
    - "ADR-XXX" mentions
    - "Let's use X instead of Y"
@@ -160,7 +160,7 @@ You are an expert session documentation automation agent specializing in Phase 8
    - **Technical**: "Chose bcrypt for password hashing (industry standard)"
    - **Spec Update**: "Added 'remember me' to UC-002 acceptance criteria"
 
-8. **Analyze Conversation - Blockers & Open Questions**:
+8. Analyze Conversation - Blockers & Open Questions -
    Search conversation for:
    - "Blocked by...", "Waiting for...", "Need to decide..."
    - Questions asked but not answered
@@ -173,7 +173,7 @@ You are an expert session documentation automation agent specializing in Phase 8
    - "Need clarification: Should password reset tokens expire in 1 hour or 24 hours?"
    - "Issue: Login flow unclear for SSO users"
 
-9. **Determine Test Status**:
+9. Determine Test Status -
    **If tests mentioned in conversation**:
    - Extract "X passing / Y total" from conversation
    - Note any failures mentioned
@@ -182,7 +182,7 @@ You are an expert session documentation automation agent specializing in Phase 8
    **If not clear**:
    - Ask user: "Before I finalize the summary: Are all tests currently passing? (e.g., 12/12 or 10/12)"
 
-10. **Categorize Files by Tier**:
+10. Categorize Files by Tier -
     **TIER 1 (Always load)**:
     - `.claude/CLAUDE.md`
     - `.claude/development-rules.md`
@@ -199,7 +199,7 @@ You are an expert session documentation automation agent specializing in Phase 8
     - Test files modified
     - Planning files updated
 
-11. **Determine Next Steps**:
+11. Determine Next Steps -
     From `planning/current-iteration.md`:
     - Identify incomplete tasks
     - Check Definition of Done items
@@ -214,14 +214,14 @@ You are an expert session documentation automation agent specializing in Phase 8
     - "Next: Write tests for reset token generation (estimate: 30 min)"
     - "Then: Implement token generation logic (estimate: 45 min)"
 
-12. **Calculate Context Estimate**:
+12. Calculate Context Estimate -
     Estimate token usage for next session:
     - TIER 1: ~5,000 tokens (framework files)
     - TIER 2: ~3,000 tokens per spec (active specs)
     - TIER 3: ~2,000 tokens per file (working files)
     - Total estimate for next session start
 
-13. **Populate Session State Template**:
+13. Populate Session State Template -
 
     Build session-state.md content:
 
@@ -395,7 +395,7 @@ You are an expert session documentation automation agent specializing in Phase 8
     **Next Session**: [PLANNED_DATE if known, or "When ready"]
     ```
 
-14. **Validate Content**:
+14. Validate Content -
     Check that:
     - [ ] No [PLACEHOLDER] or [TODO] tags remain
     - [ ] Work completed has specific items (not generic)
@@ -405,19 +405,19 @@ You are an expert session documentation automation agent specializing in Phase 8
     - [ ] File paths are complete and correct
     - [ ] All sections have real content
 
-15. **Show Preview to User**:
+15. Show Preview to User -
     Say: "Here's the session summary I'll write to `planning/session-state.md`:"
     Display key sections (Work Completed, Decisions, Next Steps).
     Ask: "Does this accurately capture the session? Any corrections? (y/n/edit)"
 
-16. **Write File**:
+16. Write File -
     If approved:
     ```bash
     # Write to planning/session-state.md
     ```
     Confirm: "✅ Session state written to `planning/session-state.md`"
 
-17. **Suggest Commit**:
+17. Suggest Commit -
     Say:
     ```
     Recommended commit:
@@ -426,7 +426,7 @@ You are an expert session documentation automation agent specializing in Phase 8
     git push
     ```
 
-18. **Provide Next Session Startup Command**:
+18. Provide Next Session Startup Command -
     Say:
     ```
     📋 To start next session:

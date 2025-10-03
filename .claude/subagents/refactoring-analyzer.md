@@ -127,7 +127,7 @@ Comprehensive refactoring report with:
 - [ ] Estimated effort calculated
 
 ## Anti-Patterns
-❌ Suggesting refactoring without GREEN tests → Must confirm tests pass first
+❌ Never suggest refactoring without GREEN tests → Must confirm tests pass first
 ❌ Generic suggestions without examples → Provide concrete before/after code
 ❌ Low-value refactorings first → Prioritize by impact/effort ratio
 ❌ No file:line references → Every opportunity must be traceable
