@@ -25,15 +25,9 @@ from pathlib import Path
 from typing import List
 
 # Add lib directory to path
-sys.path.insert(0, str(Path(__file__).parent / 'lib'))
+sys.path.insert(0, str(Path(__file__).parent / "lib"))
 
-from alignment import (
-    UseCase,
-    BDDFeature,
-    AlignmentParser,
-    AlignmentValidator,
-    AlignmentIssue
-)
+from alignment import UseCase, BDDFeature, AlignmentParser, AlignmentValidator, AlignmentIssue
 
 
 def print_header():
@@ -70,8 +64,8 @@ def print_issues(issues: List[AlignmentIssue]):
     print()
 
     # Group by issue type
-    errors = [i for i in issues if i.severity == 'error']
-    warnings = [i for i in issues if i.severity == 'warning']
+    errors = [i for i in issues if i.severity == "error"]
+    warnings = [i for i in issues if i.severity == "warning"]
 
     if errors:
         print("🚨 ERRORS (must fix):")
@@ -148,27 +142,27 @@ def main():
     # Parse arguments
     args = sys.argv[1:]
 
-    if '--help' in args:
+    if "--help" in args:
         print_usage()
         return 0
 
-    if '--explain' in args:
+    if "--explain" in args:
         print_issue_explanations()
         return 0
 
-    verbose = '--verbose' in args
+    verbose = "--verbose" in args
 
     # Determine directories
     uc_dir = Path("specs/use-cases")
     bdd_dir = Path("tests/bdd")
 
-    if '--specs' in args:
-        idx = args.index('--specs')
+    if "--specs" in args:
+        idx = args.index("--specs")
         if idx + 1 < len(args):
             uc_dir = Path(args[idx + 1])
 
-    if '--bdd' in args:
-        idx = args.index('--bdd')
+    if "--bdd" in args:
+        idx = args.index("--bdd")
         if idx + 1 < len(args):
             bdd_dir = Path(args[idx + 1])
 
@@ -227,8 +221,8 @@ def main():
         print("Recommendation: No action needed. Specs and tests are in sync.")
         return 0
     else:
-        errors = [i for i in issues if i.severity == 'error']
-        warnings = [i for i in issues if i.severity == 'warning']
+        errors = [i for i in issues if i.severity == "error"]
+        warnings = [i for i in issues if i.severity == "warning"]
 
         print(f"Status: ⚠️  DRIFT DETECTED ({len(errors)} errors, {len(warnings)} warnings)")
         print()
@@ -243,7 +237,7 @@ def main():
         return 1
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         exit_code = main()
         sys.exit(exit_code)
@@ -255,5 +249,6 @@ if __name__ == '__main__':
         print()
         print(f"❌ Unexpected error: {e}")
         import traceback
+
         traceback.print_exc()
         sys.exit(2)

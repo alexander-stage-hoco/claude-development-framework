@@ -61,6 +61,7 @@ def client(db_session):
     Returns:
         FastAPI TestClient
     """
+
     def override_get_db():
         try:
             yield db_session

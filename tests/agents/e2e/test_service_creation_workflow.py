@@ -30,6 +30,7 @@ from tests.agents.fixtures import MockFileSystem
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def mock_fs(tmp_path: Path) -> MockFileSystem:
     """Mock file system for testing."""
@@ -39,6 +40,7 @@ def mock_fs(tmp_path: Path) -> MockFileSystem:
 # ============================================================================
 # Test: Service Identification and Specification
 # ============================================================================
+
 
 @pytest.mark.e2e
 def test_uc_identifies_required_services(mock_fs: MockFileSystem):

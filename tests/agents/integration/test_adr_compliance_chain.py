@@ -27,6 +27,7 @@ from tests.agents.fixtures import MockFileSystem
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def mock_fs(tmp_path: Path) -> MockFileSystem:
     """Mock file system for testing."""
@@ -111,6 +112,7 @@ Use Repository pattern for all data access. No direct database calls from servic
 # Test: ADR Creation Format
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_adr_has_all_required_sections(sample_adr: str, mock_fs: MockFileSystem):
     """Test that ADR has all required sections."""
@@ -149,6 +151,7 @@ def test_adr_consequences_have_pros_and_cons(sample_adr: str, mock_fs: MockFileS
 # ============================================================================
 # Test: ADR References in Code
 # ============================================================================
+
 
 @pytest.mark.integration
 def test_code_references_adr_in_docstrings(mock_fs: MockFileSystem):
@@ -220,6 +223,7 @@ def process_data(data: Dict[str, Any]) -> int:
 # ============================================================================
 # Test: Compliance Checking
 # ============================================================================
+
 
 @pytest.mark.integration
 def test_compliance_checker_validates_against_adrs(sample_adr: str, mock_fs: MockFileSystem):
@@ -300,6 +304,7 @@ HIGH (1):
 # Test: ADR Lifecycle
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_adr_deprecation_workflow(mock_fs: MockFileSystem):
     """Test ADR deprecation workflow."""
@@ -374,6 +379,7 @@ Use JWT tokens for stateless authentication. Store tokens in HTTP-only cookies.
 # Test: ADR and Quality Checker Integration
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_quality_checker_enforces_adr_standards(sample_adr: str, mock_fs: MockFileSystem):
     """Test that quality checker enforces ADR standards."""
@@ -437,6 +443,7 @@ ADR Compliance Issues:
 # Test: ADR Decision Qualification
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_adr_created_for_architectural_decisions(mock_fs: MockFileSystem):
     """Test that ADRs are created for qualifying architectural decisions."""
@@ -499,6 +506,7 @@ user_id = get_current_user()
 # ============================================================================
 # Test: ADR Compliance Workflow
 # ============================================================================
+
 
 @pytest.mark.integration
 def test_complete_adr_compliance_workflow(sample_adr: str, mock_fs: MockFileSystem):

@@ -39,16 +39,18 @@ def run(agent_name: str, spec: Optional[str], output: Optional[str]):
         # Invoke with output file
         claude-dev agent run adr-manager --output specs/adrs/ADR-001.md
     """
-    console.print(Panel(
-        f"[bold cyan]Invoking Agent[/bold cyan]\n\n"
-        f"Agent: [green]{agent_name}[/green]\n"
-        f"Context: [green]{spec or 'N/A'}[/green]\n"
-        f"Output: [green]{output or 'stdout'}[/green]\n\n"
-        f"[yellow]Note:[/yellow] Direct agent invocation requires Claude API access.\n"
-        f"This feature is not yet fully implemented.",
-        title="Agent Invocation",
-        border_style="cyan"
-    ))
+    console.print(
+        Panel(
+            f"[bold cyan]Invoking Agent[/bold cyan]\n\n"
+            f"Agent: [green]{agent_name}[/green]\n"
+            f"Context: [green]{spec or 'N/A'}[/green]\n"
+            f"Output: [green]{output or 'stdout'}[/green]\n\n"
+            f"[yellow]Note:[/yellow] Direct agent invocation requires Claude API access.\n"
+            f"This feature is not yet fully implemented.",
+            title="Agent Invocation",
+            border_style="cyan",
+        )
+    )
 
     # TODO: Implement agent invocation via Claude API
     console.print("\n[yellow]⚠ Agent invocation coming soon![/yellow]")
@@ -58,10 +60,7 @@ def run(agent_name: str, spec: Optional[str], output: Optional[str]):
 
 @agent.command()
 @click.option(
-    "--tier",
-    type=click.Choice(["1", "2", "3", "all"]),
-    default="all",
-    help="Filter by tier"
+    "--tier", type=click.Choice(["1", "2", "3", "all"]), default="all", help="Filter by tier"
 )
 def list(tier: str):
     """
@@ -123,10 +122,7 @@ def list(tier: str):
             continue
 
         table.add_row(
-            agent_name,
-            agent_tier,
-            category.title(),
-            str(agent_file.relative_to(project_root))
+            agent_name, agent_tier, category.title(), str(agent_file.relative_to(project_root))
         )
 
     console.print(table)
@@ -167,11 +163,13 @@ def info(agent_name: str):
         content = f.read()
 
     # Display agent info (first ~1000 chars)
-    console.print(Panel(
-        content[:1200] + ("..." if len(content) > 1200 else ""),
-        title=f"Agent: {agent_name}",
-        border_style="cyan"
-    ))
+    console.print(
+        Panel(
+            content[:1200] + ("..." if len(content) > 1200 else ""),
+            title=f"Agent: {agent_name}",
+            border_style="cyan",
+        )
+    )
 
     console.print(f"\nFull agent file: [cyan]{agent_file}[/cyan]")
     console.print(f"\nInvoke agent:")

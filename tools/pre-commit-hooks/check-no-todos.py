@@ -25,10 +25,10 @@ def check_file_for_todos(filepath: str) -> tuple[bool, list[str]]:
     todos = []
 
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             for line_num, line in enumerate(f, 1):
                 # Match TODO comments (case-insensitive)
-                if re.search(r'#\s*TODO', line, re.IGNORECASE):
+                if re.search(r"#\s*TODO", line, re.IGNORECASE):
                     todos.append(f"  Line {line_num}: {line.strip()}")
 
     except (UnicodeDecodeError, IOError):

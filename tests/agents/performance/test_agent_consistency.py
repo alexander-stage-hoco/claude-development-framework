@@ -29,6 +29,7 @@ from tests.agents.fixtures import AgentParser, get_all_agent_paths
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def all_agents() -> List[Tuple[str, AgentParser]]:
     """Get all agents with their parsers."""
@@ -43,6 +44,7 @@ def all_agents() -> List[Tuple[str, AgentParser]]:
 # ============================================================================
 # Test: Terminology Consistency
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_uc_reference_format_consistent(all_agents: List[Tuple[str, AgentParser]]):
@@ -124,6 +126,7 @@ def test_tdd_terminology_consistent(all_agents: List[Tuple[str, AgentParser]]):
 # Test: Section Naming Consistency
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_section_names_standardized(all_agents: List[Tuple[str, AgentParser]]):
     """Test that section names follow standard conventions."""
@@ -136,7 +139,7 @@ def test_section_names_standardized(all_agents: List[Tuple[str, AgentParser]]):
         "Examples",
         "Anti-Patterns",
         "Common Mistakes",
-        "Edge Cases"
+        "Edge Cases",
     }
 
     # Variations to avoid (should use standard names)
@@ -150,7 +153,7 @@ def test_section_names_standardized(all_agents: List[Tuple[str, AgentParser]]):
         "Output": "Output Format",
         "Format": "Output Format",
         "Checks": "Quality Checks",
-        "Validation": "Quality Checks"
+        "Validation": "Quality Checks",
     }
 
     for name, parser in all_agents:
@@ -190,6 +193,7 @@ def test_quality_checks_section_named_consistently(all_agents: List[Tuple[str, A
 # Test: Output Format Consistency
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_output_format_section_uses_code_blocks(all_agents: List[Tuple[str, AgentParser]]):
     """Test that Output Format sections use markdown code blocks."""
@@ -225,6 +229,7 @@ def test_examples_section_shows_complete_examples(all_agents: List[Tuple[str, Ag
 # ============================================================================
 # Test: Reference Format Consistency
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_spec_references_include_hash_anchors(all_agents: List[Tuple[str, AgentParser]]):
@@ -264,6 +269,7 @@ def test_file_references_use_consistent_paths(all_agents: List[Tuple[str, AgentP
 # ============================================================================
 # Test: Quality Standards Alignment
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_quality_score_threshold_consistent(all_agents: List[Tuple[str, AgentParser]]):
@@ -310,6 +316,7 @@ def test_test_coverage_expectations_aligned(all_agents: List[Tuple[str, AgentPar
 # Test: Workflow Integration Consistency
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_handoff_protocol_format_consistent(all_agents: List[Tuple[str, AgentParser]]):
     """Test that handoff protocols use consistent format."""
@@ -318,7 +325,7 @@ def test_handoff_protocol_format_consistent(all_agents: List[Tuple[str, AgentPar
         "bdd-scenario-writer",
         "test-writer",
         "code-quality-checker",
-        "refactoring-analyzer"
+        "refactoring-analyzer",
     ]
 
     for name, parser in all_agents:
@@ -354,6 +361,7 @@ def test_agent_chain_references_consistent(all_agents: List[Tuple[str, AgentPars
 # ============================================================================
 # Test: Documentation Style Consistency
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_checkbox_format_consistent(all_agents: List[Tuple[str, AgentParser]]):
@@ -415,6 +423,7 @@ def test_list_indentation_consistent(all_agents: List[Tuple[str, AgentParser]]):
 # Test: Agent Metadata Consistency
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_model_field_consistent_across_agents(all_agents: List[Tuple[str, AgentParser]]):
     """Test that 'model' field uses consistent values."""
@@ -456,16 +465,13 @@ def test_tier_system_consistent(all_agents: List[Tuple[str, AgentParser]]):
 # Test: Cross-Agent Communication Standards
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_agents_reference_common_documents(all_agents: List[Tuple[str, AgentParser]]):
     """Test that agents reference common framework documents."""
     # Common docs: 12 Non-Negotiable Rules, technical-decisions.md, etc.
 
-    framework_docs = [
-        "12 Non-Negotiable",
-        "technical-decisions.md",
-        ".claude/rules.md"
-    ]
+    framework_docs = ["12 Non-Negotiable", "technical-decisions.md", ".claude/rules.md"]
 
     agents_referencing = {doc: [] for doc in framework_docs}
 
@@ -499,7 +505,7 @@ def test_consistent_file_organization_references(all_agents: List[Tuple[str, Age
         "features/",
         "tests/unit/",
         "tests/integration/",
-        "src/"
+        "src/",
     ]
 
     for name, parser in all_agents:

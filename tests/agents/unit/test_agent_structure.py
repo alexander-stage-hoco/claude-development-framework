@@ -22,18 +22,9 @@ from tests.agents.fixtures import AgentParser
 # Constants
 # ============================================================================
 
-REQUIRED_SECTIONS = [
-    "Responsibilities",
-    "Process",
-    "Output",
-    "Quality Checks",
-    "Files"
-]
+REQUIRED_SECTIONS = ["Responsibilities", "Process", "Output", "Quality Checks", "Files"]
 
-RECOMMENDED_SECTIONS = [
-    "Next Steps",
-    "Anti-Patterns"
-]
+RECOMMENDED_SECTIONS = ["Next Steps", "Anti-Patterns"]
 
 # Anti-pattern section can have variations
 ANTIPATTERN_VARIATIONS = ["Anti-Patterns", "Anti-patterns", "Antipatterns"]
@@ -43,13 +34,19 @@ ANTIPATTERN_VARIATIONS = ["Anti-Patterns", "Anti-patterns", "Antipatterns"]
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def all_agents(agents_dir: Path) -> List[AgentParser]:
     """Load all agent parsers."""
     return [AgentParser(f) for f in agents_dir.glob("*.md")]
 
 
-@pytest.fixture(params=[f for f in (Path(__file__).parent.parent.parent.parent / ".claude" / "subagents").glob("*.md")])
+@pytest.fixture(
+    params=[
+        f
+        for f in (Path(__file__).parent.parent.parent.parent / ".claude" / "subagents").glob("*.md")
+    ]
+)
 def agent_parser(request) -> AgentParser:
     """Parametrized fixture providing individual agent parsers."""
     return AgentParser(request.param)
@@ -59,44 +56,40 @@ def agent_parser(request) -> AgentParser:
 # Test: Required Sections Presence
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_agent_has_responsibilities_section(agent_parser: AgentParser):
     """Test that agent has Responsibilities section."""
-    assert agent_parser.has_section("Responsibilities"), (
-        f"Agent {agent_parser.name} missing Responsibilities section"
-    )
+    assert agent_parser.has_section(
+        "Responsibilities"
+    ), f"Agent {agent_parser.name} missing Responsibilities section"
 
 
 @pytest.mark.unit
 def test_agent_has_process_section(agent_parser: AgentParser):
     """Test that agent has Process section."""
-    assert agent_parser.has_section("Process"), (
-        f"Agent {agent_parser.name} missing Process section"
-    )
+    assert agent_parser.has_section("Process"), f"Agent {agent_parser.name} missing Process section"
 
 
 @pytest.mark.unit
 def test_agent_has_output_section(agent_parser: AgentParser):
     """Test that agent has Output section."""
-    assert agent_parser.has_section("Output"), (
-        f"Agent {agent_parser.name} missing Output section"
-    )
+    assert agent_parser.has_section("Output"), f"Agent {agent_parser.name} missing Output section"
 
 
 @pytest.mark.unit
 def test_agent_has_quality_checks_section(agent_parser: AgentParser):
     """Test that agent has Quality Checks section."""
-    assert agent_parser.has_section("Quality Checks"), (
-        f"Agent {agent_parser.name} missing Quality Checks section"
-    )
+    assert agent_parser.has_section(
+        "Quality Checks"
+    ), f"Agent {agent_parser.name} missing Quality Checks section"
 
 
 @pytest.mark.unit
 def test_agent_has_antipatterns_section(agent_parser: AgentParser):
     """Test that agent has Anti-Patterns section (any variation)."""
     has_antipatterns = any(
-        agent_parser.has_section(variation)
-        for variation in ANTIPATTERN_VARIATIONS
+        agent_parser.has_section(variation) for variation in ANTIPATTERN_VARIATIONS
     )
 
     assert has_antipatterns, (
@@ -108,9 +101,7 @@ def test_agent_has_antipatterns_section(agent_parser: AgentParser):
 @pytest.mark.unit
 def test_agent_has_files_section(agent_parser: AgentParser):
     """Test that agent has Files section."""
-    assert agent_parser.has_section("Files"), (
-        f"Agent {agent_parser.name} missing Files section"
-    )
+    assert agent_parser.has_section("Files"), f"Agent {agent_parser.name} missing Files section"
 
 
 def test_all_agents_have_required_sections(all_agents: List[AgentParser]):
@@ -125,20 +116,15 @@ def test_all_agents_have_required_sections(all_agents: List[AgentParser]):
                 missing.append(section)
 
         # Check anti-patterns (any variation)
-        has_antipatterns = any(
-            agent.has_section(var) for var in ANTIPATTERN_VARIATIONS
-        )
+        has_antipatterns = any(agent.has_section(var) for var in ANTIPATTERN_VARIATIONS)
         if not has_antipatterns:
             missing.append("Anti-Patterns")
 
         if missing:
-            incomplete_agents.append(
-                f"{agent.name}: missing {', '.join(missing)}"
-            )
+            incomplete_agents.append(f"{agent.name}: missing {', '.join(missing)}")
 
-    assert not incomplete_agents, (
-        f"Agents with incomplete sections:\n" +
-        "\n".join(f"  - {a}" for a in incomplete_agents)
+    assert not incomplete_agents, f"Agents with incomplete sections:\n" + "\n".join(
+        f"  - {a}" for a in incomplete_agents
     )
 
 
@@ -146,14 +132,14 @@ def test_all_agents_have_required_sections(all_agents: List[AgentParser]):
 # Test: Process Section Format
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_process_has_numbered_steps(agent_parser: AgentParser):
     """Test that Process section uses numbered steps."""
     process_steps = agent_parser.extract_process_steps()
 
     assert len(process_steps) >= 3, (
-        f"Agent {agent_parser.name}: Process should have ≥3 steps, "
-        f"found {len(process_steps)}"
+        f"Agent {agent_parser.name}: Process should have ≥3 steps, " f"found {len(process_steps)}"
     )
 
 
@@ -166,11 +152,36 @@ def test_process_steps_are_actionable(agent_parser: AgentParser):
         pytest.skip(f"Agent {agent_parser.name} has no extractable process steps")
 
     action_verbs = [
-        "read", "write", "parse", "generate", "create", "analyze",
-        "extract", "validate", "verify", "check", "run", "execute",
-        "identify", "design", "implement", "test", "add", "ensure",
-        "document", "update", "ask", "gather", "determine", "build",
-        "scan", "detect", "calculate", "compare", "suggest", "review"
+        "read",
+        "write",
+        "parse",
+        "generate",
+        "create",
+        "analyze",
+        "extract",
+        "validate",
+        "verify",
+        "check",
+        "run",
+        "execute",
+        "identify",
+        "design",
+        "implement",
+        "test",
+        "add",
+        "ensure",
+        "document",
+        "update",
+        "ask",
+        "gather",
+        "determine",
+        "build",
+        "scan",
+        "detect",
+        "calculate",
+        "compare",
+        "suggest",
+        "review",
     ]
 
     # Check if steps start with action verbs
@@ -193,6 +204,7 @@ def test_process_steps_are_actionable(agent_parser: AgentParser):
 # ============================================================================
 # Test: Quality Checks Section Format
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_quality_checks_use_checkbox_format(agent_parser: AgentParser):
@@ -229,14 +241,14 @@ def test_quality_checks_cover_key_aspects(agent_parser: AgentParser):
 # Test: Anti-Patterns Section Format
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_antipatterns_exist(agent_parser: AgentParser):
     """Test that agent has anti-patterns defined."""
     antipatterns = agent_parser.extract_antipatterns()
 
     assert len(antipatterns) >= 3, (
-        f"Agent {agent_parser.name}: Should have ≥3 anti-patterns, "
-        f"found {len(antipatterns)}"
+        f"Agent {agent_parser.name}: Should have ≥3 anti-patterns, " f"found {len(antipatterns)}"
     )
 
 
@@ -270,27 +282,27 @@ def test_antipatterns_provide_guidance(agent_parser: AgentParser):
 # Test: Files Section Format
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_files_section_lists_operations(agent_parser: AgentParser):
     """Test that Files section lists Read/Write operations."""
     files_section = agent_parser.get_section("Files")
 
-    assert files_section, (
-        f"Agent {agent_parser.name} missing Files section"
-    )
+    assert files_section, f"Agent {agent_parser.name} missing Files section"
 
     # Should mention Read and/or Write operations
     has_read = "Read:" in files_section or "read:" in files_section.lower()
     has_write = "Write:" in files_section or "write:" in files_section.lower()
 
-    assert has_read or has_write, (
-        f"Agent {agent_parser.name}: Files section should list Read or Write operations"
-    )
+    assert (
+        has_read or has_write
+    ), f"Agent {agent_parser.name}: Files section should list Read or Write operations"
 
 
 # ============================================================================
 # Test: Code Examples
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_agent_code_blocks_extraction(agent_parser: AgentParser):
@@ -298,9 +310,7 @@ def test_agent_code_blocks_extraction(agent_parser: AgentParser):
     code_blocks = agent_parser.extract_code_blocks()
 
     # Just verify extraction works (agents may have 0 blocks)
-    assert isinstance(code_blocks, list), (
-        f"Agent {agent_parser.name}: code block extraction failed"
-    )
+    assert isinstance(code_blocks, list), f"Agent {agent_parser.name}: code block extraction failed"
 
 
 def test_agents_with_examples_report(all_agents: List[AgentParser]):
@@ -331,23 +341,22 @@ def test_agents_with_examples_report(all_agents: List[AgentParser]):
     print(f"{'='*60}\n")
 
     # Most agents should have examples
-    assert len(with_examples) >= len(all_agents) * 0.7, (
-        f"Only {percentage:.0f}% of agents have code examples (expected ≥70%)"
-    )
+    assert (
+        len(with_examples) >= len(all_agents) * 0.7
+    ), f"Only {percentage:.0f}% of agents have code examples (expected ≥70%)"
 
 
 # ============================================================================
 # Test: Content Quality
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_responsibilities_are_specific(agent_parser: AgentParser):
     """Test that Responsibilities section is detailed."""
     responsibilities = agent_parser.get_section("Responsibilities")
 
-    assert responsibilities, (
-        f"Agent {agent_parser.name} missing Responsibilities section"
-    )
+    assert responsibilities, f"Agent {agent_parser.name} missing Responsibilities section"
 
     assert len(responsibilities) >= 100, (
         f"Agent {agent_parser.name}: Responsibilities too brief "
@@ -360,14 +369,21 @@ def test_output_section_describes_deliverables(agent_parser: AgentParser):
     """Test that Output section describes what agent produces."""
     output_section = agent_parser.get_section("Output")
 
-    assert output_section, (
-        f"Agent {agent_parser.name} missing Output section"
-    )
+    assert output_section, f"Agent {agent_parser.name} missing Output section"
 
     # Should mention files, content, results, or deliverables
     keywords = [
-        "file", "content", "result", "report", "generate", "create",
-        "output", "produce", "return", "deliver", "provide"
+        "file",
+        "content",
+        "result",
+        "report",
+        "generate",
+        "create",
+        "output",
+        "produce",
+        "return",
+        "deliver",
+        "provide",
     ]
 
     has_deliverable = any(kw in output_section.lower() for kw in keywords)
@@ -386,14 +402,14 @@ def test_next_steps_section_recommended(agent_parser: AgentParser):
     # Don't fail, just warn
     if not has_next_steps:
         warnings.warn(
-            f"Agent {agent_parser.name} missing 'Next Steps' section (recommended)",
-            UserWarning
+            f"Agent {agent_parser.name} missing 'Next Steps' section (recommended)", UserWarning
         )
 
 
 # ============================================================================
 # Test: Structure Consistency Report
 # ============================================================================
+
 
 def test_structure_consistency_report(all_agents: List[AgentParser]):
     """Generate comprehensive structure consistency report."""
@@ -410,13 +426,12 @@ def test_structure_consistency_report(all_agents: List[AgentParser]):
         if section == "Anti-Patterns":
             # Check variations
             agents_with_section = sum(
-                1 for agent in all_agents
+                1
+                for agent in all_agents
                 if any(agent.has_section(var) for var in ANTIPATTERN_VARIATIONS)
             )
         else:
-            agents_with_section = sum(
-                1 for agent in all_agents if agent.has_section(section)
-            )
+            agents_with_section = sum(1 for agent in all_agents if agent.has_section(section))
 
         percentage = (agents_with_section / len(all_agents)) * 100
         status = "✓" if percentage == 100 else "⚠"
@@ -426,16 +441,12 @@ def test_structure_consistency_report(all_agents: List[AgentParser]):
     # Check recommended sections
     print("\nRecommended Sections:")
     for section in RECOMMENDED_SECTIONS:
-        agents_with_section = sum(
-            1 for agent in all_agents if agent.has_section(section)
-        )
+        agents_with_section = sum(1 for agent in all_agents if agent.has_section(section))
         percentage = (agents_with_section / len(all_agents)) * 100
         print(f"    {section}: {agents_with_section}/{len(all_agents)} ({percentage:.0f}%)")
 
     # Code examples
-    agents_with_examples = sum(
-        1 for agent in all_agents if agent.extract_code_blocks()
-    )
+    agents_with_examples = sum(1 for agent in all_agents if agent.extract_code_blocks())
     percentage = (agents_with_examples / len(all_agents)) * 100
     print(f"\nCode Examples:")
     print(f"    {agents_with_examples}/{len(all_agents)} agents ({percentage:.0f}%)")
@@ -455,7 +466,9 @@ def test_structure_consistency_report(all_agents: List[AgentParser]):
 
     # Quality check distribution
     print(f"\nQuality Checks Distribution:")
-    qc_counts = [(agent.name, len(agent.get_section_checkboxes("Quality Checks"))) for agent in all_agents]
+    qc_counts = [
+        (agent.name, len(agent.get_section_checkboxes("Quality Checks"))) for agent in all_agents
+    ]
     qc_counts.sort(key=lambda x: x[1], reverse=True)
 
     avg_qc = sum(c for _, c in qc_counts) / len(qc_counts)
@@ -466,8 +479,8 @@ def test_structure_consistency_report(all_agents: List[AgentParser]):
 
     # All required sections should be 100%
     all_complete = all(
-        all(agent.has_section(sec) for sec in REQUIRED_SECTIONS) and
-        any(agent.has_section(var) for var in ANTIPATTERN_VARIATIONS)
+        all(agent.has_section(sec) for sec in REQUIRED_SECTIONS)
+        and any(agent.has_section(var) for var in ANTIPATTERN_VARIATIONS)
         for agent in all_agents
     )
 

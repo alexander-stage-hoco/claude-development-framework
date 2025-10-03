@@ -144,7 +144,9 @@ def validate_iteration_scope(hours: float) -> tuple[bool, Optional[str]]:
     return True, None
 
 
-def validate_agent_name(name: str, valid_agents: Optional[list[str]] = None) -> tuple[bool, Optional[str]]:
+def validate_agent_name(
+    name: str, valid_agents: Optional[list[str]] = None
+) -> tuple[bool, Optional[str]]:
     """
     Validate agent name.
 

@@ -23,11 +23,11 @@ def find_uc_references(filepath: Path) -> List[str]:
     Returns:
         List of UC IDs found (e.g., ["UC-001", "UC-042"])
     """
-    uc_pattern = r'UC-\d{3,4}'
+    uc_pattern = r"UC-\d{3,4}"
     uc_refs = set()
 
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
             matches = re.findall(uc_pattern, content)
             uc_refs.update(matches)

@@ -12,6 +12,7 @@ from pydantic import BaseModel, EmailStr, Field
 
 # User Schemas
 
+
 class UserBase(BaseModel):
     """Base user schema with common fields."""
 
@@ -68,6 +69,7 @@ class UserList(BaseModel):
 
 
 # Authentication Schemas
+
 
 class LoginRequest(BaseModel):
     """Schema for login request."""

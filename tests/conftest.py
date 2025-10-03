@@ -44,6 +44,7 @@ def templates_dir() -> Path:
 # Agent Discovery
 # ============================================================================
 
+
 @pytest.fixture(scope="session")
 def all_agent_files() -> List[Path]:
     """Return list of all agent markdown files."""
@@ -72,6 +73,7 @@ def agent_file(request) -> Path:
 # Agent Content Parsing
 # ============================================================================
 
+
 def parse_agent_file(agent_path: Path) -> Dict[str, Any]:
     """Parse agent markdown file into structured data.
 
@@ -84,19 +86,14 @@ def parse_agent_file(agent_path: Path) -> Dict[str, Any]:
         - content: Main content sections
         - raw: Raw file content
     """
-    with open(agent_path, 'r', encoding='utf-8') as f:
+    with open(agent_path, "r", encoding="utf-8") as f:
         content = f.read()
 
     # Split front matter and content
-    parts = content.split('---', 2)
+    parts = content.split("---", 2)
 
     if len(parts) < 3:
-        return {
-            "metadata": {},
-            "content": content,
-            "raw": content,
-            "has_frontmatter": False
-        }
+        return {"metadata": {}, "content": content, "raw": content, "has_frontmatter": False}
 
     # Parse YAML front matter
     try:
@@ -110,7 +107,7 @@ def parse_agent_file(agent_path: Path) -> Dict[str, Any]:
         "metadata": metadata or {},
         "content": main_content,
         "raw": content,
-        "has_frontmatter": True
+        "has_frontmatter": True,
     }
 
 
@@ -126,6 +123,7 @@ def parsed_agent(agent_file: Path) -> Dict[str, Any]:
 # ============================================================================
 # Mock File System
 # ============================================================================
+
 
 @pytest.fixture
 def mock_fs(tmp_path: Path) -> Path:
@@ -159,6 +157,7 @@ def mock_fs(tmp_path: Path) -> Path:
 # ============================================================================
 # Test Data Fixtures
 # ============================================================================
+
 
 @pytest.fixture
 def sample_uc_content() -> str:
@@ -258,28 +257,20 @@ Creates new user account.
 # Pytest Configuration
 # ============================================================================
 
+
 def pytest_configure(config):
     """Pytest configuration hook."""
-    config.addinivalue_line(
-        "markers", "unit: Unit tests for individual agents"
-    )
-    config.addinivalue_line(
-        "markers", "integration: Integration tests for agent chains"
-    )
-    config.addinivalue_line(
-        "markers", "e2e: End-to-end workflow tests"
-    )
-    config.addinivalue_line(
-        "markers", "performance: Performance and benchmarking tests"
-    )
-    config.addinivalue_line(
-        "markers", "slow: Tests that take more than 1 second"
-    )
+    config.addinivalue_line("markers", "unit: Unit tests for individual agents")
+    config.addinivalue_line("markers", "integration: Integration tests for agent chains")
+    config.addinivalue_line("markers", "e2e: End-to-end workflow tests")
+    config.addinivalue_line("markers", "performance: Performance and benchmarking tests")
+    config.addinivalue_line("markers", "slow: Tests that take more than 1 second")
 
 
 # ============================================================================
 # Test Utilities
 # ============================================================================
+
 
 class AgentTestHelper:
     """Helper class for agent testing."""
@@ -294,17 +285,17 @@ class AgentTestHelper:
         current_section = None
         current_content = []
 
-        for line in content.split('\n'):
-            if line.startswith('## '):
+        for line in content.split("\n"):
+            if line.startswith("## "):
                 if current_section:
-                    sections[current_section] = '\n'.join(current_content).strip()
+                    sections[current_section] = "\n".join(current_content).strip()
                 current_section = line[3:].strip()
                 current_content = []
             elif current_section:
                 current_content.append(line)
 
         if current_section:
-            sections[current_section] = '\n'.join(current_content).strip()
+            sections[current_section] = "\n".join(current_content).strip()
 
         return sections
 
@@ -315,10 +306,10 @@ class AgentTestHelper:
         in_block = False
         current_block = []
 
-        for line in content.split('\n'):
-            if line.strip().startswith('```'):
+        for line in content.split("\n"):
+            if line.strip().startswith("```"):
                 if in_block:
-                    blocks.append('\n'.join(current_block))
+                    blocks.append("\n".join(current_block))
                     current_block = []
                     in_block = False
                 else:
@@ -332,8 +323,8 @@ class AgentTestHelper:
     def find_checkboxes(content: str) -> List[str]:
         """Extract checkbox items from content."""
         checkboxes = []
-        for line in content.split('\n'):
-            if '- [ ]' in line or '- [x]' in line or '- [X]' in line:
+        for line in content.split("\n"):
+            if "- [ ]" in line or "- [x]" in line or "- [X]" in line:
                 checkboxes.append(line.strip())
         return checkboxes
 

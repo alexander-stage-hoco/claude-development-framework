@@ -29,9 +29,7 @@ class AgentInvoker:
         self.api_key = api_key or os.environ.get("CLAUDE_API_KEY", "")
 
         if not self.api_key:
-            raise ValueError(
-                "Claude API key not found. Set CLAUDE_API_KEY environment variable."
-            )
+            raise ValueError("Claude API key not found. Set CLAUDE_API_KEY environment variable.")
 
     def _find_agents_dir(self) -> Optional[Path]:
         """Find .claude/agents/ directory."""

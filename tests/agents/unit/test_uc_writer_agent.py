@@ -30,6 +30,7 @@ from tests.agents.fixtures import AgentParser
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def uc_writer_parser(agents_dir: Path) -> AgentParser:
     """Parser for uc-writer agent."""
@@ -39,6 +40,7 @@ def uc_writer_parser(agents_dir: Path) -> AgentParser:
 # ============================================================================
 # Test: Agent Metadata
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_uc_writer_has_correct_metadata(uc_writer_parser: AgentParser):
@@ -63,6 +65,7 @@ def test_uc_writer_description_mentions_requirements(uc_writer_parser: AgentPars
 # ============================================================================
 # Test: Responsibilities Coverage
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_uc_writer_covers_interview_guidance(uc_writer_parser: AgentParser):
@@ -113,16 +116,17 @@ def test_uc_writer_covers_nfr_elicitation(uc_writer_parser: AgentParser):
     content = responsibilities.lower()
 
     assert (
-        "non-functional" in content or
-        "performance" in content or
-        "security" in content or
-        "nfr" in content
+        "non-functional" in content
+        or "performance" in content
+        or "security" in content
+        or "nfr" in content
     )
 
 
 # ============================================================================
 # Test: Process Steps - 16 Section Interview
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_uc_writer_process_determines_uc_id(uc_writer_parser: AgentParser):
@@ -173,6 +177,7 @@ def test_uc_writer_process_includes_service_identification(uc_writer_parser: Age
 # Test: UC Creation Checklist
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_uc_writer_has_comprehensive_checklist(uc_writer_parser: AgentParser):
     """Test that agent has comprehensive UC creation checklist."""
@@ -208,6 +213,7 @@ def test_uc_writer_checklist_includes_flows(uc_writer_parser: AgentParser):
 # ============================================================================
 # Test: Quality Checks
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_uc_writer_quality_checks_include_uc_id(uc_writer_parser: AgentParser):
@@ -259,6 +265,7 @@ def test_uc_writer_quality_checks_minimum_flow_steps(uc_writer_parser: AgentPars
 # Test: Anti-Patterns
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_uc_writer_warns_against_vague_requirements(uc_writer_parser: AgentParser):
     """Test that anti-patterns warn against vague requirements."""
@@ -293,14 +300,16 @@ def test_uc_writer_warns_against_generic_acceptance_criteria(uc_writer_parser: A
     antipatterns_text = " ".join(antipatterns).lower()
 
     assert (
-        "generic" in antipatterns_text and "acceptance" in antipatterns_text or
-        "generic acceptance criteria" in antipatterns_text
+        "generic" in antipatterns_text
+        and "acceptance" in antipatterns_text
+        or "generic acceptance criteria" in antipatterns_text
     )
 
 
 # ============================================================================
 # Test: Interview Question Library
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_uc_writer_provides_interview_questions(uc_writer_parser: AgentParser):
@@ -340,6 +349,7 @@ def test_uc_writer_questions_cover_errors(uc_writer_parser: AgentParser):
 # Test: Code Examples
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_uc_writer_provides_interview_flow_example(uc_writer_parser: AgentParser):
     """Test that agent provides example interview flow."""
@@ -355,10 +365,10 @@ def test_uc_writer_example_shows_complete_uc(uc_writer_parser: AgentParser):
 
     # Example should show UC structure
     has_uc_structure = (
-        "UC-" in content and
-        "Objective" in content and
-        "Actors" in content and
-        "Main Flow" in content
+        "UC-" in content
+        and "Objective" in content
+        and "Actors" in content
+        and "Main Flow" in content
     )
 
     assert has_uc_structure, "Should provide complete UC example"
@@ -367,6 +377,7 @@ def test_uc_writer_example_shows_complete_uc(uc_writer_parser: AgentParser):
 # ============================================================================
 # Test: File Operations
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_uc_writer_reads_template(uc_writer_parser: AgentParser):
@@ -396,6 +407,7 @@ def test_uc_writer_writes_to_specs_directory(uc_writer_parser: AgentParser):
 # Test: Framework Compliance
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_uc_writer_enforces_rule_1(uc_writer_parser: AgentParser):
     """Test that agent enforces Rule #1 (Specifications Are Law)."""
@@ -415,6 +427,7 @@ def test_uc_writer_mentions_service_oriented_architecture(uc_writer_parser: Agen
 # ============================================================================
 # Test: Output Specification
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_uc_writer_output_lists_16_sections(uc_writer_parser: AgentParser):
@@ -441,6 +454,7 @@ def test_uc_writer_output_requires_gherkin_scenarios(uc_writer_parser: AgentPars
 # Test: Next Steps
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_uc_writer_next_steps_mention_bdd_scenario_writer(uc_writer_parser: AgentParser):
     """Test that next steps mention bdd-scenario-writer agent."""
@@ -462,6 +476,7 @@ def test_uc_writer_next_steps_mention_test_writer(uc_writer_parser: AgentParser)
 # ============================================================================
 # Test: Content Quality
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_uc_writer_has_comprehensive_process(uc_writer_parser: AgentParser):

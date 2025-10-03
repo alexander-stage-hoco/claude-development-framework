@@ -50,20 +50,22 @@ def cli(ctx):
 @cli.command()
 def version():
     """Display version information."""
-    console.print(Panel(
-        f"[bold cyan]Claude Development Framework CLI[/bold cyan]\n"
-        f"Version: [green]{__version__}[/green]\n\n"
-        f"Part of the Claude Development Framework v2.1",
-        title="Version Info",
-        border_style="cyan"
-    ))
+    console.print(
+        Panel(
+            f"[bold cyan]Claude Development Framework CLI[/bold cyan]\n"
+            f"Version: [green]{__version__}[/green]\n\n"
+            f"Part of the Claude Development Framework v2.1",
+            title="Version Info",
+            border_style="cyan",
+        )
+    )
 
 
 @cli.command()
 @click.option(
     "--shell",
     type=click.Choice(["bash", "zsh", "fish"]),
-    help="Shell type (auto-detected if not specified)"
+    help="Shell type (auto-detected if not specified)",
 )
 def completion(shell: Optional[str]):
     """
@@ -97,10 +99,10 @@ def completion(shell: Optional[str]):
     # Generate completion script
     if shell == "bash":
         console.print("\nAdd this to your ~/.bashrc:")
-        console.print("[dim]eval \"$(_CLAUDE_DEV_COMPLETE=bash_source claude-dev)\"[/dim]")
+        console.print('[dim]eval "$(_CLAUDE_DEV_COMPLETE=bash_source claude-dev)"[/dim]')
     elif shell == "zsh":
         console.print("\nAdd this to your ~/.zshrc:")
-        console.print("[dim]eval \"$(_CLAUDE_DEV_COMPLETE=zsh_source claude-dev)\"[/dim]")
+        console.print('[dim]eval "$(_CLAUDE_DEV_COMPLETE=zsh_source claude-dev)"[/dim]')
     elif shell == "fish":
         console.print("\nAdd this to your ~/.config/fish/completions/claude-dev.fish:")
         console.print("[dim]_CLAUDE_DEV_COMPLETE=fish_source claude-dev | source[/dim]")

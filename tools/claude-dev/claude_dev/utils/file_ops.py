@@ -25,9 +25,7 @@ def ensure_dir(path: Path) -> Path:
     return path
 
 
-def create_file(
-    path: Path, content: str, overwrite: bool = False, backup: bool = True
-) -> bool:
+def create_file(path: Path, content: str, overwrite: bool = False, backup: bool = True) -> bool:
     """
     Create file with content.
 
@@ -107,9 +105,7 @@ def copy_directory(src: Path, dst: Path, exclude: Optional[list] = None) -> None
             shutil.copy2(item, dst_item)
 
 
-def find_files(
-    root: Path, pattern: str = "*", recursive: bool = True
-) -> list[Path]:
+def find_files(root: Path, pattern: str = "*", recursive: bool = True) -> list[Path]:
     """
     Find files matching pattern.
 

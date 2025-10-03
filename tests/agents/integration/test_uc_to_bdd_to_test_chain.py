@@ -29,6 +29,7 @@ from tests.agents.fixtures import MockFileSystem
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def mock_fs(tmp_path: Path) -> MockFileSystem:
     """Mock file system for testing."""
@@ -171,6 +172,7 @@ Scenario: User creation fails with invalid email
 # Test: UC Format Compatibility with BDD Writer
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_uc_has_acceptance_criteria_section(sample_uc_with_bdd: str, mock_fs: MockFileSystem):
     """Test that UC has BDD acceptance criteria section for bdd-scenario-writer."""
@@ -182,7 +184,9 @@ def test_uc_has_acceptance_criteria_section(sample_uc_with_bdd: str, mock_fs: Mo
 
 
 @pytest.mark.integration
-def test_uc_acceptance_criteria_has_gherkin_format(sample_uc_with_bdd: str, mock_fs: MockFileSystem):
+def test_uc_acceptance_criteria_has_gherkin_format(
+    sample_uc_with_bdd: str, mock_fs: MockFileSystem
+):
     """Test that UC acceptance criteria use proper Gherkin format."""
     content = mock_fs.read_file(sample_uc_with_bdd)
 
@@ -201,7 +205,9 @@ def test_uc_has_uc_id_for_traceability(sample_uc_with_bdd: str, mock_fs: MockFil
 
 
 @pytest.mark.integration
-def test_uc_has_services_section_for_test_generation(sample_uc_with_bdd: str, mock_fs: MockFileSystem):
+def test_uc_has_services_section_for_test_generation(
+    sample_uc_with_bdd: str, mock_fs: MockFileSystem
+):
     """Test that UC lists services needed for test mock generation."""
     content = mock_fs.read_file(sample_uc_with_bdd)
 
@@ -212,6 +218,7 @@ def test_uc_has_services_section_for_test_generation(sample_uc_with_bdd: str, mo
 # ============================================================================
 # Test: BDD Writer Output Compatibility with Test Writer
 # ============================================================================
+
 
 @pytest.mark.integration
 def test_bdd_writer_would_generate_feature_file(sample_uc_with_bdd: str, mock_fs: MockFileSystem):
@@ -255,7 +262,9 @@ Feature: Create User Account
     And no user account is created
 """
 
-    feature_path = mock_fs.create_file("features/UC-001-create-user-account.feature", feature_content)
+    feature_path = mock_fs.create_file(
+        "features/UC-001-create-user-account.feature", feature_content
+    )
     feature = mock_fs.read_file(feature_path)
 
     # Verify feature file has required elements for test-writer
@@ -278,7 +287,9 @@ Feature: Create User Account
     Then system returns 201 Created
 """
 
-    feature_path = mock_fs.create_file("features/UC-001-create-user-account.feature", feature_content)
+    feature_path = mock_fs.create_file(
+        "features/UC-001-create-user-account.feature", feature_content
+    )
     feature = mock_fs.read_file(feature_path)
 
     assert "# Specification: UC-001" in feature
@@ -327,6 +338,7 @@ Feature: Create User Account
 # ============================================================================
 # Test: Test Writer Output from Feature File
 # ============================================================================
+
 
 @pytest.mark.integration
 def test_test_writer_would_generate_tests_from_feature(mock_fs: MockFileSystem):
@@ -430,6 +442,7 @@ def test_create_user_success() -> None:
 # Test: End-to-End Workflow
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_complete_uc_to_bdd_to_test_workflow(sample_uc_with_bdd: str, mock_fs: MockFileSystem):
     """Test complete workflow from UC through BDD to tests."""
@@ -476,8 +489,12 @@ def test_traceability_maintained_across_chain(mock_fs: MockFileSystem):
     """Test that UC ID is traceable from UC through BDD to tests."""
     # Create chain
     uc_path = mock_fs.create_file("specs/use-cases/UC-999.md", "# UC-999: Test\n\nScenario: Test")
-    feature_path = mock_fs.create_file("features/UC-999.feature", "# Specification: UC-999\n\nFeature: Test")
-    test_path = mock_fs.create_file("tests/unit/test_999.py", "# Specification: UC-999\n# Feature: features/UC-999.feature")
+    feature_path = mock_fs.create_file(
+        "features/UC-999.feature", "# Specification: UC-999\n\nFeature: Test"
+    )
+    test_path = mock_fs.create_file(
+        "tests/unit/test_999.py", "# Specification: UC-999\n# Feature: features/UC-999.feature"
+    )
 
     # Verify chain
     uc = mock_fs.read_file(uc_path)
@@ -493,6 +510,7 @@ def test_traceability_maintained_across_chain(mock_fs: MockFileSystem):
 # Test: Coverage Completeness
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_all_uc_scenarios_have_feature_scenarios(sample_uc_with_bdd: str, mock_fs: MockFileSystem):
     """Test that all UC acceptance criteria have corresponding feature scenarios."""
@@ -500,7 +518,8 @@ def test_all_uc_scenarios_have_feature_scenarios(sample_uc_with_bdd: str, mock_f
 
     # Extract UC scenarios
     import re
-    uc_scenarios = re.findall(r'Scenario: ([^\n]+)', uc_content)
+
+    uc_scenarios = re.findall(r"Scenario: ([^\n]+)", uc_content)
 
     # Simulate feature with same scenarios
     feature_scenarios_text = "\n".join(f"  Scenario: {s}" for s in uc_scenarios)
@@ -553,6 +572,7 @@ def test_scenario_c():
 # Test: Error Handling
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_uc_without_acceptance_criteria_fails_bdd_generation(mock_fs: MockFileSystem):
     """Test that UC without acceptance criteria cannot generate BDD scenarios."""
@@ -603,6 +623,7 @@ def test_feature_without_spec_reference_fails_test_generation(mock_fs: MockFileS
 # ============================================================================
 # Test: Services Identification Chain
 # ============================================================================
+
 
 @pytest.mark.integration
 def test_services_from_uc_used_in_test_mocks(sample_uc_with_bdd: str, mock_fs: MockFileSystem):

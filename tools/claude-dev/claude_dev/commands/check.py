@@ -69,7 +69,11 @@ def alignment(report: bool):
         tests_dir = config.get_path("tests")
 
         # Count specs and tests
-        uc_specs = list((specs_dir / "use-cases").glob("UC-*.md")) if (specs_dir / "use-cases").exists() else []
+        uc_specs = (
+            list((specs_dir / "use-cases").glob("UC-*.md"))
+            if (specs_dir / "use-cases").exists()
+            else []
+        )
         test_files = list(tests_dir.rglob("test_*.py")) if tests_dir.exists() else []
 
         console.print(f"Use Cases: {len(uc_specs)}")
@@ -82,12 +86,7 @@ def alignment(report: bool):
 
 
 @check.command()
-@click.option(
-    "--fail-under",
-    type=int,
-    default=None,
-    help="Fail if coverage is below threshold"
-)
+@click.option("--fail-under", type=int, default=None, help="Fail if coverage is below threshold")
 def coverage(fail_under: Optional[int]):
     """
     Check test coverage against threshold.
@@ -105,7 +104,7 @@ def coverage(fail_under: Optional[int]):
         "--cov=src",
         f"--cov-fail-under={threshold}",
         "--cov-report=term-missing",
-        "tests/"
+        "tests/",
     ]
 
     try:
@@ -185,10 +184,7 @@ def all():
     Example:
         claude-dev check all
     """
-    console.print(Panel(
-        "[bold cyan]Running All Quality Checks[/bold cyan]",
-        border_style="cyan"
-    ))
+    console.print(Panel("[bold cyan]Running All Quality Checks[/bold cyan]", border_style="cyan"))
 
     # Run alignment check
     console.print("\n[bold]1. Spec-Code Alignment[/bold]")

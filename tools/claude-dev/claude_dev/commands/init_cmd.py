@@ -71,14 +71,16 @@ def init(project_name: str, path: Optional[str], template: Optional[str], no_git
         console.print(f"[red]Error:[/red] Directory already exists: {project_path}")
         raise click.Abort()
 
-    console.print(Panel(
-        f"[bold cyan]Initializing Claude Development Framework Project[/bold cyan]\n\n"
-        f"Project: [green]{project_name}[/green]\n"
-        f"Path: [green]{project_path}[/green]\n"
-        f"Template: [green]{template or 'default'}[/green]",
-        title="Project Initialization",
-        border_style="cyan"
-    ))
+    console.print(
+        Panel(
+            f"[bold cyan]Initializing Claude Development Framework Project[/bold cyan]\n\n"
+            f"Project: [green]{project_name}[/green]\n"
+            f"Path: [green]{project_path}[/green]\n"
+            f"Template: [green]{template or 'default'}[/green]",
+            title="Project Initialization",
+            border_style="cyan",
+        )
+    )
 
     # Find framework root (where init-project.sh lives)
     framework_root = _find_framework_root()
@@ -97,7 +99,9 @@ def init(project_name: str, path: Optional[str], template: Optional[str], no_git
     console.print(f"  1. cd {project_name}")
     console.print(f"  2. Read .claude/CLAUDE.md")
     console.print(f"  3. Create your first use case:")
-    console.print(f"     [cyan]claude-dev spec new use-case --id UC-001 --title \"Your Feature\"[/cyan]")
+    console.print(
+        f'     [cyan]claude-dev spec new use-case --id UC-001 --title "Your Feature"[/cyan]'
+    )
 
 
 def _find_framework_root() -> Optional[Path]:
@@ -125,9 +129,7 @@ def _find_framework_root() -> Optional[Path]:
     return None
 
 
-def _script_init(
-    framework_root: Path, project_path: Path, project_name: str, no_git: bool
-):
+def _script_init(framework_root: Path, project_path: Path, project_name: str, no_git: bool):
     """
     Initialize project using init-project.sh script.
 
@@ -168,9 +170,7 @@ def _script_init(
             raise click.Abort()
 
 
-def _manual_init(
-    project_path: Path, project_name: str, template: Optional[str], no_git: bool
-):
+def _manual_init(project_path: Path, project_name: str, template: Optional[str], no_git: bool):
     """
     Manually initialize project (fallback if init-project.sh not found).
 
@@ -189,7 +189,16 @@ def _manual_init(
         task = progress.add_task("Creating project structure...", total=5)
 
         # Create main directories
-        for dir_name in [".claude", "specs", "src", "tests", "planning", "status", "research", "docs"]:
+        for dir_name in [
+            ".claude",
+            "specs",
+            "src",
+            "tests",
+            "planning",
+            "status",
+            "research",
+            "docs",
+        ]:
             ensure_dir(project_path / dir_name)
         progress.advance(task)
 

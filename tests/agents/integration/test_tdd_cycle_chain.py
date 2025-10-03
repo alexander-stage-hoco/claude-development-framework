@@ -34,6 +34,7 @@ from tests.agents.fixtures import MockFileSystem
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def mock_fs(tmp_path: Path) -> MockFileSystem:
     """Mock file system for testing."""
@@ -77,6 +78,7 @@ Scenario: Calculate total with multiple items
 # ============================================================================
 # Test: RED State - Test Writer Generates Failing Tests
 # ============================================================================
+
 
 @pytest.mark.integration
 def test_test_writer_generates_tests_in_red_state(sample_spec: str, mock_fs: MockFileSystem):
@@ -165,6 +167,7 @@ def test_calculate():
 # Test: GREEN State - Implementation Passes Tests
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_implementation_transitions_to_green_state(mock_fs: MockFileSystem):
     """Test that implementing code transitions from RED to GREEN."""
@@ -219,6 +222,7 @@ def test_implementation_has_spec_references(mock_fs: MockFileSystem):
 # ============================================================================
 # Test: Quality Checker Runs on GREEN State
 # ============================================================================
+
 
 @pytest.mark.integration
 def test_quality_checker_runs_after_green_state(mock_fs: MockFileSystem):
@@ -335,6 +339,7 @@ def test_quality_checker_validates_docstrings_with_spec_refs(mock_fs: MockFileSy
 # Test: Refactoring Analyzer Runs Only on GREEN
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_refactoring_analyzer_requires_green_state(mock_fs: MockFileSystem):
     """Test that refactoring-analyzer only runs when tests pass (GREEN)."""
@@ -435,6 +440,7 @@ def test_refactoring_analyzer_suggests_extract_function(mock_fs: MockFileSystem)
 # Test: Refactoring Maintains GREEN State
 # ============================================================================
 
+
 @pytest.mark.integration
 def test_refactoring_maintains_test_coverage(mock_fs: MockFileSystem):
     """Test that refactoring doesn't break tests (stays GREEN)."""
@@ -523,6 +529,7 @@ def calculate_total(order: Dict[str, Any]) -> float:
 # ============================================================================
 # Test: Complete TDD Cycle
 # ============================================================================
+
 
 @pytest.mark.integration
 def test_complete_tdd_cycle_red_green_refactor(sample_spec: str, mock_fs: MockFileSystem):

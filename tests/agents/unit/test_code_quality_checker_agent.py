@@ -28,6 +28,7 @@ from tests.agents.fixtures import AgentParser
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def code_quality_checker_parser(agents_dir: Path) -> AgentParser:
     """Parser for code-quality-checker agent."""
@@ -37,6 +38,7 @@ def code_quality_checker_parser(agents_dir: Path) -> AgentParser:
 # ============================================================================
 # Test: Agent Metadata
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_code_quality_checker_has_correct_metadata(code_quality_checker_parser: AgentParser):
@@ -55,6 +57,7 @@ def test_code_quality_checker_has_correct_metadata(code_quality_checker_parser: 
 # ============================================================================
 # Test: Responsibilities Coverage
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_code_quality_checker_covers_static_analysis(code_quality_checker_parser: AgentParser):
@@ -102,6 +105,7 @@ def test_code_quality_checker_covers_code_smells(code_quality_checker_parser: Ag
 # Test: Quality Checking Checklist
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_code_quality_checker_has_comprehensive_checklist(code_quality_checker_parser: AgentParser):
     """Test that agent has comprehensive quality checking checklist."""
@@ -126,6 +130,7 @@ def test_code_quality_checker_defines_thresholds(code_quality_checker_parser: Ag
 # ============================================================================
 # Test: Process Steps
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_code_quality_checker_process_runs_all_tools(code_quality_checker_parser: AgentParser):
@@ -162,8 +167,11 @@ def test_code_quality_checker_process_calculates_score(code_quality_checker_pars
 # Test: Quality Checks
 # ============================================================================
 
+
 @pytest.mark.unit
-def test_code_quality_checker_quality_checks_include_tools(code_quality_checker_parser: AgentParser):
+def test_code_quality_checker_quality_checks_include_tools(
+    code_quality_checker_parser: AgentParser,
+):
     """Test that quality checks verify tool execution."""
     checkboxes = code_quality_checker_parser.get_section_checkboxes("Quality Checks")
     checkboxes_text = " ".join(checkboxes).lower()
@@ -174,7 +182,9 @@ def test_code_quality_checker_quality_checks_include_tools(code_quality_checker_
 
 
 @pytest.mark.unit
-def test_code_quality_checker_quality_checks_include_score(code_quality_checker_parser: AgentParser):
+def test_code_quality_checker_quality_checks_include_score(
+    code_quality_checker_parser: AgentParser,
+):
     """Test that quality checks verify score calculation."""
     checkboxes = code_quality_checker_parser.get_section_checkboxes("Quality Checks")
     checkboxes_text = " ".join(checkboxes).lower()
@@ -186,8 +196,11 @@ def test_code_quality_checker_quality_checks_include_score(code_quality_checker_
 # Test: Anti-Patterns
 # ============================================================================
 
+
 @pytest.mark.unit
-def test_code_quality_checker_warns_against_ignoring_critical(code_quality_checker_parser: AgentParser):
+def test_code_quality_checker_warns_against_ignoring_critical(
+    code_quality_checker_parser: AgentParser,
+):
     """Test that anti-patterns warn against passing with critical violations."""
     antipatterns = code_quality_checker_parser.extract_antipatterns()
     antipatterns_text = " ".join(antipatterns).lower()
@@ -196,7 +209,9 @@ def test_code_quality_checker_warns_against_ignoring_critical(code_quality_check
 
 
 @pytest.mark.unit
-def test_code_quality_checker_requires_file_line_references(code_quality_checker_parser: AgentParser):
+def test_code_quality_checker_requires_file_line_references(
+    code_quality_checker_parser: AgentParser,
+):
     """Test that anti-patterns require file:line references."""
     antipatterns = code_quality_checker_parser.extract_antipatterns()
     antipatterns_text = " ".join(antipatterns).lower()
@@ -207,6 +222,7 @@ def test_code_quality_checker_requires_file_line_references(code_quality_checker
 # ============================================================================
 # Test: Output Specification
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_code_quality_checker_output_includes_score(code_quality_checker_parser: AgentParser):
@@ -227,7 +243,9 @@ def test_code_quality_checker_output_includes_violations(code_quality_checker_pa
 
 
 @pytest.mark.unit
-def test_code_quality_checker_output_includes_tool_results(code_quality_checker_parser: AgentParser):
+def test_code_quality_checker_output_includes_tool_results(
+    code_quality_checker_parser: AgentParser,
+):
     """Test that output includes tool results."""
     output_section = code_quality_checker_parser.get_section("Output")
     content = output_section.lower()
@@ -241,12 +259,15 @@ def test_code_quality_checker_output_includes_tool_results(code_quality_checker_
 # Test: Score Calculation
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_code_quality_checker_defines_score_calculation(code_quality_checker_parser: AgentParser):
     """Test that agent defines score calculation methodology."""
     content = code_quality_checker_parser.content.lower()
 
-    assert "quality score calculation" in content or "base score" in content or "deductions" in content
+    assert (
+        "quality score calculation" in content or "base score" in content or "deductions" in content
+    )
 
 
 @pytest.mark.unit
@@ -261,6 +282,7 @@ def test_code_quality_checker_defines_pass_threshold(code_quality_checker_parser
 # Test: Code Examples
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_code_quality_checker_provides_report_example(code_quality_checker_parser: AgentParser):
     """Test that agent provides example quality report."""
@@ -272,6 +294,7 @@ def test_code_quality_checker_provides_report_example(code_quality_checker_parse
 # ============================================================================
 # Test: File Operations
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_code_quality_checker_reads_implementation_files(code_quality_checker_parser: AgentParser):
@@ -294,6 +317,7 @@ def test_code_quality_checker_excludes_tests(code_quality_checker_parser: AgentP
 # Test: Framework Compliance
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_code_quality_checker_enforces_rule_9(code_quality_checker_parser: AgentParser):
     """Test that agent enforces Rule #9 (Code Quality Standards)."""
@@ -305,6 +329,7 @@ def test_code_quality_checker_enforces_rule_9(code_quality_checker_parser: Agent
 # ============================================================================
 # Test: Next Steps
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_code_quality_checker_next_steps_mention_fixes(code_quality_checker_parser: AgentParser):
@@ -323,12 +348,17 @@ def test_code_quality_checker_next_steps_mention_rerun(code_quality_checker_pars
     next_steps = code_quality_checker_parser.get_section("Next Steps")
 
     if next_steps:
-        assert "re-run" in next_steps.lower() or "rerun" in next_steps.lower() or "verify" in next_steps.lower()
+        assert (
+            "re-run" in next_steps.lower()
+            or "rerun" in next_steps.lower()
+            or "verify" in next_steps.lower()
+        )
 
 
 # ============================================================================
 # Test: Content Quality
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_code_quality_checker_has_severity_levels(code_quality_checker_parser: AgentParser):

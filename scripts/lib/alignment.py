@@ -19,6 +19,7 @@ from typing import List, Dict, Set, Tuple
 @dataclass
 class UseCase:
     """Represents a use case specification with acceptance criteria."""
+
     uc_id: str
     file_path: Path
     acceptance_criteria: List[str] = field(default_factory=list)
@@ -31,6 +32,7 @@ class UseCase:
 @dataclass
 class BDDFeature:
     """Represents a BDD feature file with scenarios."""
+
     feature_name: str
     file_path: Path
     scenarios: List[str] = field(default_factory=list)
@@ -43,6 +45,7 @@ class BDDFeature:
 @dataclass
 class AlignmentIssue:
     """Represents a spec-code alignment issue."""
+
     issue_type: str
     uc_id: str
     feature_name: str
@@ -100,7 +103,7 @@ class AlignmentParser:
             uc_id=uc_id,
             file_path=uc_file,
             acceptance_criteria=criteria,
-            bdd_file_referenced=bdd_ref
+            bdd_file_referenced=bdd_ref,
         )
 
     @staticmethod
@@ -114,9 +117,7 @@ class AlignmentParser:
 
         # Find acceptance criteria section
         ac_match = re.search(
-            r'## Acceptance Criteria\s*\n(.*?)(?=\n##|\Z)',
-            content,
-            re.DOTALL | re.IGNORECASE
+            r"## Acceptance Criteria\s*\n(.*?)(?=\n##|\Z)", content, re.DOTALL | re.IGNORECASE
         )
 
         if not ac_match:
@@ -126,11 +127,11 @@ class AlignmentParser:
 
         # Extract numbered or bulleted items
         # Pattern: "1. ", "- ", "* ", etc.
-        for line in ac_section.split('\n'):
+        for line in ac_section.split("\n"):
             line = line.strip()
-            if re.match(r'^(\d+\.|\-|\*|\+)\s+', line):
+            if re.match(r"^(\d+\.|\-|\*|\+)\s+", line):
                 # Remove leading marker
-                criterion = re.sub(r'^(\d+\.|\-|\*|\+)\s+', '', line)
+                criterion = re.sub(r"^(\d+\.|\-|\*|\+)\s+", "", line)
                 if criterion:
                     criteria.append(criterion)
 
@@ -146,20 +147,12 @@ class AlignmentParser:
         - "Feature File: features/uc-001-example.feature"
         """
         # Pattern 1: Markdown code format
-        match = re.search(
-            r'BDD File:\s*`([^`]+\.feature)`',
-            content,
-            re.IGNORECASE
-        )
+        match = re.search(r"BDD File:\s*`([^`]+\.feature)`", content, re.IGNORECASE)
         if match:
             return match.group(1)
 
         # Pattern 2: Plain text
-        match = re.search(
-            r'(?:BDD|Feature) File:\s*([^\s\n]+\.feature)',
-            content,
-            re.IGNORECASE
-        )
+        match = re.search(r"(?:BDD|Feature) File:\s*([^\s\n]+\.feature)", content, re.IGNORECASE)
         if match:
             return match.group(1)
 
@@ -194,7 +187,7 @@ class AlignmentParser:
         content = feature_file.read_text()
 
         # Extract feature name
-        feature_match = re.search(r'^Feature:\s*(.+)$', content, re.MULTILINE)
+        feature_match = re.search(r"^Feature:\s*(.+)$", content, re.MULTILINE)
         if not feature_match:
             return None
         feature_name = feature_match.group(1).strip()
@@ -209,7 +202,7 @@ class AlignmentParser:
             feature_name=feature_name,
             file_path=feature_file,
             scenarios=scenarios,
-            uc_reference=uc_ref
+            uc_reference=uc_ref,
         )
 
     @staticmethod
@@ -224,9 +217,7 @@ class AlignmentParser:
         scenarios = []
 
         for match in re.finditer(
-            r'^\s*(?:Scenario|Scenario Outline):\s*(.+)$',
-            content,
-            re.MULTILINE
+            r"^\s*(?:Scenario|Scenario Outline):\s*(.+)$", content, re.MULTILINE
         ):
             scenario_name = match.group(1).strip()
             scenarios.append(scenario_name)
@@ -243,14 +234,14 @@ class AlignmentParser:
         2. Filename (e.g., uc-001-example.feature)
         """
         # Pattern 1: Comment with UC-XXX
-        match = re.search(r'#.*?(UC-\d+)', content)
+        match = re.search(r"#.*?(UC-\d+)", content)
         if match:
             return match.group(1)
 
         # Pattern 2: Filename
-        match = re.search(r'(uc-\d+)', filename, re.IGNORECASE)
+        match = re.search(r"(uc-\d+)", filename, re.IGNORECASE)
         if match:
-            return match.group(1).upper().replace('UC-', 'UC-')
+            return match.group(1).upper().replace("UC-", "UC-")
 
         return ""
 
@@ -259,9 +250,7 @@ class AlignmentValidator:
     """Validates alignment between use cases and BDD features."""
 
     def validate(
-        self,
-        use_cases: Dict[str, UseCase],
-        bdd_features: Dict[str, BDDFeature]
+        self, use_cases: Dict[str, UseCase], bdd_features: Dict[str, BDDFeature]
     ) -> List[AlignmentIssue]:
         """
         Validate spec-code alignment.
@@ -285,9 +274,7 @@ class AlignmentValidator:
         return issues
 
     def _check_missing_bdd_files(
-        self,
-        use_cases: Dict[str, UseCase],
-        bdd_features: Dict[str, BDDFeature]
+        self, use_cases: Dict[str, UseCase], bdd_features: Dict[str, BDDFeature]
     ) -> List[AlignmentIssue]:
         """Check for use cases without corresponding BDD files."""
         issues = []
@@ -300,48 +287,50 @@ class AlignmentValidator:
 
         for uc_id, uc in use_cases.items():
             if uc_id not in ucs_with_bdd:
-                issues.append(AlignmentIssue(
-                    issue_type="missing_bdd",
-                    uc_id=uc_id,
-                    feature_name="",
-                    message=f"{uc_id} has no corresponding BDD feature file",
-                    severity="error"
-                ))
+                issues.append(
+                    AlignmentIssue(
+                        issue_type="missing_bdd",
+                        uc_id=uc_id,
+                        feature_name="",
+                        message=f"{uc_id} has no corresponding BDD feature file",
+                        severity="error",
+                    )
+                )
 
         return issues
 
     def _check_orphaned_features(
-        self,
-        use_cases: Dict[str, UseCase],
-        bdd_features: Dict[str, BDDFeature]
+        self, use_cases: Dict[str, UseCase], bdd_features: Dict[str, BDDFeature]
     ) -> List[AlignmentIssue]:
         """Check for BDD features without UC references."""
         issues = []
 
         for feature_name, feature in bdd_features.items():
             if not feature.uc_reference:
-                issues.append(AlignmentIssue(
-                    issue_type="orphaned_feature",
-                    uc_id="",
-                    feature_name=feature_name,
-                    message=f"BDD feature '{feature_name}' has no UC reference",
-                    severity="warning"
-                ))
+                issues.append(
+                    AlignmentIssue(
+                        issue_type="orphaned_feature",
+                        uc_id="",
+                        feature_name=feature_name,
+                        message=f"BDD feature '{feature_name}' has no UC reference",
+                        severity="warning",
+                    )
+                )
             elif feature.uc_reference not in use_cases:
-                issues.append(AlignmentIssue(
-                    issue_type="broken_uc_ref",
-                    uc_id=feature.uc_reference,
-                    feature_name=feature_name,
-                    message=f"BDD feature '{feature_name}' references non-existent {feature.uc_reference}",
-                    severity="error"
-                ))
+                issues.append(
+                    AlignmentIssue(
+                        issue_type="broken_uc_ref",
+                        uc_id=feature.uc_reference,
+                        feature_name=feature_name,
+                        message=f"BDD feature '{feature_name}' references non-existent {feature.uc_reference}",
+                        severity="error",
+                    )
+                )
 
         return issues
 
     def _check_count_mismatch(
-        self,
-        use_cases: Dict[str, UseCase],
-        bdd_features: Dict[str, BDDFeature]
+        self, use_cases: Dict[str, UseCase], bdd_features: Dict[str, BDDFeature]
     ) -> List[AlignmentIssue]:
         """Check for scenario count vs acceptance criteria count mismatches."""
         issues = []
@@ -361,31 +350,29 @@ class AlignmentValidator:
             scenario_count = len(feature.scenarios)
 
             if criteria_count != scenario_count:
-                issues.append(AlignmentIssue(
-                    issue_type="count_mismatch",
-                    uc_id=uc_id,
-                    feature_name=feature.feature_name,
-                    message=(
-                        f"{uc_id}: {criteria_count} acceptance criteria "
-                        f"but {scenario_count} BDD scenarios in '{feature.feature_name}'"
-                    ),
-                    severity="warning"
-                ))
+                issues.append(
+                    AlignmentIssue(
+                        issue_type="count_mismatch",
+                        uc_id=uc_id,
+                        feature_name=feature.feature_name,
+                        message=(
+                            f"{uc_id}: {criteria_count} acceptance criteria "
+                            f"but {scenario_count} BDD scenarios in '{feature.feature_name}'"
+                        ),
+                        severity="warning",
+                    )
+                )
 
         return issues
 
     def _check_broken_references(
-        self,
-        use_cases: Dict[str, UseCase],
-        bdd_features: Dict[str, BDDFeature]
+        self, use_cases: Dict[str, UseCase], bdd_features: Dict[str, BDDFeature]
     ) -> List[AlignmentIssue]:
         """Check for use cases referencing non-existent BDD files."""
         issues = []
 
         # Build set of existing BDD file paths (normalized)
-        existing_bdd_files = {
-            str(f.file_path.name).lower() for f in bdd_features.values()
-        }
+        existing_bdd_files = {str(f.file_path.name).lower() for f in bdd_features.values()}
 
         for uc_id, uc in use_cases.items():
             if not uc.bdd_file_referenced:
@@ -395,12 +382,14 @@ class AlignmentValidator:
             ref_filename = Path(uc.bdd_file_referenced).name.lower()
 
             if ref_filename not in existing_bdd_files:
-                issues.append(AlignmentIssue(
-                    issue_type="broken_bdd_ref",
-                    uc_id=uc_id,
-                    feature_name="",
-                    message=f"{uc_id} references BDD file '{uc.bdd_file_referenced}' which doesn't exist",
-                    severity="error"
-                ))
+                issues.append(
+                    AlignmentIssue(
+                        issue_type="broken_bdd_ref",
+                        uc_id=uc_id,
+                        feature_name="",
+                        message=f"{uc_id} references BDD file '{uc.bdd_file_referenced}' which doesn't exist",
+                        severity="error",
+                    )
+                )
 
         return issues

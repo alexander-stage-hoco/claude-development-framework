@@ -28,6 +28,7 @@ from tests.agents.fixtures import get_all_agent_paths
 # Helper Functions
 # ============================================================================
 
+
 def get_all_test_files() -> List[Path]:
     """Get all test files in the test suite."""
     test_root = Path(__file__).parent.parent
@@ -70,6 +71,7 @@ def count_tests_by_marker(marker: str) -> int:
 # Test: Agent Coverage
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_all_agents_have_tests():
     """Test that all agents have test coverage."""
@@ -93,13 +95,12 @@ def test_all_agents_have_tests():
         # Tier 2
         "context-optimizer",
         "dependency-mapper",
-        "api-contract-writer"
+        "api-contract-writer",
     }
 
     untested_critical = critical_agents & untested
 
-    assert len(untested_critical) == 0, \
-        f"Critical agents without tests: {untested_critical}"
+    assert len(untested_critical) == 0, f"Critical agents without tests: {untested_critical}"
 
 
 @pytest.mark.performance
@@ -111,7 +112,7 @@ def test_tier1_agents_have_comprehensive_tests():
         "bdd-scenario-writer",
         "code-quality-checker",
         "refactoring-analyzer",
-        "adr-manager"
+        "adr-manager",
     }
 
     # Each Tier 1 agent should have unit tests
@@ -120,15 +121,13 @@ def test_tier1_agents_have_comprehensive_tests():
     for agent in tier1_agents:
         test_file = test_dir / f"test_{agent.replace('-', '_')}_agent.py"
 
-        assert test_file.exists(), \
-            f"Tier 1 agent {agent} missing unit tests at {test_file}"
+        assert test_file.exists(), f"Tier 1 agent {agent} missing unit tests at {test_file}"
 
         # Test file should be substantial (> 100 lines)
         content = test_file.read_text()
         lines = len(content.split("\n"))
 
-        assert lines > 100, \
-            f"Tier 1 agent {agent} has minimal tests ({lines} lines)"
+        assert lines > 100, f"Tier 1 agent {agent} has minimal tests ({lines} lines)"
 
 
 @pytest.mark.performance
@@ -146,11 +145,11 @@ def test_all_tiers_represented_in_tests():
         content = agent_path.read_text()
 
         # Extract tier from YAML front matter
-        if "tier: 1" in content or "tier: \"1\"" in content:
+        if "tier: 1" in content or 'tier: "1"' in content:
             tier_counts[1] += 1
-        elif "tier: 2" in content or "tier: \"2\"" in content:
+        elif "tier: 2" in content or 'tier: "2"' in content:
             tier_counts[2] += 1
-        elif "tier: 3" in content or "tier: \"3\"" in content:
+        elif "tier: 3" in content or 'tier: "3"' in content:
             tier_counts[3] += 1
 
     # Should have agents in all tiers
@@ -162,6 +161,7 @@ def test_all_tiers_represented_in_tests():
 # ============================================================================
 # Test: Test Type Distribution
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_balanced_test_type_distribution():
@@ -176,20 +176,19 @@ def test_balanced_test_type_distribution():
     # Unit tests should be majority (50-70%)
     unit_percentage = (unit_count / total * 100) if total > 0 else 0
 
-    assert 40 < unit_percentage < 80, \
-        f"Unit tests are {unit_percentage:.1f}% of total (expected 40-80%)"
+    assert (
+        40 < unit_percentage < 80
+    ), f"Unit tests are {unit_percentage:.1f}% of total (expected 40-80%)"
 
     # Should have some integration tests (10-30%)
     integration_percentage = (integration_count / total * 100) if total > 0 else 0
 
-    assert integration_percentage > 5, \
-        f"Too few integration tests ({integration_percentage:.1f}%)"
+    assert integration_percentage > 5, f"Too few integration tests ({integration_percentage:.1f}%)"
 
     # Should have some e2e tests (10-30%)
     e2e_percentage = (e2e_count / total * 100) if total > 0 else 0
 
-    assert e2e_percentage > 5, \
-        f"Too few e2e tests ({e2e_percentage:.1f}%)"
+    assert e2e_percentage > 5, f"Too few e2e tests ({e2e_percentage:.1f}%)"
 
 
 @pytest.mark.performance
@@ -198,8 +197,7 @@ def test_sufficient_unit_tests():
     unit_count = count_tests_by_marker("unit")
 
     # Should have at least 200 unit tests (comprehensive coverage)
-    assert unit_count >= 150, \
-        f"Only {unit_count} unit tests (expected ≥ 150 for 18 agents)"
+    assert unit_count >= 150, f"Only {unit_count} unit tests (expected ≥ 150 for 18 agents)"
 
 
 @pytest.mark.performance
@@ -208,8 +206,7 @@ def test_sufficient_integration_tests():
     integration_count = count_tests_by_marker("integration")
 
     # Should have at least 30 integration tests (key workflows)
-    assert integration_count >= 20, \
-        f"Only {integration_count} integration tests (expected ≥ 20)"
+    assert integration_count >= 20, f"Only {integration_count} integration tests (expected ≥ 20)"
 
 
 @pytest.mark.performance
@@ -218,13 +215,13 @@ def test_sufficient_e2e_tests():
     e2e_count = count_tests_by_marker("e2e")
 
     # Should have at least 20 e2e tests (complete workflows)
-    assert e2e_count >= 15, \
-        f"Only {e2e_count} e2e tests (expected ≥ 15)"
+    assert e2e_count >= 15, f"Only {e2e_count} e2e tests (expected ≥ 15)"
 
 
 # ============================================================================
 # Test: Critical Functionality Coverage
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_tdd_workflow_tested():
@@ -299,6 +296,7 @@ def test_quality_gates_tested():
 # Test: Workflow Chain Coverage
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_uc_to_bdd_workflow_tested():
     """Test that UC → BDD workflow is tested."""
@@ -306,8 +304,7 @@ def test_uc_to_bdd_workflow_tested():
 
     uc_bdd_test = integration_dir / "test_uc_to_bdd_to_test_chain.py"
 
-    assert uc_bdd_test.exists(), \
-        "UC → BDD → Test workflow not tested"
+    assert uc_bdd_test.exists(), "UC → BDD → Test workflow not tested"
 
 
 @pytest.mark.performance
@@ -317,8 +314,7 @@ def test_feature_development_workflow_tested():
 
     feature_workflow_test = e2e_dir / "test_feature_development_workflow.py"
 
-    assert feature_workflow_test.exists(), \
-        "Feature development workflow not tested"
+    assert feature_workflow_test.exists(), "Feature development workflow not tested"
 
 
 @pytest.mark.performance
@@ -328,8 +324,7 @@ def test_iteration_workflow_tested():
 
     iteration_test = e2e_dir / "test_iteration_workflow.py"
 
-    assert iteration_test.exists(), \
-        "Iteration workflow not tested"
+    assert iteration_test.exists(), "Iteration workflow not tested"
 
 
 @pytest.mark.performance
@@ -339,13 +334,13 @@ def test_service_creation_workflow_tested():
 
     service_test = e2e_dir / "test_service_creation_workflow.py"
 
-    assert service_test.exists(), \
-        "Service creation workflow not tested"
+    assert service_test.exists(), "Service creation workflow not tested"
 
 
 # ============================================================================
 # Test: Framework Rules Coverage
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_twelve_rules_referenced_in_tests():
@@ -363,8 +358,9 @@ def test_twelve_rules_referenced_in_tests():
                 rules_mentioned.add(i)
 
     # At least some rules should be explicitly tested
-    assert len(rules_mentioned) >= 3, \
-        f"Only {len(rules_mentioned)} rules explicitly referenced in tests"
+    assert (
+        len(rules_mentioned) >= 3
+    ), f"Only {len(rules_mentioned)} rules explicitly referenced in tests"
 
 
 @pytest.mark.performance
@@ -405,22 +401,22 @@ def test_tdd_cycle_rule_tested():
 # Test: Test Suite Completeness
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_test_suite_has_minimum_tests():
     """Test that test suite has minimum number of tests."""
     total_tests = (
-        count_tests_by_marker("unit") +
-        count_tests_by_marker("integration") +
-        count_tests_by_marker("e2e") +
-        count_tests_by_marker("performance")
+        count_tests_by_marker("unit")
+        + count_tests_by_marker("integration")
+        + count_tests_by_marker("e2e")
+        + count_tests_by_marker("performance")
     )
 
     # For 18 agents, should have at least 400 tests total
     # (Phases 1-7 combined)
     min_tests = 300
 
-    assert total_tests >= min_tests, \
-        f"Only {total_tests} total tests (expected ≥ {min_tests})"
+    assert total_tests >= min_tests, f"Only {total_tests} total tests (expected ≥ {min_tests})"
 
 
 @pytest.mark.performance
@@ -434,14 +430,12 @@ def test_test_files_organized_by_type():
     for dir_name in expected_dirs:
         dir_path = test_root / dir_name
 
-        assert dir_path.exists(), \
-            f"Missing test directory: {dir_name}"
+        assert dir_path.exists(), f"Missing test directory: {dir_name}"
 
         # Directory should have test files
         test_files = list(dir_path.glob("test_*.py"))
 
-        assert len(test_files) > 0, \
-            f"No test files in {dir_name} directory"
+        assert len(test_files) > 0, f"No test files in {dir_name} directory"
 
 
 @pytest.mark.performance
@@ -452,22 +446,18 @@ def test_fixture_helpers_available():
     assert fixtures_dir.exists(), "Missing fixtures directory"
 
     # Essential fixtures
-    essential_fixtures = [
-        "agent_parser.py",
-        "mock_helpers.py",
-        "__init__.py"
-    ]
+    essential_fixtures = ["agent_parser.py", "mock_helpers.py", "__init__.py"]
 
     for fixture_file in essential_fixtures:
         fixture_path = fixtures_dir / fixture_file
 
-        assert fixture_path.exists(), \
-            f"Missing essential fixture: {fixture_file}"
+        assert fixture_path.exists(), f"Missing essential fixture: {fixture_file}"
 
 
 # ============================================================================
 # Test: Coverage Gaps Analysis
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_identify_coverage_gaps():
@@ -487,12 +477,13 @@ def test_identify_coverage_gaps():
         "total_agents": len(all_agents),
         "tested_agents": len(tested_agents),
         "untested_agents": list(untested),
-        "coverage_percentage": (len(tested_agents) / len(all_agents) * 100) if all_agents else 0
+        "coverage_percentage": (len(tested_agents) / len(all_agents) * 100) if all_agents else 0,
     }
 
     # Coverage should be at least 70%
-    assert coverage_report["coverage_percentage"] >= 60, \
-        f"Agent coverage only {coverage_report['coverage_percentage']:.1f}% (expected ≥ 60%)"
+    assert (
+        coverage_report["coverage_percentage"] >= 60
+    ), f"Agent coverage only {coverage_report['coverage_percentage']:.1f}% (expected ≥ 60%)"
 
 
 @pytest.mark.performance
@@ -511,6 +502,7 @@ def test_test_suite_documentation_exists():
 # ============================================================================
 # Test: Test Quality Metrics
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_tests_have_docstrings():
@@ -544,10 +536,13 @@ def test_tests_have_docstrings():
                     in_test_function = False
 
     # Most tests should have docstrings (≥ 80%)
-    docstring_percentage = ((total_tests - tests_without_docstrings) / total_tests * 100) if total_tests > 0 else 0
+    docstring_percentage = (
+        ((total_tests - tests_without_docstrings) / total_tests * 100) if total_tests > 0 else 0
+    )
 
-    assert docstring_percentage >= 70, \
-        f"Only {docstring_percentage:.1f}% of tests have docstrings (expected ≥ 70%)"
+    assert (
+        docstring_percentage >= 70
+    ), f"Only {docstring_percentage:.1f}% of tests have docstrings (expected ≥ 70%)"
 
 
 @pytest.mark.performance
@@ -560,28 +555,34 @@ def test_test_suite_summary_metrics():
         "unit_tests": count_tests_by_marker("unit"),
         "integration_tests": count_tests_by_marker("integration"),
         "e2e_tests": count_tests_by_marker("e2e"),
-        "performance_tests": count_tests_by_marker("performance")
+        "performance_tests": count_tests_by_marker("performance"),
     }
 
-    metrics["total_tests"] = sum([
-        metrics["unit_tests"],
-        metrics["integration_tests"],
-        metrics["e2e_tests"],
-        metrics["performance_tests"]
-    ])
+    metrics["total_tests"] = sum(
+        [
+            metrics["unit_tests"],
+            metrics["integration_tests"],
+            metrics["e2e_tests"],
+            metrics["performance_tests"],
+        ]
+    )
 
     metrics["agent_coverage"] = (
-        metrics["tested_agents"] / metrics["total_agents"] * 100
-    ) if metrics["total_agents"] > 0 else 0
+        (metrics["tested_agents"] / metrics["total_agents"] * 100)
+        if metrics["total_agents"] > 0
+        else 0
+    )
 
     # Summary assertions
-    assert metrics["total_tests"] >= 300, \
-        f"Test suite has {metrics['total_tests']} tests (expected ≥ 300)"
+    assert (
+        metrics["total_tests"] >= 300
+    ), f"Test suite has {metrics['total_tests']} tests (expected ≥ 300)"
 
     # Only check agent coverage if agents exist
     if metrics["total_agents"] > 0:
-        assert metrics["agent_coverage"] >= 60, \
-            f"Agent coverage is {metrics['agent_coverage']:.1f}% (expected ≥ 60%)"
+        assert (
+            metrics["agent_coverage"] >= 60
+        ), f"Agent coverage is {metrics['agent_coverage']:.1f}% (expected ≥ 60%)"
 
     # Report for informational purposes
     # (Actual metrics will be visible in test output)

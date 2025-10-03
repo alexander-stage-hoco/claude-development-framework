@@ -20,11 +20,13 @@ pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
 class UserAlreadyExistsError(Exception):
     """Raised when user with email or username already exists."""
+
     pass
 
 
 class UserNotFoundError(Exception):
     """Raised when user is not found."""
+
     pass
 
 
@@ -58,20 +60,12 @@ class UserService:
             UserAlreadyExistsError: If email or username already exists
         """
         # Check if email exists (case-insensitive)
-        existing_user = (
-            self.db.query(User)
-            .filter(User.email.ilike(user_data.email))
-            .first()
-        )
+        existing_user = self.db.query(User).filter(User.email.ilike(user_data.email)).first()
         if existing_user:
             raise UserAlreadyExistsError("Email already registered")
 
         # Check if username exists
-        existing_user = (
-            self.db.query(User)
-            .filter(User.username == user_data.username)
-            .first()
-        )
+        existing_user = self.db.query(User).filter(User.username == user_data.username).first()
         if existing_user:
             raise UserAlreadyExistsError("Username already exists")
 
@@ -142,13 +136,7 @@ class UserService:
             Tuple of (list of users, total count)
         """
         total = self.db.query(User).count()
-        users = (
-            self.db.query(User)
-            .order_by(User.created_at.desc())
-            .offset(skip)
-            .limit(limit)
-            .all()
-        )
+        users = self.db.query(User).order_by(User.created_at.desc()).offset(skip).limit(limit).all()
         return users, total
 
     def update_user(self, user_id: UUID, user_update: UserUpdate) -> User:

@@ -29,6 +29,7 @@ from tests.agents.fixtures import AgentParser, get_all_agent_paths
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def all_agents() -> List[Tuple[str, AgentParser]]:
     """Get all agents with their parsers."""
@@ -43,6 +44,7 @@ def all_agents() -> List[Tuple[str, AgentParser]]:
 # ============================================================================
 # Test: Context Size Measurement
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_agent_context_size_reasonable(all_agents: List[Tuple[str, AgentParser]]):
@@ -60,8 +62,10 @@ def test_agent_context_size_reasonable(all_agents: List[Tuple[str, AgentParser]]
 
     # Report oversized agents
     if oversized_agents:
-        report = "\n".join(f"  - {name}: {size} chars (over by {size - context_budget})"
-                          for name, size in oversized_agents)
+        report = "\n".join(
+            f"  - {name}: {size} chars (over by {size - context_budget})"
+            for name, size in oversized_agents
+        )
         # Note: This is a soft check - some agents may legitimately need more context
         # The test documents the situation rather than failing
         pass  # Informational only
@@ -99,7 +103,7 @@ def test_tier1_agents_context_optimized(all_agents: List[Tuple[str, AgentParser]
         "uc-writer",
         "bdd-scenario-writer",
         "code-quality-checker",
-        "refactoring-analyzer"
+        "refactoring-analyzer",
     ]
 
     # Tier 1 agents should be leaner (used more frequently)
@@ -117,6 +121,7 @@ def test_tier1_agents_context_optimized(all_agents: List[Tuple[str, AgentParser]
 # ============================================================================
 # Test: Section Size Analysis
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_section_sizes_reasonable(all_agents: List[Tuple[str, AgentParser]]):
@@ -158,6 +163,7 @@ def test_examples_section_not_excessive(all_agents: List[Tuple[str, AgentParser]
 # Test: Redundancy Detection
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_no_duplicate_sections(all_agents: List[Tuple[str, AgentParser]]):
     """Test that agents don't have duplicate section content."""
@@ -182,13 +188,7 @@ def test_minimal_instruction_repetition(all_agents: List[Tuple[str, AgentParser]
         body = parser.body.lower()
 
         # Check for repeated phrases (common patterns)
-        repeated_phrases = [
-            "specification:",
-            "use case",
-            "you must",
-            "always",
-            "never"
-        ]
+        repeated_phrases = ["specification:", "use case", "you must", "always", "never"]
 
         for phrase in repeated_phrases:
             count = body.count(phrase)
@@ -203,6 +203,7 @@ def test_minimal_instruction_repetition(all_agents: List[Tuple[str, AgentParser]
 # Test: Essential Content Verification
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_agent_has_essential_sections_only(all_agents: List[Tuple[str, AgentParser]]):
     """Test that agents contain only essential sections."""
@@ -212,7 +213,7 @@ def test_agent_has_essential_sections_only(all_agents: List[Tuple[str, AgentPars
         "Process",
         "Output Format",
         "Quality Checks",
-        "Examples"
+        "Examples",
     }
 
     optional_sections = {
@@ -220,7 +221,7 @@ def test_agent_has_essential_sections_only(all_agents: List[Tuple[str, AgentPars
         "Common Mistakes",
         "Edge Cases",
         "Integration Points",
-        "Handoff Protocol"
+        "Handoff Protocol",
     }
 
     for name, parser in all_agents:
@@ -229,8 +230,9 @@ def test_agent_has_essential_sections_only(all_agents: List[Tuple[str, AgentPars
         # All agents should have most essential sections
         missing_essential = essential_sections - agent_sections
         # It's OK to miss 1-2 essential sections if not applicable
-        assert len(missing_essential) <= 2, \
-            f"{name}: Missing too many essential sections: {missing_essential}"
+        assert (
+            len(missing_essential) <= 2
+        ), f"{name}: Missing too many essential sections: {missing_essential}"
 
         # Optional sections are fine but should serve a purpose
         extra_sections = agent_sections - essential_sections - optional_sections
@@ -258,6 +260,7 @@ def test_purpose_section_concise(all_agents: List[Tuple[str, AgentParser]]):
 # ============================================================================
 # Test: Context Budget Compliance
 # ============================================================================
+
 
 @pytest.mark.performance
 def test_agent_fits_in_context_window(all_agents: List[Tuple[str, AgentParser]]):
@@ -300,15 +303,12 @@ def test_combined_agent_context_reasonable(all_agents: List[Tuple[str, AgentPars
 # Test: Cross-Agent Context Comparison
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_similar_agents_similar_context_size(all_agents: List[Tuple[str, AgentParser]]):
     """Test that similar agents have similar context sizes."""
     # Writer agents should be similar in size
-    writer_agents = {
-        "test-writer": 0,
-        "uc-writer": 0,
-        "bdd-scenario-writer": 0
-    }
+    writer_agents = {"test-writer": 0, "uc-writer": 0, "bdd-scenario-writer": 0}
 
     for name, parser in all_agents:
         if name in writer_agents:
@@ -332,6 +332,7 @@ def test_similar_agents_similar_context_size(all_agents: List[Tuple[str, AgentPa
 # Test: Optimization Opportunities
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_identify_context_optimization_opportunities(all_agents: List[Tuple[str, AgentParser]]):
     """Identify opportunities for context optimization."""
@@ -339,7 +340,7 @@ def test_identify_context_optimization_opportunities(all_agents: List[Tuple[str,
         "oversized_agents": [],
         "oversized_sections": [],
         "redundant_content": [],
-        "verbose_examples": []
+        "verbose_examples": [],
     }
 
     for name, parser in all_agents:
@@ -353,7 +354,9 @@ def test_identify_context_optimization_opportunities(all_agents: List[Tuple[str,
         for section_name in parser.sections.keys():
             section_content = parser.get_section_content(section_name)
             if section_content and len(section_content) > 2000:
-                optimization_report["oversized_sections"].append((name, section_name, len(section_content)))
+                optimization_report["oversized_sections"].append(
+                    (name, section_name, len(section_content))
+                )
 
         # Check for verbose examples
         examples = parser.get_section_content("Examples")
@@ -373,8 +376,7 @@ def test_context_efficiency_score(all_agents: List[Tuple[str, AgentParser]]):
         # Calculate useful content vs overhead
         essential_sections = ["Purpose", "Process", "Output Format", "Quality Checks"]
         essential_size = sum(
-            len(parser.get_section_content(section) or "")
-            for section in essential_sections
+            len(parser.get_section_content(section) or "") for section in essential_sections
         )
 
         if total_size > 0:
@@ -391,14 +393,12 @@ def test_context_efficiency_score(all_agents: List[Tuple[str, AgentParser]]):
 # Test: Section Distribution
 # ============================================================================
 
+
 @pytest.mark.performance
 def test_section_distribution_balanced(all_agents: List[Tuple[str, AgentParser]]):
     """Test that section sizes are reasonably balanced."""
     for name, parser in all_agents:
-        section_sizes = {
-            section: len(content)
-            for section, content in parser.sections.items()
-        }
+        section_sizes = {section: len(content) for section, content in parser.sections.items()}
 
         if not section_sizes:
             continue
@@ -426,5 +426,6 @@ def test_metadata_overhead_minimal(all_agents: List[Tuple[str, AgentParser]]):
             metadata_ratio = (metadata_size / total_size) * 100
 
             # Metadata should be < 5% of total content
-            assert metadata_ratio < 10, \
-                f"{name}: Metadata is {metadata_ratio:.1f}% of content (should be < 10%)"
+            assert (
+                metadata_ratio < 10
+            ), f"{name}: Metadata is {metadata_ratio:.1f}% of content (should be < 10%)"

@@ -41,20 +41,24 @@ def iteration(milestone: Optional[str], scope: Optional[str]):
         # Plan with scope
         claude-dev plan iteration --scope "Implement user authentication"
     """
-    console.print(Panel(
-        f"[bold cyan]Planning New Iteration[/bold cyan]\n\n"
-        f"Milestone: [green]{milestone or 'N/A'}[/green]\n"
-        f"Scope: [green]{scope or 'To be defined'}[/green]\n\n"
-        f"[yellow]Note:[/yellow] This command will invoke the iteration-planner agent.\n"
-        f"Agent integration is not yet fully implemented.",
-        title="Iteration Planning",
-        border_style="cyan"
-    ))
+    console.print(
+        Panel(
+            f"[bold cyan]Planning New Iteration[/bold cyan]\n\n"
+            f"Milestone: [green]{milestone or 'N/A'}[/green]\n"
+            f"Scope: [green]{scope or 'To be defined'}[/green]\n\n"
+            f"[yellow]Note:[/yellow] This command will invoke the iteration-planner agent.\n"
+            f"Agent integration is not yet fully implemented.",
+            title="Iteration Planning",
+            border_style="cyan",
+        )
+    )
 
     # TODO: Integrate with iteration-planner agent
     console.print("\n[yellow]⚠ Agent integration coming soon![/yellow]")
     console.print("For now, manually invoke iteration-planner agent from Claude session:")
-    console.print(f"  @iteration-planner create iteration{f' for milestone {milestone}' if milestone else ''}")
+    console.print(
+        f"  @iteration-planner create iteration{f' for milestone {milestone}' if milestone else ''}"
+    )
 
 
 @plan.command()
@@ -72,15 +76,17 @@ def milestone(use_cases: Optional[str], title: Optional[str]):
         # Plan milestone with scope
         claude-dev plan milestone --use-cases UC-001,UC-002 --title "Authentication"
     """
-    console.print(Panel(
-        f"[bold cyan]Planning New Milestone[/bold cyan]\n\n"
-        f"Title: [green]{title or 'To be defined'}[/green]\n"
-        f"Use Cases: [green]{use_cases or 'To be defined'}[/green]\n\n"
-        f"[yellow]Note:[/yellow] This command will invoke the iteration-planner agent.\n"
-        f"Agent integration is not yet fully implemented.",
-        title="Milestone Planning",
-        border_style="cyan"
-    ))
+    console.print(
+        Panel(
+            f"[bold cyan]Planning New Milestone[/bold cyan]\n\n"
+            f"Title: [green]{title or 'To be defined'}[/green]\n"
+            f"Use Cases: [green]{use_cases or 'To be defined'}[/green]\n\n"
+            f"[yellow]Note:[/yellow] This command will invoke the iteration-planner agent.\n"
+            f"Agent integration is not yet fully implemented.",
+            title="Milestone Planning",
+            border_style="cyan",
+        )
+    )
 
     # TODO: Integrate with iteration-planner agent
     console.print("\n[yellow]⚠ Agent integration coming soon![/yellow]")
@@ -111,11 +117,13 @@ def current():
         content = f.read()
 
     # Display content
-    console.print(Panel(
-        content[:1000] + ("..." if len(content) > 1000 else ""),
-        title="Current Iteration",
-        border_style="cyan"
-    ))
+    console.print(
+        Panel(
+            content[:1000] + ("..." if len(content) > 1000 else ""),
+            title="Current Iteration",
+            border_style="cyan",
+        )
+    )
 
     console.print(f"\nFull file: [cyan]{current_file}[/cyan]")
 
@@ -125,7 +133,7 @@ def current():
     "--status",
     type=click.Choice(["active", "completed", "all"]),
     default="all",
-    help="Filter by status"
+    help="Filter by status",
 )
 def list(status: str):
     """
@@ -181,7 +189,7 @@ def list(status: str):
         table.add_row(
             iteration_name,
             iter_status.title(),
-            str(iteration_file.relative_to(config.get_project_root()))
+            str(iteration_file.relative_to(config.get_project_root())),
         )
 
     console.print(table)

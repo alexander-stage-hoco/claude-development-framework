@@ -89,9 +89,7 @@ class Config:
         # No config file found, use defaults
         return self.DEFAULT_CONFIG.copy()
 
-    def _merge_configs(
-        self, default: Dict[str, Any], user: Dict[str, Any]
-    ) -> Dict[str, Any]:
+    def _merge_configs(self, default: Dict[str, Any], user: Dict[str, Any]) -> Dict[str, Any]:
         """
         Recursively merge user config with defaults.
 

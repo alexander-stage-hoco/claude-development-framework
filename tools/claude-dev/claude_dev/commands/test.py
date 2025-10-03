@@ -29,7 +29,7 @@ def test():
     "test_type",
     type=click.Choice(["unit", "integration", "bdd", "all"]),
     default="all",
-    help="Type of tests to generate"
+    help="Type of tests to generate",
 )
 def generate(spec_id: str, test_type: str):
     """
@@ -43,15 +43,17 @@ def generate(spec_id: str, test_type: str):
         # Generate only unit tests
         claude-dev test generate UC-001 --type unit
     """
-    console.print(Panel(
-        f"[bold cyan]Generating Tests[/bold cyan]\n\n"
-        f"Specification: [green]{spec_id}[/green]\n"
-        f"Test Type: [green]{test_type}[/green]\n\n"
-        f"[yellow]Note:[/yellow] This command will invoke the test-writer agent.\n"
-        f"Agent integration is not yet fully implemented.",
-        title="Test Generation",
-        border_style="cyan"
-    ))
+    console.print(
+        Panel(
+            f"[bold cyan]Generating Tests[/bold cyan]\n\n"
+            f"Specification: [green]{spec_id}[/green]\n"
+            f"Test Type: [green]{test_type}[/green]\n\n"
+            f"[yellow]Note:[/yellow] This command will invoke the test-writer agent.\n"
+            f"Agent integration is not yet fully implemented.",
+            title="Test Generation",
+            border_style="cyan",
+        )
+    )
 
     # TODO: Integrate with test-writer agent
     # For now, show placeholder message
@@ -125,7 +127,7 @@ def run(path: Optional[str], coverage: bool, watch: bool, verbose: bool):
     "--fail-under",
     type=int,
     default=None,
-    help="Fail if coverage is below threshold (default: from config)"
+    help="Fail if coverage is below threshold (default: from config)",
 )
 def coverage(fail_under: Optional[int]):
     """
@@ -152,7 +154,7 @@ def coverage(fail_under: Optional[int]):
         f"--cov-fail-under={threshold}",
         "--cov-report=term-missing",
         "--cov-report=html",
-        "tests/"
+        "tests/",
     ]
 
     try:

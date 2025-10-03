@@ -12,6 +12,7 @@ from typing import List, Dict, Set
 @dataclass
 class UseCase:
     """Represents a use case with service references"""
+
     id: str
     name: str
     file_path: Path
@@ -22,6 +23,7 @@ class UseCase:
 @dataclass
 class Service:
     """Represents a service with UC references"""
+
     id: str
     name: str
     file_path: Path
@@ -52,39 +54,39 @@ class TraceabilityParser:
 
         # Extract UC ID from filename (UC-001, UC-002, etc.)
         filename = file_path.stem
-        uc_id_match = re.match(r'(UC-\d+)', filename)
+        uc_id_match = re.match(r"(UC-\d+)", filename)
         uc_id = uc_id_match.group(1) if uc_id_match else filename
 
         # Find "Services Used" section
         # Pattern matches markdown table in "## Services Used" section
-        services_pattern = r'##\s+Services\s+Used\s*\n\s*\|[^\n]+\|[^\n]+\|\s*\n\s*\|[-|\s]+\|\s*\n((?:\s*\|[^\n]+\|\s*\n)*)'
+        services_pattern = r"##\s+Services\s+Used\s*\n\s*\|[^\n]+\|[^\n]+\|\s*\n\s*\|[-|\s]+\|\s*\n((?:\s*\|[^\n]+\|\s*\n)*)"
         match = re.search(services_pattern, content, re.IGNORECASE)
 
         services = []
         if match:
             table_rows = match.group(1)
             # Parse each table row
-            for line in table_rows.strip().split('\n'):
-                if '|' in line:
-                    parts = [p.strip() for p in line.split('|')]
+            for line in table_rows.strip().split("\n"):
+                if "|" in line:
+                    parts = [p.strip() for p in line.split("|")]
                     # Service name is typically in column 1 or 2 (after empty first column)
                     if len(parts) >= 2 and parts[1]:
                         # Extract service ID (SVC-XXX) or service name
                         service_ref = parts[1]
                         # Clean up formatting
-                        service_ref = re.sub(r'[\[\]`*]', '', service_ref).strip()
-                        if service_ref and not service_ref.startswith('-'):
+                        service_ref = re.sub(r"[\[\]`*]", "", service_ref).strip()
+                        if service_ref and not service_ref.startswith("-"):
                             services.append(service_ref)
 
         # Check for justification if no services
         has_justification = False
         if not services:
             justification_patterns = [
-                r'No services needed',
-                r'No services required',
-                r'Justification:',
-                r'Pure UI',
-                r'No backend interaction'
+                r"No services needed",
+                r"No services required",
+                r"Justification:",
+                r"Pure UI",
+                r"No backend interaction",
             ]
             for pattern in justification_patterns:
                 if re.search(pattern, content, re.IGNORECASE):
@@ -96,7 +98,7 @@ class TraceabilityParser:
             name=filename,
             file_path=file_path,
             services_used=services,
-            has_justification=has_justification
+            has_justification=has_justification,
         )
 
     def parse_services(self, services_dir: Path) -> List[Service]:
@@ -120,7 +122,7 @@ class TraceabilityParser:
         content = file_path.read_text()
 
         # Extract service ID from content (Service ID: SVC-XXX)
-        id_match = re.search(r'Service\s+ID[:\s]+([A-Z]+-\d+)', content, re.IGNORECASE)
+        id_match = re.search(r"Service\s+ID[:\s]+([A-Z]+-\d+)", content, re.IGNORECASE)
         service_id = id_match.group(1) if id_match else file_path.parent.name
 
         # Service name from parent directory
@@ -128,30 +130,25 @@ class TraceabilityParser:
 
         # Find "Used By" section (in "Use Cases" or "Used By" heading)
         # Pattern matches markdown table
-        used_by_pattern = r'##\s+(?:Used\s+By|Use\s+Cases)\s*\n.*?\n\s*\|[^\n]+\|[^\n]+\|\s*\n\s*\|[-|\s]+\|\s*\n((?:\s*\|[^\n]+\|\s*\n)*)'
+        used_by_pattern = r"##\s+(?:Used\s+By|Use\s+Cases)\s*\n.*?\n\s*\|[^\n]+\|[^\n]+\|\s*\n\s*\|[-|\s]+\|\s*\n((?:\s*\|[^\n]+\|\s*\n)*)"
         match = re.search(used_by_pattern, content, re.IGNORECASE | re.DOTALL)
 
         used_by = []
         if match:
             table_rows = match.group(1)
             # Parse each table row
-            for line in table_rows.strip().split('\n'):
-                if '|' in line:
-                    parts = [p.strip() for p in line.split('|')]
+            for line in table_rows.strip().split("\n"):
+                if "|" in line:
+                    parts = [p.strip() for p in line.split("|")]
                     # UC ID is typically in first column (after empty first column)
                     if len(parts) >= 2 and parts[1]:
                         uc_ref = parts[1]
                         # Extract UC-XXX pattern
-                        uc_match = re.search(r'(UC-\d+)', uc_ref)
+                        uc_match = re.search(r"(UC-\d+)", uc_ref)
                         if uc_match:
                             used_by.append(uc_match.group(1))
 
-        return Service(
-            id=service_id,
-            name=service_name,
-            file_path=file_path,
-            used_by=used_by
-        )
+        return Service(id=service_id, name=service_name, file_path=file_path, used_by=used_by)
 
 
 class TraceabilityValidator:
@@ -160,10 +157,10 @@ class TraceabilityValidator:
     def validate(self, use_cases: List[UseCase], services: List[Service]) -> Dict:
         """Run all validation checks and return issues"""
         issues = {
-            'orphan_services': [],
-            'unjustified_serviceless_ucs': [],
-            'missing_services': [],
-            'bidirectional_mismatches': []
+            "orphan_services": [],
+            "unjustified_serviceless_ucs": [],
+            "missing_services": [],
+            "bidirectional_mismatches": [],
         }
 
         # Build lookup maps
@@ -174,7 +171,7 @@ class TraceabilityValidator:
         # Check 1: UCs with no services (and no justification)
         for uc in use_cases:
             if not uc.services_used and not uc.has_justification:
-                issues['unjustified_serviceless_ucs'].append(uc)
+                issues["unjustified_serviceless_ucs"].append(uc)
 
         # Check 2: Services not used by any UC (orphans)
         used_services = set()
@@ -191,7 +188,7 @@ class TraceabilityValidator:
                         is_used = True
                         break
                 if not is_used:
-                    issues['orphan_services'].append(service)
+                    issues["orphan_services"].append(service)
 
         # Check 3: UCs reference non-existent services
         for uc in use_cases:
@@ -201,11 +198,9 @@ class TraceabilityValidator:
                     # Check if it matches a service name
                     found = any(s.name == service_ref for s in services)
                     if not found:
-                        issues['missing_services'].append({
-                            'uc': uc.id,
-                            'service': service_ref,
-                            'uc_file': str(uc.file_path)
-                        })
+                        issues["missing_services"].append(
+                            {"uc": uc.id, "service": service_ref, "uc_file": str(uc.file_path)}
+                        )
 
         # Check 4: Bidirectional consistency
         for uc in use_cases:
@@ -219,13 +214,15 @@ class TraceabilityValidator:
                 if service:
                     # Check if service lists this UC in "Used By"
                     if uc.id not in service.used_by:
-                        issues['bidirectional_mismatches'].append({
-                            'uc': uc.id,
-                            'service': service.id,
-                            'issue': f'UC references service but service does not list UC in "Used By" section',
-                            'uc_file': str(uc.file_path),
-                            'service_file': str(service.file_path)
-                        })
+                        issues["bidirectional_mismatches"].append(
+                            {
+                                "uc": uc.id,
+                                "service": service.id,
+                                "issue": f'UC references service but service does not list UC in "Used By" section',
+                                "uc_file": str(uc.file_path),
+                                "service_file": str(service.file_path),
+                            }
+                        )
 
         # Check reverse direction: services listing UCs that don't reference them
         for service in services:
@@ -234,13 +231,15 @@ class TraceabilityValidator:
                 if uc:
                     # Check if UC lists this service
                     if service.id not in uc.services_used and service.name not in uc.services_used:
-                        issues['bidirectional_mismatches'].append({
-                            'uc': uc_ref,
-                            'service': service.id,
-                            'issue': f'Service lists UC but UC does not reference service',
-                            'uc_file': str(uc.file_path),
-                            'service_file': str(service.file_path)
-                        })
+                        issues["bidirectional_mismatches"].append(
+                            {
+                                "uc": uc_ref,
+                                "service": service.id,
+                                "issue": f"Service lists UC but UC does not reference service",
+                                "uc_file": str(uc.file_path),
+                                "service_file": str(service.file_path),
+                            }
+                        )
 
         return issues
 
@@ -271,31 +270,31 @@ def format_report(use_cases: List[UseCase], services: List[Service], issues: Dic
         lines.append("❌ ISSUES FOUND")
         lines.append("")
 
-        if issues['unjustified_serviceless_ucs']:
+        if issues["unjustified_serviceless_ucs"]:
             lines.append("❌ Use Cases Without Services (No Justification):")
-            for uc in issues['unjustified_serviceless_ucs']:
+            for uc in issues["unjustified_serviceless_ucs"]:
                 lines.append(f"   - {uc.id}: {uc.file_path}")
                 lines.append(f"     Fix: Add 'Services Used' table OR add justification")
             lines.append("")
 
-        if issues['orphan_services']:
+        if issues["orphan_services"]:
             lines.append("⚠️  Orphan Services (Not Used By Any UC):")
-            for svc in issues['orphan_services']:
+            for svc in issues["orphan_services"]:
                 lines.append(f"   - {svc.id} ({svc.name}): {svc.file_path}")
                 lines.append(f"     Fix: Remove service OR add UC that uses it")
             lines.append("")
 
-        if issues['missing_services']:
+        if issues["missing_services"]:
             lines.append("❌ Missing Service References:")
-            for issue in issues['missing_services']:
+            for issue in issues["missing_services"]:
                 lines.append(f"   - {issue['uc']} references '{issue['service']}' (doesn't exist)")
                 lines.append(f"     File: {issue['uc_file']}")
                 lines.append(f"     Fix: Create service OR fix UC reference")
             lines.append("")
 
-        if issues['bidirectional_mismatches']:
+        if issues["bidirectional_mismatches"]:
             lines.append("❌ Bidirectional Traceability Mismatches:")
-            for issue in issues['bidirectional_mismatches']:
+            for issue in issues["bidirectional_mismatches"]:
                 lines.append(f"   - {issue['uc']} ↔ {issue['service']}: {issue['issue']}")
                 lines.append(f"     UC: {issue['uc_file']}")
                 lines.append(f"     Service: {issue['service_file']}")

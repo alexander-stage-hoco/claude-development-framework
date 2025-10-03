@@ -32,7 +32,7 @@ class MockFileSystem:
         """
         full_path = self.base / relative_path
         full_path.parent.mkdir(parents=True, exist_ok=True)
-        full_path.write_text(content, encoding='utf-8')
+        full_path.write_text(content, encoding="utf-8")
         self.files[relative_path] = content
         return relative_path
 
@@ -47,7 +47,7 @@ class MockFileSystem:
         """
         full_path = self.base / relative_path
         if full_path.exists():
-            return full_path.read_text(encoding='utf-8')
+            return full_path.read_text(encoding="utf-8")
         return self.files.get(relative_path)
 
     def file_exists(self, relative_path: str) -> bool:
@@ -74,7 +74,9 @@ class MockFileSystem:
         """
         services_section = ""
         if services:
-            services_section = "\n## Services Required\n" + "\n".join(f"- {svc}" for svc in services)
+            services_section = "\n## Services Required\n" + "\n".join(
+                f"- {svc}" for svc in services
+            )
 
         content = f"""---
 id: {uc_id}
@@ -213,12 +215,14 @@ class MockGitRepo:
             Commit hash (mock)
         """
         commit_hash = f"abc{len(self.commits):04d}"
-        self.commits.append({
-            "hash": commit_hash,
-            "message": message,
-            "branch": self.current_branch,
-            "files": self.staged_files.copy()
-        })
+        self.commits.append(
+            {
+                "hash": commit_hash,
+                "message": message,
+                "branch": self.current_branch,
+                "files": self.staged_files.copy(),
+            }
+        )
         self.staged_files.clear()
         return commit_hash
 
@@ -239,7 +243,9 @@ class MockGitRepo:
 class MockAgentResponse:
     """Mock agent response for testing agent behaviors."""
 
-    def __init__(self, success: bool = True, output: str = "", files_created: Optional[List[str]] = None):
+    def __init__(
+        self, success: bool = True, output: str = "", files_created: Optional[List[str]] = None
+    ):
         """Initialize mock agent response.
 
         Args:
@@ -285,7 +291,7 @@ def create_mock_agent(agent_name: str, behavior: Optional[Dict[str, Any]] = None
     response = MockAgentResponse(
         success=behavior.get("success", True),
         output=behavior.get("output", f"{agent_name} executed successfully"),
-        files_created=behavior.get("files", [])
+        files_created=behavior.get("files", []),
     )
 
     if "side_effect" in behavior:
@@ -322,11 +328,11 @@ def simulate_agent_workflow(agents: List[Mock], initial_state: Dict[str, Any]) -
 
     for agent in agents:
         result = agent.execute(state)
-        if hasattr(result, 'success') and not result.success:
+        if hasattr(result, "success") and not result.success:
             state["failed_agent"] = agent.name
-            state["errors"] = getattr(result, 'errors', [])
+            state["errors"] = getattr(result, "errors", [])
             break
-        if hasattr(result, 'files_created'):
+        if hasattr(result, "files_created"):
             state.setdefault("files_created", []).extend(result.files_created)
 
     return state

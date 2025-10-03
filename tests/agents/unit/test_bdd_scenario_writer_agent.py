@@ -27,6 +27,7 @@ from tests.agents.fixtures import AgentParser
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def bdd_scenario_writer_parser(agents_dir: Path) -> AgentParser:
     """Parser for bdd-scenario-writer agent."""
@@ -36,6 +37,7 @@ def bdd_scenario_writer_parser(agents_dir: Path) -> AgentParser:
 # ============================================================================
 # Test: Agent Metadata
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_bdd_scenario_writer_has_correct_metadata(bdd_scenario_writer_parser: AgentParser):
@@ -52,6 +54,7 @@ def test_bdd_scenario_writer_has_correct_metadata(bdd_scenario_writer_parser: Ag
 # ============================================================================
 # Test: Responsibilities Coverage
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_bdd_scenario_writer_covers_acceptance_criteria(bdd_scenario_writer_parser: AgentParser):
@@ -73,7 +76,10 @@ def test_bdd_scenario_writer_covers_gherkin_conversion(bdd_scenario_writer_parse
 def test_bdd_scenario_writer_covers_parameterization(bdd_scenario_writer_parser: AgentParser):
     """Test that agent covers parameterization (Scenario Outline)."""
     responsibilities = bdd_scenario_writer_parser.get_section("Responsibilities")
-    assert "scenario outline" in responsibilities.lower() or "parameterization" in responsibilities.lower()
+    assert (
+        "scenario outline" in responsibilities.lower()
+        or "parameterization" in responsibilities.lower()
+    )
 
 
 @pytest.mark.unit
@@ -87,6 +93,7 @@ def test_bdd_scenario_writer_covers_coverage_validation(bdd_scenario_writer_pars
 # Test: Process Steps
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_bdd_scenario_writer_process_reads_uc(bdd_scenario_writer_parser: AgentParser):
     """Test that process includes reading UC specification."""
@@ -97,7 +104,9 @@ def test_bdd_scenario_writer_process_reads_uc(bdd_scenario_writer_parser: AgentP
 
 
 @pytest.mark.unit
-def test_bdd_scenario_writer_process_generates_feature_file(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_process_generates_feature_file(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that process includes generating .feature file."""
     process_steps = bdd_scenario_writer_parser.extract_process_steps()
     process_text = " ".join(process_steps).lower()
@@ -118,8 +127,11 @@ def test_bdd_scenario_writer_process_validates_coverage(bdd_scenario_writer_pars
 # Test: Quality Checks
 # ============================================================================
 
+
 @pytest.mark.unit
-def test_bdd_scenario_writer_quality_checks_include_coverage(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_quality_checks_include_coverage(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that quality checks verify 100% coverage."""
     checkboxes = bdd_scenario_writer_parser.get_section_checkboxes("Quality Checks")
     checkboxes_text = " ".join(checkboxes)
@@ -128,7 +140,9 @@ def test_bdd_scenario_writer_quality_checks_include_coverage(bdd_scenario_writer
 
 
 @pytest.mark.unit
-def test_bdd_scenario_writer_quality_checks_include_gherkin_syntax(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_quality_checks_include_gherkin_syntax(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that quality checks verify Gherkin syntax."""
     checkboxes = bdd_scenario_writer_parser.get_section_checkboxes("Quality Checks")
     checkboxes_text = " ".join(checkboxes).lower()
@@ -137,7 +151,9 @@ def test_bdd_scenario_writer_quality_checks_include_gherkin_syntax(bdd_scenario_
 
 
 @pytest.mark.unit
-def test_bdd_scenario_writer_quality_checks_include_spec_references(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_quality_checks_include_spec_references(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that quality checks verify spec references."""
     checkboxes = bdd_scenario_writer_parser.get_section_checkboxes("Quality Checks")
     checkboxes_text = " ".join(checkboxes).lower()
@@ -149,8 +165,11 @@ def test_bdd_scenario_writer_quality_checks_include_spec_references(bdd_scenario
 # Test: Anti-Patterns
 # ============================================================================
 
+
 @pytest.mark.unit
-def test_bdd_scenario_writer_warns_against_missing_coverage(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_warns_against_missing_coverage(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that anti-patterns warn about missing acceptance criteria coverage."""
     antipatterns = bdd_scenario_writer_parser.extract_antipatterns()
     antipatterns_text = " ".join(antipatterns).lower()
@@ -168,7 +187,9 @@ def test_bdd_scenario_writer_warns_against_ambiguous_steps(bdd_scenario_writer_p
 
 
 @pytest.mark.unit
-def test_bdd_scenario_writer_warns_against_implementation_details(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_warns_against_implementation_details(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that anti-patterns warn about implementation details."""
     antipatterns = bdd_scenario_writer_parser.extract_antipatterns()
     antipatterns_text = " ".join(antipatterns).lower()
@@ -179,6 +200,7 @@ def test_bdd_scenario_writer_warns_against_implementation_details(bdd_scenario_w
 # ============================================================================
 # Test: Code Examples
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_bdd_scenario_writer_provides_feature_example(bdd_scenario_writer_parser: AgentParser):
@@ -199,7 +221,9 @@ def test_bdd_scenario_writer_example_shows_background(bdd_scenario_writer_parser
 
 
 @pytest.mark.unit
-def test_bdd_scenario_writer_example_shows_scenario_outline(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_example_shows_scenario_outline(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that example shows Scenario Outline with Examples."""
     code_blocks = bdd_scenario_writer_parser.extract_code_blocks("gherkin")
 
@@ -216,15 +240,20 @@ def test_bdd_scenario_writer_example_shows_spec_references(bdd_scenario_writer_p
 
     if code_blocks:
         example_code = "\n".join(code_blocks)
-        assert "# Specification:" in example_code or "UC-" in example_code, "Example should show spec references"
+        assert (
+            "# Specification:" in example_code or "UC-" in example_code
+        ), "Example should show spec references"
 
 
 # ============================================================================
 # Test: Output Specification
 # ============================================================================
 
+
 @pytest.mark.unit
-def test_bdd_scenario_writer_output_describes_feature_structure(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_output_describes_feature_structure(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that output section describes complete feature file structure."""
     output_section = bdd_scenario_writer_parser.get_section("Output")
 
@@ -234,7 +263,9 @@ def test_bdd_scenario_writer_output_describes_feature_structure(bdd_scenario_wri
 
 
 @pytest.mark.unit
-def test_bdd_scenario_writer_output_requires_coverage_report(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_output_requires_coverage_report(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that output requires coverage report."""
     output_section = bdd_scenario_writer_parser.get_section("Output")
 
@@ -244,6 +275,7 @@ def test_bdd_scenario_writer_output_requires_coverage_report(bdd_scenario_writer
 # ============================================================================
 # Test: File Operations
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_bdd_scenario_writer_reads_uc_specs(bdd_scenario_writer_parser: AgentParser):
@@ -267,6 +299,7 @@ def test_bdd_scenario_writer_writes_feature_files(bdd_scenario_writer_parser: Ag
 # Test: Framework Compliance
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_bdd_scenario_writer_enforces_rule_8(bdd_scenario_writer_parser: AgentParser):
     """Test that agent enforces Rule #8 (BDD for User-Facing Features)."""
@@ -279,6 +312,7 @@ def test_bdd_scenario_writer_enforces_rule_8(bdd_scenario_writer_parser: AgentPa
 # Test: Gherkin Best Practices
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_bdd_scenario_writer_documents_best_practices(bdd_scenario_writer_parser: AgentParser):
     """Test that agent documents Gherkin best practices."""
@@ -288,7 +322,9 @@ def test_bdd_scenario_writer_documents_best_practices(bdd_scenario_writer_parser
 
 
 @pytest.mark.unit
-def test_bdd_scenario_writer_explains_when_to_use_scenario_outline(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_explains_when_to_use_scenario_outline(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that agent explains when to use Scenario Outline."""
     content = bdd_scenario_writer_parser.content
 
@@ -301,8 +337,11 @@ def test_bdd_scenario_writer_explains_when_to_use_scenario_outline(bdd_scenario_
 # Test: Next Steps
 # ============================================================================
 
+
 @pytest.mark.unit
-def test_bdd_scenario_writer_next_steps_mention_step_definitions(bdd_scenario_writer_parser: AgentParser):
+def test_bdd_scenario_writer_next_steps_mention_step_definitions(
+    bdd_scenario_writer_parser: AgentParser,
+):
     """Test that next steps mention implementing step definitions."""
     next_steps = bdd_scenario_writer_parser.get_section("Next Steps")
 

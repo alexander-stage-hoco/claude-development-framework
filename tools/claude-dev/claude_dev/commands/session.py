@@ -71,14 +71,16 @@ Last Updated: {datetime.now().strftime("%Y-%m-%d %H:%M")}
 
     create_file(session_file, content, overwrite=True, backup=True)
 
-    console.print(Panel(
-        f"[green]✓[/green] Session started\n\n"
-        f"Time: [cyan]{datetime.now().strftime('%H:%M')}[/cyan]\n"
-        f"Iteration: [cyan]{iteration or 'N/A'}[/cyan]\n"
-        f"State file: [cyan]{session_file}[/cyan]",
-        title="Session Started",
-        border_style="green"
-    ))
+    console.print(
+        Panel(
+            f"[green]✓[/green] Session started\n\n"
+            f"Time: [cyan]{datetime.now().strftime('%H:%M')}[/cyan]\n"
+            f"Iteration: [cyan]{iteration or 'N/A'}[/cyan]\n"
+            f"State file: [cyan]{session_file}[/cyan]",
+            title="Session Started",
+            border_style="green",
+        )
+    )
 
     console.print("\n[bold]Next steps:[/bold]")
     console.print("1. Review .claude/CLAUDE.md")
@@ -117,12 +119,13 @@ def end(summarize: bool):
     with open(session_file, "w", encoding="utf-8") as f:
         f.write(content)
 
-    console.print(Panel(
-        f"[green]✓[/green] Session ended\n\n"
-        f"Time: [cyan]{end_time}[/cyan]",
-        title="Session Ended",
-        border_style="green"
-    ))
+    console.print(
+        Panel(
+            f"[green]✓[/green] Session ended\n\n" f"Time: [cyan]{end_time}[/cyan]",
+            title="Session Ended",
+            border_style="green",
+        )
+    )
 
     if summarize:
         console.print("\n[yellow]⚠ Agent integration coming soon![/yellow]")
@@ -153,10 +156,12 @@ def status():
         content = f.read()
 
     # Display content
-    console.print(Panel(
-        content[:800] + ("..." if len(content) > 800 else ""),
-        title="Current Session",
-        border_style="cyan"
-    ))
+    console.print(
+        Panel(
+            content[:800] + ("..." if len(content) > 800 else ""),
+            title="Current Session",
+            border_style="cyan",
+        )
+    )
 
     console.print(f"\nFull file: [cyan]{session_file}[/cyan]")

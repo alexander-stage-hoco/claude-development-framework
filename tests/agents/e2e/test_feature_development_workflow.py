@@ -31,6 +31,7 @@ from tests.agents.fixtures import MockFileSystem
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def mock_fs(tmp_path: Path) -> MockFileSystem:
     """Mock file system for testing."""
@@ -40,6 +41,7 @@ def mock_fs(tmp_path: Path) -> MockFileSystem:
 # ============================================================================
 # Test: Complete Feature Workflow
 # ============================================================================
+
 
 @pytest.mark.e2e
 def test_complete_feature_development_workflow(mock_fs: MockFileSystem):
@@ -226,9 +228,16 @@ def test_traceability_maintained_throughout_workflow(mock_fs: MockFileSystem):
     uc_id = "UC-050"
 
     # Create workflow artifacts
-    uc_path = mock_fs.create_file(f"specs/use-cases/{uc_id}.md", f"# {uc_id}: Test Feature\n\nScenario: Test")
-    feature_path = mock_fs.create_file(f"features/{uc_id}.feature", f"# Specification: {uc_id}\n\nFeature: Test")
-    test_path = mock_fs.create_file(f"tests/unit/test_{uc_id.lower()}.py", f"# Specification: {uc_id}\n# Feature: features/{uc_id}.feature")
+    uc_path = mock_fs.create_file(
+        f"specs/use-cases/{uc_id}.md", f"# {uc_id}: Test Feature\n\nScenario: Test"
+    )
+    feature_path = mock_fs.create_file(
+        f"features/{uc_id}.feature", f"# Specification: {uc_id}\n\nFeature: Test"
+    )
+    test_path = mock_fs.create_file(
+        f"tests/unit/test_{uc_id.lower()}.py",
+        f"# Specification: {uc_id}\n# Feature: features/{uc_id}.feature",
+    )
     impl_path = mock_fs.create_file(f"src/{uc_id.lower()}.py", f"# Specification: {uc_id}")
 
     # Verify traceability

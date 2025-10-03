@@ -27,6 +27,7 @@ from tests.agents.fixtures import AgentParser
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def adr_manager_parser(agents_dir: Path) -> AgentParser:
     """Parser for adr-manager agent."""
@@ -36,6 +37,7 @@ def adr_manager_parser(agents_dir: Path) -> AgentParser:
 # ============================================================================
 # Test: Agent Metadata
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_adr_manager_has_correct_metadata(adr_manager_parser: AgentParser):
@@ -54,6 +56,7 @@ def test_adr_manager_has_correct_metadata(adr_manager_parser: AgentParser):
 # ============================================================================
 # Test: Responsibilities Coverage
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_adr_manager_covers_decision_interviewing(adr_manager_parser: AgentParser):
@@ -103,6 +106,7 @@ def test_adr_manager_covers_lifecycle_management(adr_manager_parser: AgentParser
 # Test: ADR Management Checklist
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_adr_manager_defines_adr_format(adr_manager_parser: AgentParser):
     """Test that agent defines ADR format requirements."""
@@ -127,6 +131,7 @@ def test_adr_manager_requires_minimum_alternatives(adr_manager_parser: AgentPars
 # Test: Decision Tree
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_adr_manager_has_decision_tree(adr_manager_parser: AgentParser):
     """Test that agent has ADR qualification decision tree."""
@@ -149,6 +154,7 @@ def test_adr_manager_decision_tree_questions(adr_manager_parser: AgentParser):
 # ============================================================================
 # Test: Process Steps - Creation Mode
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_adr_manager_process_determines_qualification(adr_manager_parser: AgentParser):
@@ -199,6 +205,7 @@ def test_adr_manager_process_interviews_for_consequences(adr_manager_parser: Age
 # Test: Process Steps - Compliance Mode
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_adr_manager_compliance_reads_all_adrs(adr_manager_parser: AgentParser):
     """Test that compliance process reads all ADRs."""
@@ -226,6 +233,7 @@ def test_adr_manager_compliance_detects_violations(adr_manager_parser: AgentPars
 # ============================================================================
 # Test: Interview Question Library
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_adr_manager_provides_question_library(adr_manager_parser: AgentParser):
@@ -262,6 +270,7 @@ def test_adr_manager_questions_cover_consequences(adr_manager_parser: AgentParse
 # ============================================================================
 # Test: Quality Checks
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_adr_manager_quality_checks_include_qualification(adr_manager_parser: AgentParser):
@@ -303,6 +312,7 @@ def test_adr_manager_quality_checks_verify_format(adr_manager_parser: AgentParse
 # Test: Anti-Patterns
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_adr_manager_warns_against_trivial_decisions(adr_manager_parser: AgentParser):
     """Test that anti-patterns warn about ADRs for trivial decisions."""
@@ -343,6 +353,7 @@ def test_adr_manager_warns_against_ignoring_violations(adr_manager_parser: Agent
 # Test: Code Examples
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_adr_manager_provides_adr_format_example(adr_manager_parser: AgentParser):
     """Test that agent provides complete ADR format example."""
@@ -362,6 +373,7 @@ def test_adr_manager_provides_compliance_report_example(adr_manager_parser: Agen
 # ============================================================================
 # Test: Output Specifications
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_adr_manager_output_defines_adr_structure(adr_manager_parser: AgentParser):
@@ -387,6 +399,7 @@ def test_adr_manager_output_defines_compliance_report_structure(adr_manager_pars
 # Test: Violation Detection Patterns
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_adr_manager_defines_violation_patterns(adr_manager_parser: AgentParser):
     """Test that agent defines violation detection patterns."""
@@ -410,6 +423,7 @@ def test_adr_manager_classifies_violation_severity(adr_manager_parser: AgentPars
 # Test: File Operations
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_adr_manager_reads_technical_decisions(adr_manager_parser: AgentParser):
     """Test that agent reads technical-decisions.md."""
@@ -431,17 +445,21 @@ def test_adr_manager_writes_to_technical_decisions(adr_manager_parser: AgentPars
 # Test: Framework Compliance
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_adr_manager_enforces_rule_7(adr_manager_parser: AgentParser):
     """Test that agent enforces Rule #7 (Technical Decisions Are Binding)."""
     content = adr_manager_parser.content.lower()
 
-    assert "rule #7" in content or "rule 7" in content or "technical decisions are binding" in content
+    assert (
+        "rule #7" in content or "rule 7" in content or "technical decisions are binding" in content
+    )
 
 
 # ============================================================================
 # Test: Lifecycle Management
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_adr_manager_documents_deprecation_process(adr_manager_parser: AgentParser):
@@ -471,6 +489,7 @@ def test_adr_manager_lifecycle_preserves_history(adr_manager_parser: AgentParser
 # Test: Next Steps
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_adr_manager_next_steps_mention_enforcement(adr_manager_parser: AgentParser):
     """Test that next steps mention ADR enforcement."""
@@ -494,6 +513,7 @@ def test_adr_manager_next_steps_mention_code_references(adr_manager_parser: Agen
 # ============================================================================
 # Test: Content Quality
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_adr_manager_provides_examples_of_worthy_decisions(adr_manager_parser: AgentParser):

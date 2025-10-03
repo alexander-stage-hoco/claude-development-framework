@@ -28,6 +28,7 @@ from tests.agents.fixtures import MockFileSystem
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def mock_fs(tmp_path: Path) -> MockFileSystem:
     """Mock file system for testing."""
@@ -37,6 +38,7 @@ def mock_fs(tmp_path: Path) -> MockFileSystem:
 # ============================================================================
 # Test: Iteration Planning Workflow
 # ============================================================================
+
 
 @pytest.mark.e2e
 def test_large_feature_broken_into_iterations(mock_fs: MockFileSystem):

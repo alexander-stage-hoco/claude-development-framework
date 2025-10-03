@@ -25,10 +25,7 @@ class Settings(BaseSettings):
     )
 
     # Security
-    SECRET_KEY: str = Field(
-        ...,
-        description="Secret key for JWT token generation (REQUIRED)"
-    )
+    SECRET_KEY: str = Field(..., description="Secret key for JWT token generation (REQUIRED)")
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60
 
@@ -36,7 +33,9 @@ class Settings(BaseSettings):
     CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:8000"]
 
     # Environment
-    ENVIRONMENT: str = Field(default="development", description="Environment (development, staging, production)")
+    ENVIRONMENT: str = Field(
+        default="development", description="Environment (development, staging, production)"
+    )
     DEBUG: bool = Field(default=True, description="Debug mode")
 
     class Config:

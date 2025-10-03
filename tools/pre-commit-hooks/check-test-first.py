@@ -69,12 +69,12 @@ def is_trivial_file(source_file: Path) -> bool:
 
     # Check if file is very small (likely just imports/constants)
     try:
-        with open(source_file, 'r', encoding='utf-8') as f:
+        with open(source_file, "r", encoding="utf-8") as f:
             lines = [
                 line.strip()
                 for line in f
                 if line.strip()
-                and not line.strip().startswith('#')
+                and not line.strip().startswith("#")
                 and not line.strip().startswith('"""')
                 and not line.strip().startswith("'''")
             ]
@@ -107,7 +107,7 @@ def main():
 
     # Get command line arguments
     strict_mode = "--strict" in sys.argv
-    filenames = [arg for arg in sys.argv[1:] if not arg.startswith('--')]
+    filenames = [arg for arg in sys.argv[1:] if not arg.startswith("--")]
 
     if not filenames:
         sys.exit(0)
@@ -143,7 +143,9 @@ def main():
         print()
 
         for source_file in missing_tests:
-            rel_path = source_file.relative_to(project_root) if source_file.is_absolute() else source_file
+            rel_path = (
+                source_file.relative_to(project_root) if source_file.is_absolute() else source_file
+            )
             print(f"  {rel_path}")
 
             # Suggest test file location

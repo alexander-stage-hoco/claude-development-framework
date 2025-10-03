@@ -36,7 +36,7 @@ class AgentParser:
 
     def _load_content(self) -> str:
         """Load agent file content."""
-        with open(self.path, 'r', encoding='utf-8') as f:
+        with open(self.path, "r", encoding="utf-8") as f:
             return f.read()
 
     def _split_front_matter(self) -> tuple[Dict[str, Any], str]:
@@ -45,7 +45,7 @@ class AgentParser:
         Returns:
             Tuple of (metadata dict, body string)
         """
-        parts = self._content.split('---', 2)
+        parts = self._content.split("---", 2)
 
         if len(parts) < 3:
             return {}, self._content
@@ -67,17 +67,17 @@ class AgentParser:
         current_section = None
         current_content = []
 
-        for line in self._body.split('\n'):
-            if line.startswith('## '):
+        for line in self._body.split("\n"):
+            if line.startswith("## "):
                 if current_section:
-                    sections[current_section] = '\n'.join(current_content).strip()
+                    sections[current_section] = "\n".join(current_content).strip()
                 current_section = line[3:].strip()
                 current_content = []
             elif current_section:
                 current_content.append(line)
 
         if current_section:
-            sections[current_section] = '\n'.join(current_content).strip()
+            sections[current_section] = "\n".join(current_content).strip()
 
         return sections
 
@@ -148,14 +148,14 @@ class AgentParser:
         block_lang = None
         current_block = []
 
-        for line in self._body.split('\n'):
+        for line in self._body.split("\n"):
             stripped = line.strip()
 
-            if stripped.startswith('```'):
+            if stripped.startswith("```"):
                 if in_block:
                     # End of code block
                     if language is None or block_lang == language:
-                        blocks.append('\n'.join(current_block))
+                        blocks.append("\n".join(current_block))
                     current_block = []
                     in_block = False
                     block_lang = None
@@ -179,9 +179,9 @@ class AgentParser:
             List of checkbox items (without checkbox markers)
         """
         checkboxes = []
-        checkbox_pattern = r'^\s*-\s*\[\s*[xX ]?\s*\]\s*(.+)$'
+        checkbox_pattern = r"^\s*-\s*\[\s*[xX ]?\s*\]\s*(.+)$"
 
-        for line in self._body.split('\n'):
+        for line in self._body.split("\n"):
             match = re.match(checkbox_pattern, line)
             if match:
                 checkboxes.append(match.group(1).strip())
@@ -202,9 +202,9 @@ class AgentParser:
             return []
 
         checkboxes = []
-        checkbox_pattern = r'^\s*-\s*\[\s*[xX ]?\s*\]\s*(.+)$'
+        checkbox_pattern = r"^\s*-\s*\[\s*[xX ]?\s*\]\s*(.+)$"
 
-        for line in section_content.split('\n'):
+        for line in section_content.split("\n"):
             match = re.match(checkbox_pattern, line)
             if match:
                 checkboxes.append(match.group(1).strip())
@@ -222,9 +222,9 @@ class AgentParser:
             List of anti-pattern descriptions (without ❌ markers)
         """
         antipatterns = []
-        antipattern_pattern = r'^\s*[❌✗]\s*(.+)$'
+        antipattern_pattern = r"^\s*[❌✗]\s*(.+)$"
 
-        for line in self._body.split('\n'):
+        for line in self._body.split("\n"):
             match = re.match(antipattern_pattern, line)
             if match:
                 antipatterns.append(match.group(1).strip())
@@ -246,10 +246,10 @@ class AgentParser:
             return []
 
         steps = []
-        step_pattern = r'^\s*(\d+)\.\s*\*?\*?(.+?)\*?\*?\s*-\s*(.+)$'
-        simple_pattern = r'^\s*(\d+)\.\s*(.+)$'
+        step_pattern = r"^\s*(\d+)\.\s*\*?\*?(.+?)\*?\*?\s*-\s*(.+)$"
+        simple_pattern = r"^\s*(\d+)\.\s*(.+)$"
 
-        for line in process_section.split('\n'):
+        for line in process_section.split("\n"):
             # Try detailed pattern first
             match = re.match(step_pattern, line)
             if match:
@@ -308,6 +308,6 @@ class AgentParser:
             "checkboxes": len(self.extract_checkboxes()),
             "antipatterns": len(self.extract_antipatterns()),
             "process_steps": len(self.extract_process_steps()),
-            "lines": len(self._content.split('\n')),
+            "lines": len(self._content.split("\n")),
             "characters": len(self._content),
         }

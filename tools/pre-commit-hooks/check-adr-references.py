@@ -22,11 +22,11 @@ def find_adr_references(filepath: Path) -> List[str]:
     Returns:
         List of ADR IDs found
     """
-    adr_pattern = r'ADR-\d{3,4}'
+    adr_pattern = r"ADR-\d{3,4}"
     adr_refs = set()
 
     try:
-        with open(filepath, 'r', encoding='utf-8') as f:
+        with open(filepath, "r", encoding="utf-8") as f:
             content = f.read()
             matches = re.findall(adr_pattern, content)
             adr_refs.update(matches)
@@ -79,7 +79,7 @@ def main():
 
     # Get command line arguments
     strict_mode = "--strict" in sys.argv
-    filenames = [arg for arg in sys.argv[1:] if not arg.startswith('--')]
+    filenames = [arg for arg in sys.argv[1:] if not arg.startswith("--")]
 
     if not filenames:
         sys.exit(0)

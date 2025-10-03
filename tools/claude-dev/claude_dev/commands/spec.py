@@ -31,7 +31,9 @@ def spec():
 
 @spec.command()
 @click.argument("spec_type", type=click.Choice(["use-case", "service", "adr"]))
-@click.option("--id", "spec_id", required=True, help="Specification ID (e.g., UC-001, SVC-001, ADR-001)")
+@click.option(
+    "--id", "spec_id", required=True, help="Specification ID (e.g., UC-001, SVC-001, ADR-001)"
+)
 @click.option("--title", required=True, help="Specification title")
 @click.option("--edit", is_flag=True, help="Open in editor after creation")
 def new(spec_type: str, spec_id: str, title: str, edit: bool):
@@ -108,14 +110,16 @@ def new(spec_type: str, spec_id: str, title: str, edit: bool):
         # Create file
         create_file(output_path, content, overwrite=True, backup=True)
 
-        console.print(Panel(
-            f"[green]✓[/green] {spec_type.title()} specification created\n\n"
-            f"ID: [cyan]{spec_id}[/cyan]\n"
-            f"Title: [cyan]{title}[/cyan]\n"
-            f"File: [cyan]{output_path}[/cyan]",
-            title="Specification Created",
-            border_style="green"
-        ))
+        console.print(
+            Panel(
+                f"[green]✓[/green] {spec_type.title()} specification created\n\n"
+                f"ID: [cyan]{spec_id}[/cyan]\n"
+                f"Title: [cyan]{title}[/cyan]\n"
+                f"File: [cyan]{output_path}[/cyan]",
+                title="Specification Created",
+                border_style="green",
+            )
+        )
 
         # Open in editor if requested
         if edit:
@@ -134,7 +138,7 @@ def new(spec_type: str, spec_id: str, title: str, edit: bool):
     "spec_type",
     type=click.Choice(["use-case", "service", "adr", "all"]),
     default="all",
-    help="Filter by specification type"
+    help="Filter by specification type",
 )
 def list(spec_type: str):
     """
@@ -193,7 +197,7 @@ def list(spec_type: str):
                     spec_id,
                     spec_type_name,
                     title,
-                    str(spec_file.relative_to(config.get_project_root()))
+                    str(spec_file.relative_to(config.get_project_root())),
                 )
 
     console.print(table)

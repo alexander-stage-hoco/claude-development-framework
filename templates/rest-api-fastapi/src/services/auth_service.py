@@ -18,11 +18,13 @@ from src.services.user_service import UserService
 
 class AuthenticationError(Exception):
     """Raised when authentication fails."""
+
     pass
 
 
 class InvalidTokenError(Exception):
     """Raised when token is invalid."""
+
     pass
 
 
@@ -88,9 +90,7 @@ class AuthService:
         if expires_delta:
             expire = datetime.utcnow() + expires_delta
         else:
-            expire = datetime.utcnow() + timedelta(
-                minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES
-            )
+            expire = datetime.utcnow() + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
 
         to_encode = {
             "sub": user.username,

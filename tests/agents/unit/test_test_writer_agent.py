@@ -30,6 +30,7 @@ from tests.agents.fixtures import AgentParser
 # Fixtures
 # ============================================================================
 
+
 @pytest.fixture
 def test_writer_parser(agents_dir: Path) -> AgentParser:
     """Parser for test-writer agent."""
@@ -84,6 +85,7 @@ Scenario: User creation fails with duplicate username
 # Test: Agent Metadata
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_test_writer_has_correct_metadata(test_writer_parser: AgentParser):
     """Test that test-writer has correct metadata configuration."""
@@ -108,6 +110,7 @@ def test_test_writer_description_mentions_test_first(test_writer_parser: AgentPa
 # ============================================================================
 # Test: Responsibilities Coverage
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_test_writer_covers_spec_parsing(test_writer_parser: AgentParser):
@@ -167,6 +170,7 @@ def test_test_writer_enforces_red_state_verification(test_writer_parser: AgentPa
 # Test: Process Steps
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_test_writer_process_includes_spec_reading(test_writer_parser: AgentParser):
     """Test that process includes reading specification."""
@@ -201,6 +205,7 @@ def test_test_writer_process_includes_red_verification(test_writer_parser: Agent
 # ============================================================================
 # Test: Quality Checks
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_test_writer_quality_checks_include_aaa_pattern(test_writer_parser: AgentParser):
@@ -242,6 +247,7 @@ def test_test_writer_quality_checks_include_type_hints(test_writer_parser: Agent
 # Test: Anti-Patterns
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_test_writer_warns_against_passing_tests(test_writer_parser: AgentParser):
     """Test that anti-patterns warn against tests that pass initially."""
@@ -274,6 +280,7 @@ def test_test_writer_warns_against_missing_edge_cases(test_writer_parser: AgentP
 # Test: Code Examples
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_test_writer_provides_code_examples(test_writer_parser: AgentParser):
     """Test that agent provides code examples."""
@@ -292,9 +299,7 @@ def test_test_writer_examples_demonstrate_aaa_pattern(test_writer_parser: AgentP
 
         # Should have comments or structure showing AAA
         has_aaa = (
-            "# arrange" in example_code or
-            "# act" in example_code or
-            "# assert" in example_code
+            "# arrange" in example_code or "# act" in example_code or "# assert" in example_code
         )
 
         assert has_aaa, "Code examples should demonstrate AAA pattern"
@@ -320,9 +325,7 @@ def test_test_writer_examples_show_mocks(test_writer_parser: AgentParser):
         example_code = "\n".join(code_blocks).lower()
 
         has_mocks = (
-            "mock" in example_code or
-            "unittest.mock" in example_code or
-            "patch" in example_code
+            "mock" in example_code or "unittest.mock" in example_code or "patch" in example_code
         )
 
         assert has_mocks, "Examples should demonstrate mocking"
@@ -338,8 +341,8 @@ def test_test_writer_examples_show_type_hints(test_writer_parser: AgentParser):
 
         # Should have type hints
         has_types = (
-            "->" in example_code or  # Return type hints
-            ": " in example_code     # Parameter type hints
+            "->" in example_code
+            or ": " in example_code  # Return type hints  # Parameter type hints
         )
 
         assert has_types, "Examples should include type hints"
@@ -348,6 +351,7 @@ def test_test_writer_examples_show_type_hints(test_writer_parser: AgentParser):
 # ============================================================================
 # Test: File Operations
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_test_writer_reads_specs(test_writer_parser: AgentParser):
@@ -371,6 +375,7 @@ def test_test_writer_writes_to_tests_directory(test_writer_parser: AgentParser):
 # Test: Framework Compliance
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_test_writer_enforces_rule_2(test_writer_parser: AgentParser):
     """Test that agent enforces Rule #2 (Tests Define Correctness)."""
@@ -391,6 +396,7 @@ def test_test_writer_mentions_90_percent_coverage(test_writer_parser: AgentParse
 # ============================================================================
 # Test: Output Specification
 # ============================================================================
+
 
 @pytest.mark.unit
 def test_test_writer_output_describes_test_file_structure(test_writer_parser: AgentParser):
@@ -415,6 +421,7 @@ def test_test_writer_output_requires_pytest_execution(test_writer_parser: AgentP
 # Test: Next Steps
 # ============================================================================
 
+
 @pytest.mark.unit
 def test_test_writer_next_steps_mention_implementation(test_writer_parser: AgentParser):
     """Test that next steps mention moving to implementation (GREEN phase)."""
@@ -438,6 +445,7 @@ def test_test_writer_next_steps_mention_refactoring(test_writer_parser: AgentPar
 # Test: Behavioral Simulation
 # ============================================================================
 
+
 def test_test_writer_workflow_simulation(sample_uc_spec: str):
     """Simulate test-writer workflow with sample UC spec.
 
@@ -454,7 +462,9 @@ def test_test_writer_workflow_simulation(sample_uc_spec: str):
 
     # Extract test scenarios from acceptance criteria
     assert "Scenario:" in sample_uc_spec
-    scenarios = [line for line in sample_uc_spec.split('\n') if line.strip().startswith("Scenario:")]
+    scenarios = [
+        line for line in sample_uc_spec.split("\n") if line.strip().startswith("Scenario:")
+    ]
     assert len(scenarios) >= 2, "Should have happy path and error scenarios"
 
     # Identify services (for mocking)
