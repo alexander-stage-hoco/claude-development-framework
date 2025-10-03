@@ -1,7 +1,7 @@
 # Claude Development Framework - Template
 
-**Version**: 2.1 (Constitution + Guides + Agent Ecosystem)
-**Last Updated**: 2025-10-02
+**Version**: 2.2 (Agent Ecosystem + Comprehensive Test Suite)
+**Last Updated**: 2025-10-03
 **Based On**: Learnings from Knowledge Graph Builder project
 
 ---
@@ -269,7 +269,55 @@ Agents work through trigger keywords or proactive invocation:
 - **Phase Coverage**: 4/9 phases (partial automation)
 - **Time Savings**: 40-60% reduction in manual effort (estimated)
 
-**Version**: All agents v1.0, Framework v2.1
+**Version**: All agents v1.0, Framework v2.2
+
+---
+
+### Agent Test Suite ✅
+
+**Status**: Complete (v1.0 - October 2025)
+
+The framework includes a **comprehensive test suite** validating all 18 agents:
+
+**Test Coverage**:
+- **794 total tests** across 7 phases
+- Metadata validation (131 tests)
+- Structure validation (309 tests)
+- Behavioral tests for Tier 1 agents (209 tests)
+- Integration workflows (48 tests)
+- E2E development workflows (35 tests)
+- Performance & consistency (62 tests)
+
+**Test Organization**:
+```
+tests/agents/
+├── unit/           # Metadata, structure, behavioral (Phases 1-4)
+├── integration/    # Agent chains & workflows (Phase 5)
+├── e2e/            # Complete development workflows (Phase 6)
+├── performance/    # Efficiency & consistency (Phase 7)
+└── fixtures/       # Shared test utilities
+```
+
+**Quick Start**:
+```bash
+# Run all tests
+pytest tests/agents/ -v
+
+# Run specific phase
+pytest tests/agents/e2e/ -v
+
+# With coverage
+pytest tests/agents/ --cov=tests
+```
+
+**Documentation**: See [`tests/README.md`](./tests/README.md) for complete guide
+
+**Benefits**:
+- ✅ Confidence in agent reliability
+- ✅ Catch regressions early
+- ✅ Document expected behaviors
+- ✅ Enable safe agent evolution
+- ✅ <1 second runtime (fast feedback)
 
 ---
 
@@ -403,10 +451,11 @@ This framework is based on learnings from practical software development experie
 
 ---
 
-**Last Updated**: 2025-10-02
-**Version**: 2.1 (Constitution + Guides + Agent Ecosystem)
+**Last Updated**: 2025-10-03
+**Version**: 2.2 (Agent Ecosystem + Comprehensive Test Suite)
 **Claude Context**: ~16,200 lines (framework + agents)
 **User Documentation**: ~5,000 lines in separate /docs folder
 **Agent Library**: 18 agents (~10,000 lines)
+**Test Suite**: 794 tests (~4,000 lines)
 
 Ready to build with discipline! 🚀

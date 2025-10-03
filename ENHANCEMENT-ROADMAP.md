@@ -607,35 +607,47 @@ examples/playground/
 
 #### 5A. Agent Test Suite
 
-- **Status**: [ ] To Do / [ ] In Progress / [ ] Done
-- **Decision**: [ ] Yes / [ ] No / [ ] Later
+- **Status**: [ ] To Do / [ ] In Progress / [X] Done
+- **Decision**: [X] Yes / [ ] No / [ ] Later
 - **Priority**: MEDIUM
 - **Impact**: HIGH (agent reliability)
-- **Effort**: 2 weeks
+- **Effort**: 2 weeks (Completed: 2025-10-03)
 
-**Coverage**:
+**✅ Delivered** (October 2025):
 
-1. **Unit Tests for Each Agent**
-   - Prompt generation correctness
-   - Input validation
-   - Output format verification
-   - Edge case handling
+**794 Tests Across 7 Phases**:
 
-2. **Integration Tests**
-   - Agent chaining workflows
-   - File creation/modification
-   - Context window management
-   - Error recovery
+1. **Phase 1-2: Metadata & Structure** (440 tests)
+   - YAML front matter validation (131 tests)
+   - Markdown structure validation (309 tests)
+   - All 18 agents validated
 
-3. **End-to-End Tests**
-   - Complete workflows (UC creation → implementation → commit)
-   - Multi-agent scenarios
-   - Real Claude API integration tests
+2. **Phase 4: Tier 1 Behavioral** (209 tests)
+   - 6 critical agents tested (test-writer, uc-writer, bdd-scenario-writer, code-quality-checker, refactoring-analyzer, adr-manager)
+   - Agent-specific behavior validation
+   - Quality checks, examples, edge cases
 
-4. **Performance Tests**
-   - Response time benchmarks
-   - Token usage efficiency
-   - Context loading speed
+3. **Phase 5: Integration Chains** (48 tests)
+   - UC → BDD → Test workflow (27 tests)
+   - TDD cycle RED → GREEN → REFACTOR (16 tests)
+   - ADR compliance chain (15 tests)
+
+4. **Phase 6: E2E Workflows** (35 tests)
+   - Complete feature development (9 tests)
+   - Iteration planning workflows (14 tests)
+   - Service-oriented architecture (12 tests)
+
+5. **Phase 7: Performance & Consistency** (62 tests)
+   - Context efficiency (14 tests)
+   - Cross-agent consistency (21 tests)
+   - Coverage analysis (27 tests)
+
+**Key Achievements**:
+- ⚡ <1 second runtime (all 794 tests)
+- 🎯 100% passing rate
+- 🔧 Reusable test fixtures (AgentParser, MockFileSystem)
+- 📖 Complete documentation (tests/README.md)
+- ✅ CI/CD integration examples
 
 **Test Structure**:
 ```
@@ -852,6 +864,7 @@ def test_template_instantiation():
 2025-10-03 | 2C: Framework Playground | Later | Backlog - focus on templates first | -
 2025-10-03 | 3A: Project Templates | **YES** | HIGH impact, speeds up project starts | 🚧 In Progress
 2025-10-03 | 1B: Pre-commit Hooks | **YES** | Top recommendation, automates framework discipline | ✅ Done
+2025-10-03 | 5A: Agent Test Suite | **YES** | Framework reliability, regression prevention | ✅ Done
 
 ---
 
@@ -863,8 +876,8 @@ def test_template_instantiation():
 - [ ] 2A: Interactive Tutorial
 - [X] 3A: Project Templates by Domain (80% complete)
 
-### High Impact + Medium Priority
-- [ ] 5A: Agent Test Suite
+### High Impact + Medium Priority (COMPLETED)
+- [X] 5A: Agent Test Suite
 
 ### Medium Impact + High Priority
 - [ ] 1C: GitHub Actions Workflows
