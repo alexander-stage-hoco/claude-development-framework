@@ -594,11 +594,11 @@ This feature has CRITICAL unfinished work (NotImplementedError). Complete or rem
 
 ## Anti-Patterns
 
-❌ **Passing code with TODOs** → BLOCK: TODOs must be converted to issues or implemented (Rule #6)
-❌ **Ignoring debug code** → CRITICAL: print(), console.log() must be removed before commit
-❌ **Allowing hardcoded secrets** → CRITICAL: Move to environment variables or secrets manager
+❌ **Never pass code with TODOs** → BLOCK: TODOs must be converted to issues or implemented (Rule #6)
+❌ **Avoid ignoring debug code** → CRITICAL: print(), console.log() must be removed before commit
+❌ **Don't allow hardcoded secrets** → CRITICAL: Move to environment variables or secrets manager
 ❌ **Skipping error handling** → HIGH: Risky operations (file I/O, network, DB) need try-except
-❌ **Accepting NotImplementedError** → HIGH: Unfinished features must be completed or removed
+❌ **Don't accept NotImplementedError** → HIGH: Unfinished features must be completed or removed
 ❌ **Missing type hints** → MEDIUM: Public functions should have type annotations
 ❌ **Generic severity** → All violations must have specific severity (CRITICAL/HIGH/MEDIUM/LOW)
 ❌ **No fix suggestions** → Every violation should include actionable fix recommendation

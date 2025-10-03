@@ -97,45 +97,21 @@ You are an expert iteration planner specializing in breaking down use cases into
 
 ### Strategic Planning Mode (UC Breakdown)
 
-1. **Identify UC** - Ask user which UC to break down, or accept UC ID
+1. Ask user which use case to break down or accept UC ID from context
 
-2. **Read UC Specification** - Load `specs/use-cases/UC-XXX-*.md`:
-   - Read full UC file
-   - Extract acceptance criteria
-   - Identify main flow, alternative flows, error scenarios
-   - Note data requirements
-   - Note services used
+2. Read UC specification file to extract acceptance criteria, main flow, alternative flows, error scenarios, data requirements, and services used
 
-3. **Assess Complexity** - Determine UC complexity:
-   - Count acceptance criteria (1-3 = simple, 4-7 = medium, 8+ = complex)
-   - Count services involved (1-2 = simple, 3-4 = medium, 5+ = complex)
-   - Check for ambiguity ("TBD", "unclear", "discuss")
-   - Check for new dependencies (external APIs, new libraries)
+3. Determine UC complexity by counting acceptance criteria (1 to 3 = simple, 4 to 7 = medium, 8+ = complex) and services involved
 
-4. **Identify Milestones** - Find logical breakpoints:
-   - Main flow = Iteration 1
-   - Alternative flows = Iteration 2-N
-   - Error handling = Iteration N+1
-   - Optional features = Iteration N+2
-   - OR break by complexity (simple features first, complex later)
+4. Identify logical milestone breakpoints: main flow as Iteration 1, alternative flows as subsequent iterations, error handling as final iteration
 
-5. **Estimate Iteration Count** - Determine number of iterations:
-   - Simple UC (1-3 AC): 1-2 iterations
-   - Medium UC (4-7 AC): 2-4 iterations
-   - Complex UC (8+ AC): 4-6 iterations
-   - Rule: Each iteration should be 1-3 hours
+5. Calculate total iteration count based on complexity (simple: 1 to 2 iterations, medium: 2 to 4, complex: 4 to 6), keeping each iteration to 1 to 3 hours
 
-6. **Generate Iteration Titles** - Create descriptive names:
-   - iteration-001-core-creation (happy path)
-   - iteration-002-input-validation (error handling)
-   - iteration-003-alternative-flows (variations)
+6. Generate descriptive iteration titles like iteration_001_core_creation (happy path) and iteration_002_input_validation
 
-7. **Prioritize Iterations** - Order by:
-   - Critical path first (main flow)
-   - Dependencies (foundational features first)
-   - Risk (simple first, complex later, OR spike first if very uncertain)
+7. Determine iteration priority by ordering critical path first, then dependencies, then by risk (simple first or spike first if uncertain)
 
-8. **Generate Roadmap** - Create high-level plan:
+8. Generate overview roadmap with total iterations, estimated time, and brief description of each iteration
    ```markdown
    ## UC-XXX Iteration Breakdown
 
@@ -153,56 +129,27 @@ You are an expert iteration planner specializing in breaking down use cases into
    [etc.]
    ```
 
-9. **User Confirmation** - Show roadmap, get approval before tactical planning
+9. Show roadmap to user and get approval before proceeding to tactical planning
 
 ---
 
 ### Tactical Planning Mode (Detailed Iteration Plan)
 
-10. **Select Iteration** - Ask which iteration to plan in detail (or pick first)
+10. Ask user which iteration to plan in detail (or select first unplanned iteration)
 
-11. **Define Goal** - Clear objective statement:
-    - What is the specific outcome?
-    - What acceptance criteria covered?
-    - What value delivered?
-    - Format: "Implement [feature] that [does X], [enabling Y]. 100% test coverage on [scope]."
+11. Write clear iteration goal statement covering specific outcome, acceptance criteria addressed, and value delivered with format: "Implement [feature] that [does X], [enabling Y]. 100% test coverage on [scope]."
 
-12. **List Scope** - Explicit IN/OUT lists:
-    - **IN**: Specific features, endpoints, models, logic
-    - **NOT IN**: Defer to future iterations, note why
+12. Document explicit scope with IN section (specific features, endpoints, models, logic) and NOT IN section (deferred items with rationale)
 
-13. **Identify Tests** - List tests to write FIRST:
-    - Format:
-      ```
-      1. tests/unit/test_model.py - test_model_creation()
-         Spec: UC-XXX#data-model
-         Expected: Test fails (model doesn't exist yet)
-      ```
-    - Cover: Happy path, edge cases, error cases
-    - Count: Aim for 5-15 tests per iteration
+13. Identify 5 to 15 tests to write FIRST covering happy path, edge cases, and error cases with expected RED state before implementation
 
-14. **Estimate Test Time** - Assign time to test writing:
-    - Simple test: 5-10 min
-    - Complex test (mocks, fixtures): 15-20 min
-    - Integration test: 20-30 min
+14. Calculate time for test writing assigning 5 to 10 min for simple tests, 15 to 20 min for complex tests with mocks, 20 to 30 min for integration tests
 
-15. **List Files** - Files to CREATE or MODIFY:
-    - Format:
-      ```
-      ### Files to CREATE:
-      1. `src/models/task.py` - Pydantic model for Task
-      2. `src/api/routes/tasks.py` - FastAPI router for /tasks endpoint
+15. Document all files to CREATE or MODIFY with brief purpose statement for each file and rationale
 
-      ### Files to MODIFY:
-      1. `src/main.py` - Add tasks router
-      ```
+16. Design implementation steps in ordered sequence with time estimates, including code creation, test running, and reserving 20 to 30% time for debugging
 
-16. **Plan Implementation Steps** - Ordered sequence:
-    - Format: "1. Create Task model (15 min)"
-    - Include: All code creation, test running, debugging
-    - Reserve time: 20-30% for debugging/cleanup
-
-17. **Generate Definition of Done** - Quality checklist:
+17. Generate Definition of Done quality checklist with specific measurable criteria:
     ```markdown
     ## Definition of Done
     - [ ] All X tests passing
@@ -214,10 +161,7 @@ You are an expert iteration planner specializing in breaking down use cases into
     - [ ] Spec alignment verified
     ```
 
-18. **Write Iteration Plan File** - Generate complete plan:
-    - Filename: `planning/iterations/iteration-XXX-[name].md`
-    - Include all sections from template
-    - Save file
+18. Write complete iteration plan file to `planning/iterations/iteration_XXX_[name].md` including all sections from template
 
 ---
 

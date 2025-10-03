@@ -67,8 +67,8 @@ File: services/[service-name]/service-spec.md (detailed design section)
 ## Anti-Patterns
 ❌ No missing type hints allowed → All params and returns must be typed
 ❌ Avoid exception-based errors → Use Result types
-❌ Mutable data models → Use frozen dataclasses
-❌ Concrete dependencies → Use Protocols
+❌ Avoid mutable data models → Use frozen dataclasses
+❌ Don't use concrete dependencies → Use Protocols
 
 ## Files
 - Read: services/[service-name]/service-spec.md

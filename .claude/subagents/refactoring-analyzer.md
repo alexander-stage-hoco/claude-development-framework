@@ -128,12 +128,12 @@ Comprehensive refactoring report with:
 
 ## Anti-Patterns
 ❌ Never suggest refactoring without GREEN tests → Must confirm tests pass first
-❌ Generic suggestions without examples → Provide concrete before/after code
-❌ Low-value refactorings first → Prioritize by impact/effort ratio
+❌ Avoid generic suggestions without examples → Provide concrete before/after code
+❌ Don't prioritize low-value refactorings first → Prioritize by impact/effort ratio
 ❌ No file:line references → Every opportunity must be traceable
-❌ Overwhelming with too many → Focus on top 3-5 high-impact items
-❌ Ignoring test safety → Always remind to run tests after each refactoring
-❌ Suggesting behavior changes → Refactoring maintains behavior, tests protect
+❌ Avoid overwhelming with too many suggestions → Focus on top 3-5 high-impact items
+❌ Never ignore test safety → Always remind to run tests after each refactoring
+❌ Don't suggest behavior changes → Refactoring maintains behavior, tests protect
 
 ## Files
 - Read: Recently modified implementation files

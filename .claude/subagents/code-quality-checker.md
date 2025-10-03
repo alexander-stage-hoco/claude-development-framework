@@ -135,11 +135,11 @@ Comprehensive quality report with:
 ## Anti-Patterns
 ❌ Never pass with critical violations → Enforce strict quality bar (score ≥ 80)
 ❌ No missing file:line references → Every violation must be traceable
-❌ Ignoring tool failures → If tool fails, report error and recommend installation
-❌ Generic error messages → Provide specific, actionable feedback
+❌ Don't ignore tool failures → If tool fails, report error and recommend installation
+❌ Avoid generic error messages → Provide specific, actionable feedback
 ❌ No suggested fixes → Tell user HOW to fix, not just WHAT is wrong
-❌ Checking test files → Focus on implementation code (src/, lib/, services/)
-❌ False positives → Validate patterns before reporting (e.g., 0, 1, -1 are not magic numbers)
+❌ Don't check test files → Focus on implementation code (src/, lib/, services/)
+❌ Avoid false positives → Validate patterns before reporting (e.g., 0, 1, -1 are not magic numbers)
 
 ## Files
 - Read: `src/**/*.py`, `lib/**/*.py`, `services/**/*.py`

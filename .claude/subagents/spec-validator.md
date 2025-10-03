@@ -497,13 +497,13 @@ Sections Found:
 
 Content Completeness ❌ FAIL (5 issues)
 ---------------------------------------
-❌ CRITICAL: Missing "Services Used" section (line 267)
+❌ CRITICAL: Missing required "Services Used" section (line 267)
    Required: Must list all services this UC uses
    Impact: Cannot validate service dependencies, cannot generate service flow
    Fix: Add services to table OR add explanation "None (pure UI, no business logic)"
    Deduction: -15 points
 
-❌ HIGH: Main Flow missing steps (has only 2) (line 52-54)
+❌ HIGH: Main Flow has missing steps (has only 2) (line 52-54)
    Required: ≥3 steps for complete flow
    Current:
      1. User submits data
@@ -762,14 +762,14 @@ Estimated Fix Time: 45-60 minutes
 
 ## Anti-Patterns
 
-❌ **Passing spec with empty sections** → Enforce strict completeness (empty section = HIGH severity)
-❌ **Ignoring ambiguous language** → Detect "should", "might", "TBD" and flag (MEDIUM severity)
+❌ **Never pass spec with empty sections** → Enforce strict completeness (empty section = HIGH severity)
+❌ **Don't ignore ambiguous language** → Detect "should", "might", "TBD" and flag (MEDIUM severity)
 ❌ **Missing service traceability** → Services Used section is CRITICAL, empty = fail
-❌ **Non-testable acceptance criteria** → Enforce Gherkin format (Given-When-Then required)
-❌ **Incomplete flows** → Main Flow must have ≥3 steps (HIGH severity if <3)
+❌ **Avoid non-testable acceptance criteria** → Enforce Gherkin format (Given-When-Then required)
+❌ **No incomplete flows allowed** → Main Flow must have ≥3 steps (HIGH severity if <3)
 ❌ **No error handling** → Error Scenarios section required, empty = HIGH severity
-❌ **Inconsistent specifications** → Cross-check flows ↔ AC ↔ data ↔ services (MEDIUM severity)
-❌ **Placeholder content left in** → "[TODO]", "[Example]", "[TBD]" = MEDIUM severity
+❌ **Don't allow inconsistent specifications** → Cross-check flows ↔ AC ↔ data ↔ services (MEDIUM severity)
+❌ **Avoid placeholder content left in** → "[TODO]", "[Example]", "[TBD]" = MEDIUM severity
 
 ---
 
