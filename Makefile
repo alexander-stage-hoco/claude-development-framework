@@ -98,6 +98,8 @@ install-dev: ## Install in development mode
 	@echo "$(GREEN)✓ Development installation complete$(NC)"
 
 install-hooks: ## Install pre-commit hooks
+	@echo "$(GREEN)Installing development dependencies...$(NC)"
+	$(PIP) install -r requirements-dev.txt
 	@echo "$(GREEN)Installing pre-commit hooks...$(NC)"
 	cd $(HOOKS_DIR) && bash install-hooks.sh
 	@echo "$(GREEN)✓ Pre-commit hooks installed$(NC)"

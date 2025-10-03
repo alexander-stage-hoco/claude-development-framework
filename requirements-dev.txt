@@ -1,0 +1,5 @@
+# Development dependencies for Claude Development Framework
+# Install with: pip install -r requirements-dev.txt
+
+# Pre-commit hooks framework
+pre-commit>=3.0.0
