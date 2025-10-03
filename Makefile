@@ -18,12 +18,16 @@ YELLOW := \033[0;33m
 RED := \033[0;31m
 NC := \033[0m # No Color
 
-# Python
-PYTHON := python3
-PIP := pip3
-
-# Pytest
-PYTEST := pytest
+# Detect virtual environment and use it if available
+ifneq (,$(wildcard .venv/bin/activate))
+    PYTHON := .venv/bin/python3
+    PIP := .venv/bin/pip
+    PYTEST := .venv/bin/pytest
+else
+    PYTHON := python3
+    PIP := pip3
+    PYTEST := pytest
+endif
 PYTEST_ARGS := -v
 PYTEST_COV_ARGS := --cov=tests --cov-report=html --cov-report=term-missing
 
