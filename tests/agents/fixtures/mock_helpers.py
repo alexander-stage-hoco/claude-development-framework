@@ -20,17 +20,21 @@ class MockFileSystem:
         self.base = base_path
         self.files: Dict[str, str] = {}
 
-    def create_file(self, relative_path: str, content: str):
+    def create_file(self, relative_path: str, content: str) -> str:
         """Create a mock file.
 
         Args:
             relative_path: Path relative to base
             content: File content
+
+        Returns:
+            The relative path to the created file
         """
         full_path = self.base / relative_path
         full_path.parent.mkdir(parents=True, exist_ok=True)
         full_path.write_text(content, encoding='utf-8')
         self.files[relative_path] = content
+        return relative_path
 
     def read_file(self, relative_path: str) -> Optional[str]:
         """Read mock file content.
