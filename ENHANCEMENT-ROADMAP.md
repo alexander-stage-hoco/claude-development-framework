@@ -15,11 +15,11 @@
 
 #### 1A. CLI Tool (`claude-dev`)
 
-- **Status**: [ ] To Do / [ ] In Progress / [ ] Done
-- **Decision**: [ ] Yes / [ ] No / [ ] Later
+- **Status**: [ ] To Do / [ ] In Progress / [X] Done
+- **Decision**: [X] Yes / [ ] No / [ ] Later
 - **Priority**: HIGH
 - **Impact**: HIGH (simplifies all operations)
-- **Effort**: 1-2 weeks
+- **Effort**: 1-2 weeks (Completed: 2025-10-03)
 
 **Capabilities**:
 ```bash
@@ -845,7 +845,9 @@ def test_template_instantiation():
 
 **Date** | **Option** | **Decision** | **Reason** | **Status**
 ---------|------------|--------------|------------|------------
-_TBD_ | _Option ID_ | _Yes/No/Later_ | _Rationale_ | _To Do/In Progress/Done_
+2025-10-03 | 1A: CLI Tool | **YES** | High impact, simplifies all operations | ✅ Done
+2025-10-03 | 1B: Pre-commit Hooks | Later | Deferring to focus on CLI first | -
+2025-10-03 | 1C: GitHub Actions | Later | Deferring to focus on CLI first | -
 
 ---
 
