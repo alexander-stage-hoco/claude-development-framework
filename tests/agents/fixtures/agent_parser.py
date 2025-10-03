@@ -9,6 +9,16 @@ import re
 import yaml
 
 
+def get_all_agent_paths() -> List[Path]:
+    """Get paths to all agent markdown files.
+
+    Returns:
+        List of paths to agent files
+    """
+    agents_dir = Path(__file__).parent.parent.parent / ".claude" / "agents"
+    return sorted(agents_dir.glob("agent-*.md"))
+
+
 class AgentParser:
     """Parse and analyze agent markdown files."""
 
@@ -111,6 +121,10 @@ class AgentParser:
     def get_section(self, title: str) -> Optional[str]:
         """Get specific section content by title."""
         return self._sections.get(title)
+
+    def get_section_content(self, title: str) -> Optional[str]:
+        """Get specific section content by title (alias for get_section)."""
+        return self.get_section(title)
 
     def has_section(self, title: str) -> bool:
         """Check if section exists."""

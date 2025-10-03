@@ -6,7 +6,7 @@ This package provides:
 - Agent behavior simulation helpers
 """
 
-from .agent_parser import AgentParser
+from .agent_parser import AgentParser, get_all_agent_paths
 from .mock_helpers import (
     MockFileSystem,
     MockGitRepo,
@@ -18,6 +18,7 @@ from .mock_helpers import (
 
 __all__ = [
     "AgentParser",
+    "get_all_agent_paths",
     "MockFileSystem",
     "MockGitRepo",
     "MockAgentResponse",
