@@ -30,7 +30,7 @@ repos:
       # Allow TODOs but warn
       - id: todo-warning
         name: Warn about TODO comments
-        entry: bash -c 'if grep -r "TODO" --include="*.py" src/ 2>/dev/null; then echo "Warning: TODO comments found (not blocking in relaxed mode)"; fi; exit 0'
+        entry: bash -c 'if grep -r TODO --include "*.py" src/ 2>/dev/null; then echo "Warning - TODO comments found (not blocking in relaxed mode)"; fi; exit 0'
         language: system
         pass_filenames: false
         always_run: true
