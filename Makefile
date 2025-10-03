@@ -20,9 +20,9 @@ NC := \033[0m # No Color
 
 # Detect virtual environment and use it if available
 ifneq (,$(wildcard .venv/bin/activate))
-    PYTHON := .venv/bin/python3
-    PIP := .venv/bin/pip
-    PYTEST := .venv/bin/pytest
+    PYTHON := $(CURDIR)/.venv/bin/python3
+    PIP := $(CURDIR)/.venv/bin/pip
+    PYTEST := $(CURDIR)/.venv/bin/pytest
 else
     PYTHON := python3
     PIP := pip3
