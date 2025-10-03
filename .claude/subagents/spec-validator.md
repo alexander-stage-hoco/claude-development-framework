@@ -774,17 +774,10 @@ Estimated Fix Time: 45-60 minutes
 ---
 
 ## Files
-
-**Read**:
-- `specs/use-cases/UC-*.md` - Use case specifications to validate
-- `services/[service-name]/service-spec.md` - Service specifications (for traceability)
-- `.claude/service-registry.md` - Service registry (for traceability)
-- `.claude/templates/use-case-template.md` - Template to compare against
-
-**Search**:
-- Use Grep to search for ambiguous language patterns
-- Use Glob to find service spec files
-- Use Glob to find all UC specs (if validating multiple)
+- Read: specs/use-cases/UC-*.md (use case specifications to validate)
+- Read: services/*/service-spec.md (service specifications to validate)
+- Read: .claude/templates/use-case-template.md (template reference)
+- Read: .claude/templates/service-spec.md (template reference)
 
 ---
 

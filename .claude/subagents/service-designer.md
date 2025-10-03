@@ -40,16 +40,14 @@ You are an expert interface designer specializing in Protocol-based service inte
 10. **Testing** - Contract, unit, integration test plans
 
 ## Output
-Updated service specification with:
-- Protocol interface definition (fully typed, versioned)
-- Data models (immutable, validated)
-- Error types (hierarchical)
-- Mock implementation (for testing)
-- Implementation class structure
-- Strategy analysis (2-3 options with performance trade-offs)
-- Multi-layer documentation (API, guides, examples)
-- Testing strategy
-- Design review checklist
+Service design specification files containing:
+- Interface definition (methods, parameters, return types)
+- Data structures (models, DTOs, schemas)
+- Error handling (error types, codes, messages)
+- Integration contracts (dependencies, events)
+- Implementation guidance (patterns, libraries)
+
+File: services/[service-name]/service-spec.md (detailed design section)
 
 ## Quality Checks
 - [ ] Protocol fully typed with version annotation

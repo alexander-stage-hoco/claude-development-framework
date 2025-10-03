@@ -603,6 +603,19 @@ This feature has CRITICAL unfinished work (NotImplementedError). Complete or rem
 ❌ **Generic severity** → All violations must have specific severity (CRITICAL/HIGH/MEDIUM/LOW)
 ❌ **No fix suggestions** → Every violation should include actionable fix recommendation
 
+## Output
+Tech debt report with:
+- Severity breakdown (CRITICAL/HIGH/MEDIUM/LOW counts)
+- Violations list (file, line, description, fix recommendation)
+- Tech debt score (0-100, lower is better)
+- Improvement recommendations
+- Files requiring immediate attention
+
+## Files
+- Read: All source files (src/**/*.py, *.js, *.ts)
+- Read: specs/use-cases/UC-*.md (for spec compliance validation)
+- Write: reports/tech-debt-report.md (generated report)
+
 ---
 
 **Agent Version**: 1.0

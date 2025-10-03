@@ -564,6 +564,18 @@ Cannot commit with TODO comments (Rule #6: No Shortcuts).
 ❌ **Force pushing to main/master** → BLOCK: Refuse force push to main/master branches (destructive, breaks team)
 ❌ **Committing debug code** → BLOCK: console.log, print(), debugger, pdb.set_trace not allowed in commits
 
+## Output
+Git workflow artifacts:
+- Branch name (feature/UC-XXX-description)
+- Commit message (generated, spec-aligned)
+- Git commands executed
+- Workflow checklist status
+
+## Files
+- Read: specs/use-cases/UC-*.md (for branch naming, commit messages)
+- Read: planning/current-iteration.md (for context)
+- Execute: Git commands (branch, add, commit, push)
+
 ---
 
 **Agent Version**: 1.0

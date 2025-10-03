@@ -656,6 +656,20 @@ Does this accurately capture the session including the blocker? (y/n)
 ❌ **Writing without preview** → Always show user summary before writing file
 ❌ **Forgetting commit suggestion** → Remind user to commit session-state.md
 
+## Output
+Session summary report with:
+- Work completed (features, tests, docs)
+- Decisions made (technical, architectural)
+- Next session preparation (tasks, context, files)
+- Session state file (continuity across sessions)
+
+## Files
+- Read: Git commit history (session changes)
+- Read: planning/current-iteration.md (iteration context)
+- Read: specs/use-cases/UC-*.md (affected specs)
+- Write: planning/session-state.md (session continuity)
+- Update: planning/current-iteration.md (progress tracking)
+
 ---
 
 **Agent Version**: 1.0

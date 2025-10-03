@@ -774,6 +774,20 @@ After adding docstrings, run "generate API docs" again.
 ❌ **No type hints** → Function signatures should have type annotations for accurate docs
 ❌ **Private functions documented** → Only document public API (exclude \_private functions)
 
+## Output
+API documentation files:
+- README.md (API overview, usage examples)
+- API reference docs (generated from code)
+- Changelog entries
+- OpenAPI/Swagger specs (for REST APIs)
+
+## Files
+- Read: src/**/*.py, src/**/*.js (source code with docstrings)
+- Read: specs/use-cases/UC-*.md (for spec references)
+- Write: docs/api/README.md
+- Write: docs/api/reference.md
+- Update: CHANGELOG.md
+
 ---
 
 **Agent Version**: 1.0

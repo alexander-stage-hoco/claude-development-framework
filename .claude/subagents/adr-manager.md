@@ -605,22 +605,10 @@ Next Steps:
 ---
 
 ## Files
-
-**Read**:
-- `.claude/technical-decisions.md` - ADR registry (all ADRs)
-- `src/**/*.py`, `lib/**/*.py`, `services/**/*.py` - Implementation files
-- `requirements.txt`, `pyproject.toml`, `setup.py` - Dependencies
-- Existing ADR files (if stored separately)
-
-**Write**:
-- `.claude/technical-decisions.md` - Add new ADRs to "Active ADRs" section
-- Individual ADR files (if project uses separate ADR files)
-
-**Exclude**:
-- `tests/`, `*_test.py`, `test_*.py` - Test files
-- `venv/`, `.venv/`, `__pycache__/` - Virtual environments
-- `migrations/` - Database migrations
-- `build/`, `dist/` - Build artifacts
+- Read: specs/adrs/ADR-*.md (existing ADRs)
+- Read: .claude/templates/technical-decisions.md (ADR template)
+- Write: specs/adrs/ADR-XXX-title.md (new ADRs)
+- Update: specs/adrs/README.md (ADR index)
 
 ---
 

@@ -801,22 +801,22 @@ Investigate whether to use GraphQL or REST for API layer. Understand trade-offs,
 ❌ **Not splitting complex work** → Detect complexity signals, recommend split
 ❌ **Ignoring complexity signals** → Warn user when >5 files, new dependencies, ambiguity detected
 
----
+## Output
+Iteration plan file containing:
+- Iteration goals (2-3 clear objectives)
+- Task breakdown (1-3 hour tasks)
+- Success criteria (measurable outcomes)
+- Risk assessment
+- Resource allocation
+- Timeline estimate
+
+File: planning/iteration-XX.md
 
 ## Files
-
-**Read**:
-- `specs/use-cases/UC-*.md` - Use case specifications (for requirements)
-- `planning/current-iteration.md` - Current work status (to determine next iteration number)
-- `planning/iterations/iteration-*.md` - Existing iterations (to avoid duplicate numbers)
-
-**Write**:
-- `planning/iterations/iteration-XXX-[name].md` - New iteration plan files
-- `planning/current-iteration.md` - Update with new iteration status (if requested)
-
-**Search**:
-- Use Glob to find highest iteration number: `planning/iterations/iteration-*.md`
-- Use Grep to check complexity in UC specs: Search for "TBD", "unclear", "discuss"
+- Read: specs/use-cases/UC-*.md (use case requirements)
+- Read: planning/milestones.md (strategic plan)
+- Write: planning/iteration-XX.md (tactical iteration plan)
+- Update: planning/current-iteration.md (active iteration pointer)
 
 ---
 

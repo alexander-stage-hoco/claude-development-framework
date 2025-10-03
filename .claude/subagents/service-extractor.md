@@ -51,6 +51,33 @@ Service extraction report with:
 ❌ Circular Dependencies (A → B → A) → Use events/callbacks for decoupling
 ❌ Too Many Dependencies (>3 deps) → Refactor or use event bus
 
+## Example: Service Extraction
+
+Given UC-003 "User Registration":
+
+```yaml
+# Extracted Services
+SVC-001: UserService
+  Responsibility: User account management
+  Methods: create_user(), validate_email(), check_duplicate()
+  Dependencies: DatabaseService, EmailService
+
+SVC-002: EmailService
+  Responsibility: Email notifications
+  Methods: send_verification(), send_welcome()
+  Dependencies: None
+
+SVC-003: DatabaseService
+  Responsibility: Data persistence
+  Methods: save(), find_by_email(), transaction()
+  Dependencies: None
+
+# Dependency Graph (Layered)
+Layer 3: UserService
+Layer 2: EmailService
+Layer 1: DatabaseService
+```
+
 ## Files
 - Read: specs/use-cases/UC-*.md, .claude/templates/service-spec.md
 - Create: services/[service-name]/service-spec.md
