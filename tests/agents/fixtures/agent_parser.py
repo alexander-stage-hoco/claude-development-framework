@@ -94,6 +94,11 @@ class AgentParser:
     # ========================================================================
 
     @property
+    def content(self) -> str:
+        """Get full file content (with front matter)."""
+        return self._content
+
+    @property
     def body(self) -> str:
         """Get markdown body (without front matter)."""
         return self._body
