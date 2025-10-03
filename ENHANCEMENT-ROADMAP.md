@@ -307,8 +307,8 @@ examples/playground/
 
 #### 3A. Project Templates by Domain
 
-- **Status**: [ ] To Do / [ ] In Progress / [ ] Done
-- **Decision**: [ ] Yes / [ ] No / [ ] Later
+- **Status**: [ ] To Do / [X] In Progress / [ ] Done
+- **Decision**: [X] Yes / [ ] No / [ ] Later
 - **Priority**: HIGH
 - **Impact**: HIGH (faster project starts)
 - **Effort**: 2 weeks
@@ -848,6 +848,10 @@ def test_template_instantiation():
 2025-10-03 | 1A: CLI Tool | **YES** | High impact, simplifies all operations | ✅ Done
 2025-10-03 | 1B: Pre-commit Hooks | Later | Deferring to focus on CLI first | -
 2025-10-03 | 1C: GitHub Actions | Later | Deferring to focus on CLI first | -
+2025-10-03 | 2A: Interactive Tutorial | Later | Backlog - focus on templates first | -
+2025-10-03 | 2B: Video Course | Later | Backlog - focus on templates first | -
+2025-10-03 | 2C: Framework Playground | Later | Backlog - focus on templates first | -
+2025-10-03 | 3A: Project Templates | **YES** | HIGH impact, speeds up project starts | 🚧 In Progress
 
 ---
 
