@@ -1,0 +1,111 @@
+# Strict Pre-commit Configuration for Claude Development Framework
+# Use for production-ready projects with full discipline
+# Install: cp .claude/templates/pre-commit-config-strict.yaml .pre-commit-config.yaml && pre-commit install
+
+repos:
+  # Standard pre-commit hooks
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=500']  # Stricter file size
+      - id: check-yaml
+      - id: check-json
+      - id: check-toml
+      - id: check-merge-conflict
+      - id: detect-private-key
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+      - id: mixed-line-ending
+        args: ['--fix=lf']
+      - id: check-ast
+      - id: check-docstring-first
+      - id: debug-statements
+      - id: name-tests-test
+        args: ['--pytest-test-first']
+
+  # Python formatting (strict)
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        language_version: python3.11
+        args: ['--line-length=100', '--check']  # Fail if not formatted
+
+  # Python linting (strict - all checks)
+  - repo: https://github.com/PyCQA/pylint
+    rev: v3.0.3
+    hooks:
+      - id: pylint
+        # No --errors-only in strict mode
+        exclude: '^tests/'
+
+  # Python type checking (strict)
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: v1.8.0
+    hooks:
+      - id: mypy
+        args: ['--strict', '--ignore-missing-imports']
+        additional_dependencies: ['pydantic']
+        exclude: '^tests/'
+
+  # Security checks
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.6
+    hooks:
+      - id: bandit
+        args: ['-c', 'pyproject.toml']
+        exclude: '^tests/'
+
+  # Framework-specific hooks (local) - ALL ENFORCED
+  - repo: local
+    hooks:
+      - id: no-todos
+        name: Block TODO comments (STRICT)
+        entry: python tools/pre-commit-hooks/check-no-todos.py
+        language: system
+        types: [python]
+        exclude: '^tests/'  # No TODOs even in docs in strict mode
+        pass_filenames: true
+
+      - id: spec-alignment
+        name: Check spec-code alignment (STRICT)
+        entry: python tools/pre-commit-hooks/check-spec-alignment.py
+        language: system
+        args: ['--strict']
+        pass_filenames: false
+        always_run: true
+
+      - id: coverage-threshold
+        name: Check test coverage >= 95% (STRICT)
+        entry: python tools/pre-commit-hooks/check-coverage-threshold.py
+        language: system
+        args: ['--threshold=95']
+        pass_filenames: false
+        always_run: true
+
+      - id: test-first
+        name: Enforce test-first development (STRICT)
+        entry: python tools/pre-commit-hooks/check-test-first.py
+        language: system
+        args: ['--strict']
+        types: [python]
+        exclude: '^(tests/|docs/|scripts/)'
+        pass_filenames: true
+
+      - id: adr-references
+        name: Validate ADR references (STRICT)
+        entry: python tools/pre-commit-hooks/check-adr-references.py
+        language: system
+        args: ['--strict']
+        types: [python]
+        pass_filenames: true
+
+      # Additional strict checks
+      - id: no-print-statements
+        name: Block print() in source code
+        entry: python -c "import sys; sys.exit(any('print(' in open(f).read() for f in sys.argv[1:]))"
+        language: system
+        types: [python]
+        exclude: '^(tests/|scripts/)'
+        pass_filenames: true

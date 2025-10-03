@@ -1,0 +1,41 @@
+# Pre-commit hooks definition for Claude Development Framework
+# This file registers custom hooks for use with the pre-commit framework
+
+- id: no-todos
+  name: Block TODO comments
+  description: Prevents TODO comments in source code (Rule #6: No Shortcuts)
+  entry: python tools/pre-commit-hooks/check-no-todos.py
+  language: system
+  types: [python]
+  exclude: '^(tests/|docs/)'
+
+- id: spec-alignment
+  name: Check spec-code alignment
+  description: Ensures UC references have corresponding spec files (Rule #1: Specifications Are Law)
+  entry: python tools/pre-commit-hooks/check-spec-alignment.py
+  language: system
+  pass_filenames: false
+  always_run: true
+
+- id: test-first
+  name: Enforce test-first development
+  description: Ensures source files have corresponding tests (Rule #2: Tests Define Correctness)
+  entry: python tools/pre-commit-hooks/check-test-first.py
+  language: system
+  types: [python]
+  exclude: '^(tests/|docs/|scripts/)'
+
+- id: adr-references
+  name: Validate ADR references
+  description: Ensures ADR references point to valid files (Rule #7: Technical Decisions Are Binding)
+  entry: python tools/pre-commit-hooks/check-adr-references.py
+  language: system
+  types: [python]
+
+- id: coverage-threshold
+  name: Check test coverage threshold
+  description: Enforces minimum test coverage (Rule #2: Tests Define Correctness)
+  entry: python tools/pre-commit-hooks/check-coverage-threshold.py
+  language: system
+  pass_filenames: false
+  always_run: true

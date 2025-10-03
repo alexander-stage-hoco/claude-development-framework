@@ -1,0 +1,75 @@
+# Relaxed Pre-commit Configuration for Claude Development Framework
+# Use for learning and early-stage projects
+# Graduate to normal or strict as project matures
+# Install: cp .claude/templates/pre-commit-config-relaxed.yaml .pre-commit-config.yaml && pre-commit install
+
+repos:
+  # Standard pre-commit hooks (minimal)
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+      - id: check-added-large-files
+        args: ['--maxkb=2000']  # More lenient
+      - id: check-yaml
+      - id: check-json
+      - id: check-merge-conflict
+      - id: trailing-whitespace
+      - id: end-of-file-fixer
+
+  # Python formatting (auto-fix)
+  - repo: https://github.com/psf/black
+    rev: 23.12.1
+    hooks:
+      - id: black
+        language_version: python3.11
+        args: ['--line-length=100']  # Auto-fix, don't fail
+
+  # Framework-specific hooks (local) - RELAXED
+  - repo: local
+    hooks:
+      # Allow TODOs but warn
+      - id: todo-warning
+        name: Warn about TODO comments
+        entry: bash -c 'if grep -r "TODO" --include="*.py" src/ 2>/dev/null; then echo "Warning: TODO comments found (not blocking in relaxed mode)"; fi; exit 0'
+        language: system
+        pass_filenames: false
+        always_run: true
+
+      # Spec alignment (warning only)
+      - id: spec-alignment-warning
+        name: Check spec-code alignment (WARNING)
+        entry: python tools/pre-commit-hooks/check-spec-alignment.py
+        language: system
+        args: ['--warn-only']
+        pass_filenames: false
+        always_run: true
+
+      # Coverage threshold (lower threshold)
+      - id: coverage-threshold-relaxed
+        name: Check test coverage >= 70% (RELAXED)
+        entry: python tools/pre-commit-hooks/check-coverage-threshold.py
+        language: system
+        args: ['--threshold=70', '--warn-only']
+        pass_filenames: false
+        always_run: true
+
+# NOTE: In relaxed mode, we skip:
+# - Strict linting (pylint)
+# - Type checking (mypy)
+# - Test-first enforcement
+# - ADR reference checking
+# - Security scanning
+
+# Uncomment these as your project matures:
+
+# - repo: https://github.com/PyCQA/pylint
+#   rev: v3.0.3
+#   hooks:
+#     - id: pylint
+#       args: ['--errors-only']
+
+# - repo: https://github.com/pre-commit/mirrors-mypy
+#   rev: v1.8.0
+#   hooks:
+#     - id: mypy
+#       args: ['--ignore-missing-imports']

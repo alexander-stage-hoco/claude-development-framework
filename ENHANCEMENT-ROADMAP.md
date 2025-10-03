@@ -67,11 +67,11 @@ claude-dev agent run test-writer --spec UC-001
 
 #### 1B. Pre-commit Hook Package
 
-- **Status**: [ ] To Do / [ ] In Progress / [ ] Done
-- **Decision**: [ ] Yes / [ ] No / [ ] Later
+- **Status**: [ ] To Do / [ ] In Progress / [X] Done
+- **Decision**: [X] Yes / [ ] No / [ ] Later
 - **Priority**: HIGH
 - **Impact**: MEDIUM (enforces quality automatically)
-- **Effort**: 3-5 days
+- **Effort**: 3-5 days (Completed: 2025-10-03)
 
 **Features**:
 - Drop-in `.pre-commit-config.yaml`
@@ -846,22 +846,22 @@ def test_template_instantiation():
 **Date** | **Option** | **Decision** | **Reason** | **Status**
 ---------|------------|--------------|------------|------------
 2025-10-03 | 1A: CLI Tool | **YES** | High impact, simplifies all operations | ✅ Done
-2025-10-03 | 1B: Pre-commit Hooks | Later | Deferring to focus on CLI first | -
 2025-10-03 | 1C: GitHub Actions | Later | Deferring to focus on CLI first | -
 2025-10-03 | 2A: Interactive Tutorial | Later | Backlog - focus on templates first | -
 2025-10-03 | 2B: Video Course | Later | Backlog - focus on templates first | -
 2025-10-03 | 2C: Framework Playground | Later | Backlog - focus on templates first | -
 2025-10-03 | 3A: Project Templates | **YES** | HIGH impact, speeds up project starts | 🚧 In Progress
+2025-10-03 | 1B: Pre-commit Hooks | **YES** | Top recommendation, automates framework discipline | ✅ Done
 
 ---
 
 ## Priority Matrix
 
 ### High Impact + High Priority
-- [ ] 1A: CLI Tool
-- [ ] 1B: Pre-commit Hook Package
+- [X] 1A: CLI Tool
+- [X] 1B: Pre-commit Hook Package
 - [ ] 2A: Interactive Tutorial
-- [ ] 3A: Project Templates by Domain
+- [X] 3A: Project Templates by Domain (80% complete)
 
 ### High Impact + Medium Priority
 - [ ] 5A: Agent Test Suite
