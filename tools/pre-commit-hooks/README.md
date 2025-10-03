@@ -319,4 +319,4 @@ pre-commit try-repo . no-todos --verbose --all-files
 
 **Version**: 1.0.0
 **Last Updated**: 2025-10-03
-**Compatible with**: Claude Development Framework v2.1+
+**Compatible with**: Claude Development Framework v2.2+

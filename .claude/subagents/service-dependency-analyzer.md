@@ -64,5 +64,5 @@ Dependency analysis report with:
 
 ---
 
-**Framework Version**: Claude Development Framework v2.1
+**Framework Version**: Claude Development Framework v2.2
 **Subagent Version**: 2.0 (Optimized with community best practices)

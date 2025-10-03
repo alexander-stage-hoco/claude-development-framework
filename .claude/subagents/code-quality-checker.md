@@ -360,6 +360,6 @@ exclude = .git,__pycache__,venv,.venv,build,dist
 
 ---
 
-**Framework Version**: Claude Development Framework v2.1
+**Framework Version**: Claude Development Framework v2.2
 **Subagent Version**: 1.0 (Initial implementation - Tier 1 CRITICAL agent)
 **Enforces**: Rule #9 (Code Quality Standards), Rule #2 (Test quality), Rule #12 (Refactoring detection)

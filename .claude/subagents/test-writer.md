@@ -262,6 +262,6 @@ def test_create_user_when_database_fails(
 
 ---
 
-**Framework Version**: Claude Development Framework v2.1
+**Framework Version**: Claude Development Framework v2.2
 **Subagent Version**: 1.0 (Initial implementation - Tier 1 CRITICAL agent)
 **Enforces**: Rule #2 (Tests Define Correctness), Rule #1 (Spec traceability), Rule #9 (Code quality)

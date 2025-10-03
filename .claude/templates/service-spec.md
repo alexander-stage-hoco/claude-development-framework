@@ -494,4 +494,4 @@ Questions requiring stakeholder/technical decisions:
 ---
 
 **Template Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2

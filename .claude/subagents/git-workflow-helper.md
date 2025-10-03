@@ -567,7 +567,7 @@ Cannot commit with TODO comments (Rule #6: No Shortcuts).
 ---
 
 **Agent Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Last Updated**: 2025-10-01
 **Rule Coverage**: Rule #11 (Git Workflow Discipline)
 **Integration Points**: Phase 1 (git status), Phase 3 (branch creation), Phase 9 (commit generation)

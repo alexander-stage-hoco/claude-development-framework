@@ -376,6 +376,6 @@ Keep TIER 1-2 loaded, cycle TIER 3-4 as needed
 ---
 
 **File Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Last Updated**: 2025-10-01
 **Next Review**: 2026-01-01

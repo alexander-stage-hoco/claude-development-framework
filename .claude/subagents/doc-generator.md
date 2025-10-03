@@ -777,7 +777,7 @@ After adding docstrings, run "generate API docs" again.
 ---
 
 **Agent Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Last Updated**: 2025-10-02
 **Rule Coverage**: Code quality (documentation requirement), complements code-quality-checker
 **Integration Points**: After feature completion, before releases, periodic documentation updates

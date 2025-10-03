@@ -832,6 +832,6 @@ After spec passes validation:
 
 ---
 
-**Framework Version**: Claude Development Framework v2.1
+**Framework Version**: Claude Development Framework v2.2
 **Subagent Version**: 1.0 (Initial implementation - Tier 2 HIGH agent)
 **Enforces**: Rule #1 (Specifications Are Law)

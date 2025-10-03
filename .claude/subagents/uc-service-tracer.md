@@ -105,5 +105,5 @@ Traceability report with:
 
 ---
 
-**Framework Version**: Claude Development Framework v2.1
+**Framework Version**: Claude Development Framework v2.2
 **Subagent Version**: 2.1 (Enhanced with security-auditor learnings)

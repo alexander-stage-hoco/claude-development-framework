@@ -3,7 +3,7 @@
 A command-line interface for the Claude Development Framework that simplifies project initialization, specification generation, testing, planning, and quality checks.
 
 **Version**: 1.0.0
-**Part of**: Claude Development Framework v2.1
+**Part of**: Claude Development Framework v2.2
 
 ---
 

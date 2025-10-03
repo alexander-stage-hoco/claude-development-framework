@@ -242,6 +242,6 @@ Feature: Create Task
 
 ---
 
-**Framework Version**: Claude Development Framework v2.1
+**Framework Version**: Claude Development Framework v2.2
 **Subagent Version**: 1.0 (Initial implementation - Tier 1 CRITICAL agent)
 **Enforces**: Rule #8 (BDD for User-Facing Features), Rule #1 (Spec traceability)

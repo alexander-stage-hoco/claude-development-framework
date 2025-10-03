@@ -659,7 +659,7 @@ Does this accurately capture the session including the blocker? (y/n)
 ---
 
 **Agent Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Last Updated**: 2025-10-01
 **Rule Coverage**: Rule #10 (Session Discipline) - Phase 8 (Documentation)
 **Integration Points**: Phase 8 (session end documentation), Phase 1 (next session startup)

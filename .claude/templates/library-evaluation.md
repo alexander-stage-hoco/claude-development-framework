@@ -403,12 +403,12 @@ Used this checklist during evaluation:
 ---
 
 **Evaluation Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Decision Status**: [Draft | Approved | Implemented]
 
 ---
 
 **Template Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Last Updated**: 2025-10-01
-**Compatibility**: Framework v2.1+
+**Compatibility**: Framework v2.2+

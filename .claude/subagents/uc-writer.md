@@ -593,6 +593,6 @@ Agent: Excellent! I've saved UC-003-create-task.md to specs/use-cases/.
 
 ---
 
-**Framework Version**: Claude Development Framework v2.1
+**Framework Version**: Claude Development Framework v2.2
 **Subagent Version**: 1.0 (Initial implementation - Tier 1 CRITICAL agent)
 **Enforces**: Rule #1 (Specifications Are Law), Service-Oriented Architecture

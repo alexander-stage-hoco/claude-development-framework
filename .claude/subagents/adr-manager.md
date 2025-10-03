@@ -738,6 +738,6 @@ Use event sourcing pattern with event store. All state changes recorded as event
 
 ---
 
-**Framework Version**: Claude Development Framework v2.1
+**Framework Version**: Claude Development Framework v2.2
 **Subagent Version**: 1.0 (Initial implementation - Tier 1 CRITICAL agent #6)
 **Enforces**: Rule #7 (Technical Decisions Are Binding)

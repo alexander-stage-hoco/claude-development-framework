@@ -301,7 +301,7 @@ When creating a new service:
 ## Template Metadata
 
 **Template Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Purpose**: Central service registry (copy to `.claude/service-registry.md` in project)
 
 **Instructions**:

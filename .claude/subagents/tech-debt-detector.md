@@ -606,7 +606,7 @@ This feature has CRITICAL unfinished work (NotImplementedError). Complete or rem
 ---
 
 **Agent Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Last Updated**: 2025-10-02
 **Rule Coverage**: Rule #6 (No Shortcuts) - tech debt prevention and detection
 **Integration Points**: Phase 9 (pre-commit validation), code review, periodic audits

@@ -10,7 +10,7 @@ estimated_read_time: 5 minutes
 **Project**: [PROJECT_NAME]
 **Status**: Active
 **Last Updated**: [DATE]
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 
 ---
 
@@ -312,6 +312,6 @@ Before marking ADR as "Accepted":
 ---
 
 **Template Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Last Updated**: 2025-10-01
-**Compatibility**: Framework v2.1+
+**Compatibility**: Framework v2.2+

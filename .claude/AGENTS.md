@@ -1,4 +1,4 @@
-# Agent Library - Claude Development Framework v2.1
+# Agent Library - Claude Development Framework v2.2
 
 **Version**: 2.1
 **Last Updated**: 2025-10-02
@@ -803,7 +803,7 @@ You are an expert [domain] agent...
 **Time Savings**: 40-60% reduction in manual effort (estimated)
 
 **Version**: All agents v1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Status**: Production-ready
 
 ---

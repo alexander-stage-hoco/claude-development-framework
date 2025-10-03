@@ -464,5 +464,5 @@ For more details, see these quick reference files:
 ---
 
 **Quick Reference Version**: 1.0
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Last Updated**: 2025-10-01

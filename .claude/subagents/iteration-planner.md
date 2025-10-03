@@ -406,7 +406,7 @@ def test_integration_scenario():
 
 ---
 
-**Framework**: Claude Development Framework v2.1
+**Framework**: Claude Development Framework v2.2
 **Rule #3**: Incremental Above All (Max 3-hour iterations)
 **Rule #5**: Two-Level Planning (Strategic + Tactical)
 ```
@@ -863,6 +863,6 @@ After UC strategic breakdown:
 
 ---
 
-**Framework Version**: Claude Development Framework v2.1
+**Framework Version**: Claude Development Framework v2.2
 **Subagent Version**: 1.0 (Initial implementation - Tier 2 HIGH agent)
 **Enforces**: Rule #3 (Incremental Above All), Rule #5 (Two-Level Planning)

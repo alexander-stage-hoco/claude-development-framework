@@ -22,8 +22,9 @@ This directory contains fully-configured project templates that apply the Claude
 
 ## Available Templates
 
-### 1. REST API (FastAPI)
+### 1. REST API (FastAPI) ✅
 **Path**: `rest-api-fastapi/`
+**Status**: Complete
 **Best For**: Backend APIs, microservices, REST services
 
 **Includes**:
@@ -41,79 +42,21 @@ This directory contains fully-configured project templates that apply the Claude
 
 ---
 
-### 2. CLI Tool (Click)
-**Path**: `cli-tool-click/`
+## Planned Templates
+
+The following templates are planned but not yet implemented:
+
+### 2. CLI Tool (Click) 📋
 **Best For**: Command-line tools, automation scripts
 
-**Includes**:
-- Click-based CLI structure
-- Subcommand organization
-- Configuration management
-- Testing patterns for CLI
-- Shell completion
-- Package distribution setup
-
-**Use Cases Included**:
-- UC-001: Initialize Configuration
-- UC-002: Process Data
-- UC-003: Generate Report
-
----
-
-### 3. Data Pipeline
-**Path**: `data-pipeline/`
+### 3. Data Pipeline 📋
 **Best For**: ETL workflows, data processing, batch jobs
 
-**Includes**:
-- Python-based ETL structure
-- Data validation patterns
-- Error handling and retry logic
-- Pipeline orchestration
-- Monitoring and logging
-- Testing data pipelines
-
-**Use Cases Included**:
-- UC-001: Extract Data from Source
-- UC-002: Transform and Validate Data
-- UC-003: Load Data to Destination
-
----
-
-### 4. Web Application (React + FastAPI)
-**Path**: `web-app-react/`
+### 4. Web Application (React + FastAPI) 📋
 **Best For**: Full-stack applications, dashboards, SPAs
 
-**Includes**:
-- FastAPI backend
-- React frontend (TypeScript)
-- Component-driven UCs
-- E2E testing setup
-- State management (Redux/Context)
-- Deployment configuration
-
-**Use Cases Included**:
-- UC-001: User Registration Flow
-- UC-002: Dashboard Display
-- UC-003: Data Submission
-
----
-
-### 5. Machine Learning Pipeline
-**Path**: `ml-pipeline/`
+### 5. Machine Learning Pipeline 📋
 **Best For**: ML training, inference services, model deployment
-
-**Includes**:
-- Training pipeline structure
-- Model versioning patterns
-- Experiment tracking
-- Inference service (FastAPI)
-- Model monitoring
-- MLOps best practices
-
-**Use Cases Included**:
-- UC-001: Train Model
-- UC-002: Evaluate Model
-- UC-003: Serve Predictions
 
 ---
 
@@ -122,10 +65,10 @@ This directory contains fully-configured project templates that apply the Claude
 ### With CLI Tool (Recommended)
 
 ```bash
-# Initialize project with template
+# Initialize project with REST API template
 claude-dev init my-project --template rest-api
 
-# Or with full path
+# Or with init-project.sh script
 ./init-project.sh my-project --template rest-api-fastapi
 ```
 
@@ -278,13 +221,13 @@ Want to add a template? Follow this process:
 
 ### Version Compatibility
 
-| Template | Framework Version | Last Updated |
-|----------|------------------|--------------|
-| REST API | v2.1+ | 2025-10-03 |
-| CLI Tool | v2.1+ | 2025-10-03 |
-| Data Pipeline | v2.1+ | 2025-10-03 |
-| Web App | v2.1+ | 2025-10-03 |
-| ML Pipeline | v2.1+ | 2025-10-03 |
+| Template | Framework Version | Status | Last Updated |
+|----------|------------------|--------|--------------|
+| REST API | v2.2+ | ✅ Complete | 2025-10-03 |
+| CLI Tool | v2.2+ | 📋 Planned | - |
+| Data Pipeline | v2.2+ | 📋 Planned | - |
+| Web App | v2.2+ | 📋 Planned | - |
+| ML Pipeline | v2.2+ | 📋 Planned | - |
 
 ### Update Schedule
 - Templates reviewed quarterly
@@ -333,13 +276,15 @@ For framework questions:
 ## Roadmap
 
 ### Completed ✅
-- [x] REST API template (FastAPI)
-- [x] CLI Tool template (Click)
-- [x] Data Pipeline template (Python)
-- [x] Web App template (React + FastAPI)
-- [x] ML Pipeline template
+- [x] REST API template (FastAPI) - v1.0.0
 
-### Planned 📋
+### In Progress 🚧
+- [ ] CLI Tool template (Click)
+- [ ] Data Pipeline template (Python)
+- [ ] Web App template (React + FastAPI)
+- [ ] ML Pipeline template
+
+### Future 📋
 - [ ] Microservices template (FastAPI + Docker + K8s)
 - [ ] GraphQL API template (Strawberry)
 - [ ] Event-Driven template (Kafka/RabbitMQ)
@@ -350,6 +295,6 @@ For framework questions:
 
 **Version**: 1.0.0
 **Last Updated**: 2025-10-03
-**Part of**: Claude Development Framework v2.1
+**Part of**: Claude Development Framework v2.2
 
 Happy building! 🚀
