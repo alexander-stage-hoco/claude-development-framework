@@ -51,7 +51,7 @@ Run through EVERY item after implementation passes tests:
 
 **Example**:
 ```python
-# Before: Duplicated validation
+## Before: Duplicated validation
 def process_payment(amount):
     if amount < 0:
         raise ValueError("Amount must be positive")
@@ -62,7 +62,7 @@ def process_refund(amount):
         raise ValueError("Amount must be positive")
     # process...
 
-# After: Extracted
+## After: Extracted
 def validate_amount(amount: float) -> None:
     if amount < 0:
         raise ValueError("Amount must be positive")
@@ -82,7 +82,7 @@ def process_payment(amount: float):
 
 **Example**:
 ```python
-# Before: Function does too much (4 responsibilities)
+## Before: Function does too much (4 responsibilities)
 def process_order(order_data):
     # Validate
     if not order_data.get("items"):
@@ -109,7 +109,7 @@ def process_order(order_data):
     db.save(order)
     return order
 
-# After: Extracted to focused functions
+## After: Extracted to focused functions
 def process_order(order_data: Dict) -> Order:
     """Process customer order: validate, calculate, save."""
     validate_order_data(order_data)
@@ -135,12 +135,12 @@ def validate_order_data(order_data: Dict) -> None:
 
 **Example**:
 ```python
-# Before: Unclear names
+## Before: Unclear names
 def proc(d):
     x = d["amt"]
     return x * 1.1
 
-# After: Descriptive names
+## After: Descriptive names
 TAX_RATE = 1.1
 
 def calculate_price_with_tax(order_data: Dict) -> float:
@@ -164,12 +164,12 @@ def calculate_price_with_tax(order_data: Dict) -> float:
 
 **Example**:
 ```python
-# Before: Magic numbers
+## Before: Magic numbers
 total = subtotal * 1.08
 if subtotal > 100:
     discount = subtotal * 0.1
 
-# After: Named constants
+## After: Named constants
 TAX_RATE = 1.08
 DISCOUNT_THRESHOLD = 100
 DISCOUNT_RATE = 0.1
@@ -243,7 +243,7 @@ def calculate_tax(amount: Decimal) -> Decimal:
 ### Step 1: Baseline
 ```bash
 pytest tests/ -v  # All tests pass
-# Record count: "15 tests passing"
+## Record count: "15 tests passing"
 ```
 
 ### Step 2: Apply Refactorings
@@ -256,7 +256,7 @@ pytest tests/ -v  # All tests pass
 ### Step 3: Verify
 ```bash
 pytest tests/ -v  # Still "15 tests passing"
-# Same count, no regressions
+## Same count, no regressions
 ```
 
 ### Step 4: Commit

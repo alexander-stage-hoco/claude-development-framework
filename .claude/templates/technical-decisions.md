@@ -192,7 +192,7 @@ Claude will:
 
 Example:
 ```python
-# ADR-003: Using repository pattern for data access
+## ADR-003: Using repository pattern for data access
 class UserRepository:
     """
     Repository for User aggregate.

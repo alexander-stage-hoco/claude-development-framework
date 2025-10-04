@@ -102,18 +102,18 @@ This checklist ensures code reused from reference implementations is:
 
 **Follow these steps**:
 
-#### 1. Rename for Clarity
+### 1. Rename for Clarity
 - [ ] Rename variables to match our naming conventions
 - [ ] Rename functions to match our verb-noun pattern
 - [ ] Rename classes to match our domain model
 
-#### 2. Add Type Hints
+### 2. Add Type Hints
 - [ ] Add/improve parameter type hints
 - [ ] Add/improve return type hints
 - [ ] Add type hints for complex data structures
 - [ ] Run type checker (mypy/pyright)
 
-#### 3. Improve Documentation
+### 3. Improve Documentation
 - [ ] Add comprehensive docstring
 - [ ] Reference our specification
 - [ ] Note source and adaptation
@@ -149,13 +149,13 @@ def extracted_function(param: Type) -> ReturnType:
     """
 ```
 
-#### 4. Integrate with Our Patterns
+### 4. Integrate with Our Patterns
 - [ ] Use our error handling patterns
 - [ ] Use our logging patterns
 - [ ] Use our dependency injection (if applicable)
 - [ ] Follow our code organization
 
-#### 5. Remove Unnecessary Code
+### 5. Remove Unnecessary Code
 - [ ] Remove features we don't need
 - [ ] Remove excessive abstraction
 - [ ] Simplify if possible (without losing correctness)
@@ -179,7 +179,7 @@ def extracted_function(param: Type) -> ReturnType:
 
 **Remember**: Test-first applies to reused code too!
 
-#### 1. Write Unit Tests
+### 1. Write Unit Tests
 - [ ] Test happy path
 - [ ] Test error cases
 - [ ] Test edge cases
@@ -199,12 +199,12 @@ def test_adapted_function_error_handling():
         adapted_function(invalid_input)
 ```
 
-#### 2. Integration Tests
+### 2. Integration Tests
 - [ ] Test with our other components
 - [ ] Test with our database (if applicable)
 - [ ] Test with our API (if applicable)
 
-#### 3. Run All Tests
+### 3. Run All Tests
 - [ ] New tests pass
 - [ ] ALL existing tests still pass
 - [ ] No regressions introduced
@@ -219,26 +219,28 @@ def test_adapted_function_error_handling():
 
 **If license requires attribution**:
 
-#### 1. In Source Code
+### 1. In Source Code
 Add comment block at top of file or before function:
 
 ```python
-# Portions of this code adapted from [Project Name]
-# Original source: [URL]
-# License: [License Type]
-# Copyright (c) [Year] [Original Author]
-# Modifications by [Your Team/Name], [Year]
-#
-# [License text or reference to LICENSE file]
+"""
+Portions of this code adapted from [Project Name]
+Original source: [URL]
+License: [License Type]
+Copyright (c) [Year] [Original Author]
+Modifications by [Your Team/Name], [Year]
+
+[License text or reference to LICENSE file]
+"""
 ```
 
-#### 2. In LICENSE File (if required by license)
+### 2. In LICENSE File (if required by license)
 Add attribution to project LICENSE file
 
-#### 3. In Documentation
+### 3. In Documentation
 Add to `research/implementations/[project]/attribution.md`:
 ```markdown
-# Attribution for [Component]
+## Attribution for [Component]
 
 **Used in**: implementation/src/[location]
 **Original**: [Project URL]

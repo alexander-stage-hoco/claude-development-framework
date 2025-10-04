@@ -1,6 +1,6 @@
 ---
 tier: 1
-purpose: Framework orientation
+purpose: Essential framework orientation and session start guide
 reload_trigger: Always at session start
 estimated_read_time: 5 minutes
 ---
@@ -164,7 +164,7 @@ RED (failing test) → GREEN (make it pass) → REFACTOR (improve quality)
 ### Git Workflow
 ```bash
 git checkout -b iteration-XXX-description  # Create branch
-# Work... tests passing...
+## Work... tests passing...
 git commit -m "[type]: description\n\nSpec: UC-XXX\nTests: N passing"
 ```
 

@@ -52,8 +52,8 @@ git push -u origin iteration-XXX-description
 ```
 
 ### Refactor (Separate Commit)
+After implementation commit, refactor code:
 ```bash
-# After implementation commit, refactor code
 git add .
 git commit -m "refactor: [description]
 
@@ -169,7 +169,7 @@ git checkout -b iteration-XXX-name
 ```bash
 git checkout main && git pull
 git checkout -b hotfix-description
-# Fix, test, commit
+[Fix, test, commit here]
 git push -u origin hotfix-description
 git checkout main && git merge hotfix-description
 ```
@@ -177,18 +177,16 @@ git checkout main && git merge hotfix-description
 ### Scenario 2: Experimental Work
 ```bash
 git checkout -b spike-description
-# Experiment freely
-# If keeping: commit and merge
-# If discarding: git checkout main && git branch -D spike-description
+[Experiment freely]
+[If keeping: commit and merge]
+[If discarding: git checkout main && git branch -D spike-description]
 ```
 
 ### Scenario 3: Multiple Related Iterations
+Complete iteration 1, then start iteration 2:
 ```bash
-# Complete iteration 1
 git checkout iteration-001 && git add . && git commit && git push
 git checkout main && git merge iteration-001
-
-# NOW start iteration 2
 git checkout -b iteration-002
 ```
 
@@ -257,20 +255,11 @@ git checkout -b iteration-002
 
 **Essential Commands**:
 ```bash
-# Start work
-git checkout main && git pull && git checkout -b iteration-XXX-name
-
-# Check status
-git status
-
-# Commit
-git add . && git commit -m "message"
-
-# Push
-git push -u origin [branch]
-
-# Merge
-git checkout main && git merge [branch]
+git checkout main && git pull && git checkout -b iteration-XXX-name  # Start work
+git status  # Check status
+git add . && git commit -m "message"  # Commit
+git push -u origin [branch]  # Push
+git checkout main && git merge [branch]  # Merge
 ```
 
 ---

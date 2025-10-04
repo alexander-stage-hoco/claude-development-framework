@@ -91,17 +91,17 @@ Layer 3 (Application Services - Depend on Layer 1 & 2):
 
 ### By Service
 
-#### SVC-001: AuthService
+### SVC-001: AuthService
 - **UC-001**: User Registration (methods: `register()`, `hash_password()`)
 - **UC-002**: User Login (methods: `authenticate()`, `create_session()`)
 - **UC-003**: Password Reset (methods: `verify_reset_token()`, `update_password()`)
 
-#### SVC-002: UserService
+### SVC-002: UserService
 - **UC-001**: User Registration (methods: `create_user()`)
 - **UC-004**: View Profile (methods: `get_user()`)
 - **UC-005**: Update Profile (methods: `update_user()`)
 
-#### SVC-005: EmailService
+### SVC-005: EmailService
 - **UC-001**: User Registration (methods: `send_welcome_email()`)
 - **UC-003**: Password Reset (methods: `send_reset_email()`)
 - **UC-007**: Notification (methods: `send_notification()`)
@@ -110,16 +110,16 @@ Layer 3 (Application Services - Depend on Layer 1 & 2):
 
 ### By Use Case
 
-#### UC-001: User Registration
+### UC-001: User Registration
 - **SVC-001** (AuthService): Register user, hash password
 - **SVC-002** (UserService): Create user record
 - **SVC-005** (EmailService): Send welcome email
 
-#### UC-002: User Login
+### UC-002: User Login
 - **SVC-001** (AuthService): Authenticate credentials, create session
 - **SVC-002** (UserService): Retrieve user data
 
-#### UC-003: Password Reset
+### UC-003: Password Reset
 - **SVC-001** (AuthService): Verify token, update password
 - **SVC-005** (EmailService): Send reset email
 

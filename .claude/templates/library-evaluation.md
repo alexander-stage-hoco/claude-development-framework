@@ -75,7 +75,7 @@ Nice to Have:
 **Link**: [https://github.com/org/library]
 **Version**: [e.g., v2.5.0]
 
-#### Overview
+### Overview
 
 **Description**: [What is this library?]
 
@@ -84,7 +84,7 @@ Nice to Have:
 - **Latest Release**: [Date]
 - **Release Frequency**: [e.g., Monthly, Quarterly]
 
-#### Community & Maintenance
+### Community & Maintenance
 
 | Metric | Value | Assessment |
 |--------|-------|------------|
@@ -98,7 +98,7 @@ Nice to Have:
 
 **Maintenance Status**: ✅ **Active** / ⚠️ **Slow** / ❌ **Abandoned**
 
-#### Feature Coverage
+### Feature Coverage
 
 | Feature | Supported | Notes |
 |---------|-----------|-------|
@@ -108,7 +108,7 @@ Nice to Have:
 
 **Coverage**: [X]% of must-have requirements
 
-#### Quality Assessment
+### Quality Assessment
 
 **Code Quality**:
 - Type hints: ✅ Yes / ❌ No
@@ -121,7 +121,7 @@ Nice to Have:
 - Breaking changes: [Frequency]
 - API stability: ✅ Stable / ⚠️ Evolving / ❌ Unstable
 
-#### Dependencies
+### Dependencies
 
 | Dependency | Version | Size | Notes |
 |------------|---------|------|-------|
@@ -135,7 +135,7 @@ Nice to Have:
 - Known vulnerabilities: [N] (check: `safety check`)
 - Dependency risk: ✅ Low / ⚠️ Moderate / ❌ High
 
-#### License
+### License
 
 **License**: [e.g., MIT]
 **Commercial Use**: ✅ Allowed / ❌ Restricted
@@ -144,13 +144,13 @@ Nice to Have:
 
 **Compatibility**: ✅ Compatible / ⚠️ Review Needed / ❌ Incompatible
 
-#### Integration Effort
+### Integration Effort
 
 **Estimated Integration Time**: [X hours]
 
 **Integration Approach**:
 ```python
-# Example integration code
+## Example integration code
 from library import SomeClass
 
 class ServiceAdapter(ServiceProtocol):
@@ -167,19 +167,19 @@ class ServiceAdapter(ServiceProtocol):
 - [Config item 1]
 - [Config item 2]
 
-#### Pros
+### Pros
 
 - ✅ [Advantage 1]
 - ✅ [Advantage 2]
 - ✅ [Advantage 3]
 
-#### Cons
+### Cons
 
 - ❌ [Disadvantage 1]
 - ❌ [Disadvantage 2]
 - ❌ [Disadvantage 3]
 
-#### Overall Score
+### Overall Score
 
 | Category | Weight | Score (1-10) | Weighted |
 |----------|--------|-------------|----------|
@@ -209,7 +209,7 @@ class ServiceAdapter(ServiceProtocol):
 
 **Rationale**: [Why consider building custom?]
 
-#### Estimated Effort
+### Estimated Effort
 
 - **Design**: [X hours]
 - **Implementation**: [Y hours]
@@ -217,19 +217,19 @@ class ServiceAdapter(ServiceProtocol):
 - **Documentation**: [W hours]
 - **Total**: [N hours]
 
-#### Pros
+### Pros
 
 - ✅ [Advantage 1: e.g., "Exact fit for requirements"]
 - ✅ [Advantage 2: e.g., "No external dependencies"]
 - ✅ [Advantage 3: e.g., "Full control"]
 
-#### Cons
+### Cons
 
 - ❌ [Disadvantage 1: e.g., "Maintenance burden"]
 - ❌ [Disadvantage 2: e.g., "Longer initial development"]
 - ❌ [Disadvantage 3: e.g., "Reinventing the wheel"]
 
-#### Long-Term Cost
+### Long-Term Cost
 
 | Cost Factor | Library | Custom | Winner |
 |-------------|---------|--------|--------|

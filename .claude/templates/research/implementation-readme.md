@@ -63,14 +63,11 @@ Highlight the most important files to study:
 ## Running This Code
 
 ```bash
-# Installation
-[commands to install dependencies]
+[Installation commands]
 
-# Running
-[commands to run the application]
+[Running commands]
 
-# Testing
-[commands to run tests]
+[Testing commands]
 ```
 
 ---

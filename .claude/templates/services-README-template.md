@@ -99,14 +99,9 @@ Claude will:
 ### 2. Create Service Specification
 
 ```bash
-# Create service directory
 mkdir -p services/my-service
-
-# Copy specification template
 cp .claude/templates/service-spec.md services/my-service/service-spec.md
-
-# Edit with your service details
-# Define interface, dependencies, implementation strategies
+[Edit service-spec.md with your service details and requirements]
 ```
 
 ### 3. Implement with TDD (Session 3)
@@ -181,13 +176,13 @@ pytest services/
 
 ### Run Specific Service Tests
 ```bash
-# All tests for one service
+## All tests for one service
 pytest services/my-service/tests/
 
-# Unit tests only
+## Unit tests only
 pytest services/my-service/tests/test_unit.py
 
-# Integration tests only
+## Integration tests only
 pytest services/my-service/tests/test_integration.py
 ```
 

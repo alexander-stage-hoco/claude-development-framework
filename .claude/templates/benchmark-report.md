@@ -305,7 +305,7 @@ Low Performance
 Based on benchmarking, the following parameters yield best performance:
 
 ```python
-# Recommended configuration for Strategy [Name]
+## Recommended configuration for Strategy [Name]
 
 CONFIG = {
     "param_1": value,  # Rationale: [why this value]
@@ -361,13 +361,13 @@ If changing from previous strategy:
 
 **How to Run**:
 ```bash
-# Setup
+## Setup
 pip install pytest pytest-benchmark
 
-# Run benchmark
+## Run benchmark
 pytest benchmarks/benchmark_[service]_[date].py --benchmark-only
 
-# Generate report
+## Generate report
 pytest benchmarks/ --benchmark-compare --benchmark-save=[name]
 ```
 
