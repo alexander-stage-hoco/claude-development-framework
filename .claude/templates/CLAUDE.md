@@ -164,31 +164,40 @@ Before writing ANY production code, verify:
 
 ## Agent Ecosystem & Coverage
 
-### Current Agent Status
+### Current Agent Status (v2.3)
 
-**Service-Oriented Agents (6)**: Cover service architecture lifecycle
+**Total Agents**: 18 agents implemented across all tiers
+
+**Tier 1 - Core Development (6 agents)**: ✅ COMPLETE
+- test-writer, bdd-scenario-writer, code-quality-checker
+- refactoring-analyzer, uc-writer, adr-manager
+
+**Tier 2 - Workflow Automation (4 agents)**:
+- iteration-planner, spec-validator
+- git-workflow-helper, session-summarizer
+
+**Tier 3 - Quality & Maintenance (2 agents)**:
+- tech-debt-detector, doc-generator
+
+**Service Architecture Agents (6 agents)**:
 - service-extractor, service-designer, service-dependency-analyzer
 - service-optimizer, service-library-finder, uc-service-tracer
 
-**Coverage**: ~8% of framework features (service architecture only)
+**Coverage**: All 12 priority agents implemented (100% of critical automation)
 
 ### Framework Gap Analysis
 
 **IMPORTANT**: When considering new agents or wondering what automation exists:
-- **Read**: `agent-research/FRAMEWORK-GAP-ANALYSIS.md`
-- **Contains**: Comprehensive analysis of framework vs. agent coverage
-- **Shows**: 12 recommended new agents prioritized by impact
+- **Read**: `docs/research/FRAMEWORK-GAP-ANALYSIS.md`
+- **Contains**: Comprehensive analysis of framework vs. agent coverage (HISTORICAL as of v2.1)
+- **Current Status**: All priority agents from gap analysis now implemented
 - **Keep Updated**: When adding/removing agents, update this analysis
 
-**Quick Summary of Gaps**:
-- ❌ No test writing automation (Rule #2)
-- ❌ No spec/UC writing assistance (Rule #1)
-- ❌ No code quality checking (Rule #9)
-- ❌ No refactoring analysis (Rule #12)
-- ❌ No BDD scenario generation (Rule #8)
-- ❌ No ADR creation/compliance (Rule #7)
-
-**Recommended Priority**: Start with test-writer, code-quality-checker, refactoring-analyzer
+**Remaining Opportunities**:
+- Agent orchestration (multi-agent workflows)
+- Advanced testing (mutation testing, BDD execution)
+- Context management automation
+- Session protocol enforcement
 
 ### When to Consult Gap Analysis
 - Planning new agent development

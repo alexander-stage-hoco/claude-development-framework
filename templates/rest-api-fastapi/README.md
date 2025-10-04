@@ -2,7 +2,7 @@
 
 **Template Type**: REST API / Microservice
 **Framework**: FastAPI + SQLAlchemy + PostgreSQL
-**Claude Framework Version**: v2.1
+**Claude Framework Version**: v2.3
 
 ---
 
